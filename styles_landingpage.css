@@ -4,7 +4,7 @@
 }
 
 @font-face {
-  font-family: sf-pro-display;
+  font-family: sf-pro-display_medium;
   src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"),
 }
 
@@ -44,7 +44,7 @@ body {
 }
 
 .fontStyle_1 {
-  font-family: sf-pro-display;
+  font-family: sf-pro-display_medium;
   color: var(--fontStyle_1-color);
   font-size: 0.3rem;
 }
