@@ -57,3 +57,11 @@ async function logout() {
 }
 
 document.getElementById('logoutButton').addEventListener('click', logout);
+
+
+
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    // You can add code here to handle the form submission, e.g., sending data to a server.
+    alert("Message sent successfully!");
+});
