@@ -1,54 +1,70 @@
-.Landingpage {
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
+:root {
+  --fontStyle_1-color: #BCBCBC;
+  --black: #000000;
 }
 
-.Frame27 {
-  align-self: stretch;
-  flex: 1 1 0;
-  justify-content: space-between;
-  align-items: center;
-  display: inline-flex;
+@font-face {
+  font-family: sf-pro-display;
+  src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"),
 }
 
-.Test11 {
-  flex: 1 1 0;
-  align-self: stretch;
-}
-
-.Frame26 {
-  align-self: stretch;
-  padding-left: 30px;
-  padding-right: 30px;
-  background: black;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  display: inline-flex;
-}
-
-.Logowhitefont {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
+body {
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: row;
+  height: 100vh;
 }
 
-.Swapster1 {
-  width: 500px;
+/* Style for each of the three divs */
+.container-horizontal{
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*Style for the middle-div*/
+.black-bg {
+  display: flex;
+  padding: 0rem 0.875rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--black);
+}
+
+.container-horizontal:nth-child(1) {
+  background-image: url('./img/landingpage/ClothingVariant1.png');
+}
+
+.container-horizontal:nth-child(3) {
+  background-image: url('./img/landingpage/ClothingVariant2.png');
 }
 
 .fontStyle_1 {
-  color #BCBCBC;
+  font-family: sf-pro-display;
+  color: var(--fontStyle_1-color);
+  font-size: 0.3rem;
 }
 
-.Clothingvariant2 {
-  flex: 1 1 0;
-  align-self: stretch;
-}  
+.logo-button {
+  padding: 0;
+  width: 40vw;
+  height: 20vw;
+  border: none;
+  background-color: black;
+/*   background-image:url("./img/logo/swapsterLogo_renders_whiteFont/Swapster.svg");
+  background-size:contain;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  cursor: pointer; */
+}
+
+.logo-button img {
+  width: 100%;
+  height: 100%; 
+  object-fit: contain;
+}
