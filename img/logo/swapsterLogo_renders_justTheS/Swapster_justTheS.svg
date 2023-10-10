@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="EckigesS" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1483.91 710.96">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2c6e49;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #638582;
+      }
+    </style>
+  </defs>
+  <g id="Ecken">
+    <polyline class="cls-1" points="777.66 295.7 1034.01 149.11 777.66 0 777.66 295.7"/>
+    <polyline class="cls-2" points="525.89 415.26 269.54 561.85 525.89 710.96 525.89 415.26"/>
+  </g>
+</svg>
