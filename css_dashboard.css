@@ -1,173 +1,40 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'SF Pro Display', sans-serif;
-    background: white;
+    overflow: hidden;
 }
 
 .container {
-    width: 1440px;
-    height: 1024px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.header {
-    align-self: stretch;
-    padding: 30px 50px;
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    width: 262.91px;
-    height: 126px;
-}
-
-.navigation {
-    flex: 1 1 0;
-    height: 37px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 52px;
-}
-
-.nav-item {
-    color: black;
-    font-size: 26px;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 400;
-    line-height: 36.66px;
-    word-wrap: break-word;
-}
-
-.content {
-    align-self: stretch;
-    flex: 1 1 0;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-}
-
-.content-top {
-    align-self: stretch;
-    padding: 30px 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    background-color: #f0f0f0;
+    position: relative; /* Fügen Sie die Position relative hinzu */
 }
 
-.spacer {
-    width: 45px;
-    height: 45px;
-    position: relative;
+.horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    position: absolute; /* Fügen Sie die Position absolute hinzu */
+    top: 50%; /* Platzieren Sie den Strich genau in der Mitte */
 }
 
-.image-container {
-    width: 200px;
-    height: 200px;
+.square-box {
+    width: 100px; /* Anpassen der Größe der quadratischen Box */
+    height: 100px; /* Anpassen der Größe der quadratischen Box */
+    background-color: #ffffff; /* Hintergrundfarbe der Box */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Fügen Sie die Position relative hinzu */
+    z-index: 1; /* Damit die Box über dem horizontalen Strich liegt */
+    border: 2px solid #000; /* Fügen Sie einen schwarzen Rahmen hinzu */
 }
 
-.image-container img {
-    width: 200px;
-    height: 200px;
-    border-radius: 16px;
+.square-box img {
+    max-width: 100%; /* Das Bild bleibt innerhalb der Box und ist responsive */
+    max-height: 100%; /* Das Bild bleibt innerhalb der Box und ist responsive */
 }
-
-.price {
-    height: 193px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.price-label {
-    position: relative;
-    width: 106.34px;
-    height: 45px;
-}
-
-.price-value {
-    width: 83.48px;
-    left: 11.93px;
-    top: 11px;
-    position: absolute;
-    color: white;
-    font-size: 20px;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 700;
-    word-wrap: break-word;
-}
-
-.price-border {
-    width: 106.34px;
-    height: 45px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    background: rgba(255, 255, 255, 0);
-    border: 3px black solid;
-}
-
-.divider {
-    width: 1546.34px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.divider-line {
-    flex: 1 1 0;
-    height: 0px;
-    transform: rotate(-180deg);
-    transform-origin: 0 0;
-    border: 6px black solid;
-}
-
-.divider-content {
-    padding: 10px;
-    border: 3px black solid;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-}
-
-.divider-content img {
-    width: 83px;
-    height: 83px;
-}
-
-.price-tolerance {
-    align-self: stretch;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.price-tolerance-label {
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-    color: black;
-    font-size: 26px;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 400;
-    line-height: 36.66px;
-    word-wrap: break-word;
-}
-``
