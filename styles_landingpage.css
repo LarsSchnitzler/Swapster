@@ -46,25 +46,16 @@ body {
 .fontStyle_1 {
   font-family: sf-pro-display_medium;
   color: var(--fontStyle_1-color);
-  font-size: 0.3rem;
+  font-size: 1.6vw;
 }
 
 .logo-button {
   padding: 0;
-  width: 40vw;
-  height: 20vw;
+  width: 95%;
   border: none;
   background-color: black;
-/*   background-image:url("./img/logo/swapsterLogo_renders_whiteFont/Swapster.svg");
-  background-size:contain;
-  background-repeat: no-repeat;
-  border: none;
-  padding: 0;
-  cursor: pointer; */
 }
 
 .logo-button img {
-  width: 100%;
-  height: 100%; 
   object-fit: contain;
 }
