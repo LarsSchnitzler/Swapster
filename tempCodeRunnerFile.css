@@ -1,0 +1,7 @@
+.image-container:nth-child(1) {
+  background-image: url('./img/landingpage/ClothingVariant1.png');
+}
+
+.image-container:nth-child(3) {
+  background-image: url('./img/landingpage/ClothingVariant2.png');
+}
