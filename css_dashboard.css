@@ -43,6 +43,24 @@ body {
 }
 
 
+
+
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Verteilt die Flexboxen horizontal gleichmäßig */
+}
+
+.flex-item {
+    flex: 1; /* Gleichmäßige Verteilung des verfügbaren Platzes */
+    min-width: 100px; /* Mindestbreite für die Flexboxen */
+    height: 100px; /* Höhe der quadratischen Flexboxen */
+    background-color: #ccc; /* Hintergrundfarbe der Flexboxen (kann angepasst werden) */
+    margin: 10px; /* Abstand zwischen den Flexboxen (kann angepasst werden) */
+}
+
+
+
 /* navbar: */
 
 * {
@@ -216,3 +234,6 @@ body {
       /* transform: translateY(-3px) scale(0.75) rotate(-45deg); */
     }
   }
+
+
+  
