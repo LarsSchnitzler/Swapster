@@ -1,8 +1,12 @@
+
+
 body {
     /*overflow: hidden; */
     font-family: Helvetica, Arial, sans-serif;
     background-color: #fff;
 }
+
+/* THIS IS THE CONTAINER OBEN */
 
 .container_oben {
   display: flex;
@@ -18,17 +22,22 @@ body {
   margin: 30px;
 }
 
-.container_oben button.left {
+.container_oben div {
   background-color: red;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container_oben button.right{
+.container_oben button {
+  cursor: pointer;
+}
+.container_oben div.right{
   transform: scaleX(-1);
   background-color: green;
 }
+
+/* THIS IS THE CONTAINER CENTER */
 
 .swap_button {
 display: flex;
@@ -63,6 +72,8 @@ border: 3px solid black;
   border-bottom: 3px solid black;
 }
 
+/* THIS IS THE LINE */
+
 .horizontal_line {
   display: flex;
   flex-direction: column;
@@ -71,7 +82,6 @@ border: 3px solid black;
 
 .horizontal_line div {
   flex:1;
-
 }
 
 .top_horizontal_line {
@@ -79,7 +89,7 @@ border: 3px solid black;
 }
 
 
-/* navbar: */
+/* THIS IS THE NAVBAR */
 
 * {
     padding: 0;
