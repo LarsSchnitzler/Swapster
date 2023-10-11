@@ -2,7 +2,21 @@
   --black: rgba(0, 0, 0, 1);
   --white: rgba(255, 255, 255, 1);
   --grey: rgba(128, 128, 128, 1);
+  --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
 }
+
+@font-face {
+  font-family: "SF-Pro-Display_regular";
+  src: url("../font/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF");
+}
+
+@font-face {
+  font-family: "SF-Pro-Display_bold";
+  src: url("../font/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF");
+}
+
+/* Globale Stile */
+/* ---------------------------------------------- */
 
 main {
   padding: 0;
@@ -14,6 +28,33 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.txt {
+  font-family: "SF-Pro-Display_regular", Helvetica;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--black);
+}
+
+.title {
+  font-family: "SF-Pro-Display_bold", Helvetica;
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.sub-title_1 {
+  font-size: 1.13rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* Seiten Struktur */
+/* ---------------------------------------------- */
 
 .wrapper_sign-in {
   display: flex;
@@ -36,59 +77,6 @@ body {
 
 .rightSide {
   background-color: var(--white);
-}
-
-.wrapper_logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 60px;
-}
-
-.wrapper_logo .img {
-  width: 500px;
-  height: 240px;
-  object-fit: contain;
-}
-
-.txt {
-  font-family: "SF Pro Display-Bold", Helvetica;
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--black);
-}
-
-.title {
-  font-size: 4.5rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.sub-title_1 {
-  font-size: 1.13rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-input[type="email"] {
-  box-sizing: border-box;
-  width: 100%;
-  border: 1px solid var(--black);
-  padding: 10px 20px;
-  font-style: normal;
-  font-weight: 700;
-  border-radius: 8px;
-}
-
-input[type="email"]::placeholder {
-  font-family: "SF Pro Display-Bold", Helvetica;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--black);
 }
 
 .text-wrapper {
@@ -116,6 +104,39 @@ input[type="email"]::placeholder {
   gap: 20px;
 }
 
+/* Komponenten Stile */
+/* ---------------------------------------------- */
+
+.wrapper_logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+.wrapper_logo .img {
+  width: 500px;
+  height: 240px;
+  object-fit: contain;
+}
+
+input[type="email"] {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--black);
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+input[type="email"]::placeholder {
+  font-family: "SF-Pro-Display_bold", Helvetica;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--black);
+}
+
 .form button {
   box-sizing: border-box;
   width: 40%;
@@ -125,4 +146,19 @@ input[type="email"]::placeholder {
   background-color: var(--white);
   text-transform: uppercase;
   font-size: .8rem;
+}
+
+.status-signal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: var(--black, #000);
+  border-radius: 5px;
 }
