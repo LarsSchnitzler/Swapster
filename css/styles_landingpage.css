@@ -20,7 +20,7 @@ body {
 .container-horizontal{
   flex: 1;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
 }
 
@@ -59,3 +59,69 @@ body {
 .logo-button img {
   object-fit: contain;
 }
+
+
+
+
+@media (max-width: 1200px) {
+  /* Styles for screens up to 1200px wide */
+  body {
+    font-size: 18px;
+  }
+  .container-horizontal:nth-child(1) {
+    background-size: fill; 
+    background-position: center right; 
+  }
+
+  .container-horizontal:nth-child(3) {
+    background-size: fill; 
+    background-position: center left; 
+  }
+}
+
+
+@media (max-width: 1024px) {
+  /* Styles for screens up to 1024px wide */
+  body {
+    font-size: 16px;
+  }
+  .container-horizontal:nth-child(1) {
+    background-size: fill; 
+    background-position: center right; 
+  }
+
+  .container-horizontal:nth-child(3) {
+    background-size: fill; 
+    background-position: center left; 
+  }
+  
+}
+
+@media (max-width: 908px) {
+  .fontStyle_1 {
+    font-size: 14px;
+  }
+  
+  .container-horizontal:nth-child(1) {
+    background-size: fill; 
+    background-position: center right;
+  }
+
+  .container-horizontal:nth-child(3) {
+    background-size: fill; 
+    background-position: center left; 
+  }
+}
+
+
+
+
+
+@media (max-width: 480px) {
+  .fontStyle_1 {
+    font-size: 12;
+  }
+
+}
+
+
