@@ -1,217 +1,207 @@
-.log-in {
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #ffffff;
-  }
-  
-  .log-in .frame {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-    align-self: stretch;
-    flex-grow: 1;
-    background-color: var(--black);
-    align-items: center;
-    position: relative;
-  }
-  
-  .log-in .swapster {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 60px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .log-in .logo-white-font {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .log-in .img {
-    position: relative;
-    width: 500px;
-    height: 239.62px;
-    object-fit: cover;
-  }
-  
-  .log-in .frame-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 10px;
-    flex: 1;
-    align-self: stretch;
-    flex-grow: 1;
-    background-color: var(--white);
-    align-items: center;
-    position: relative;
-  }
-  
-  .log-in .div {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px;
-    flex: 0 0 auto;
-    align-items: center;
-    position: relative;
-  }
-  
-  .log-in .text-wrapper {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "SF Pro Display-Bold", Helvetica;
-    font-weight: 700;
-    color: var(--black);
-    font-size: 72px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .log-in .frame-2 {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    flex: 0 0 auto;
-    align-items: center;
-    position: relative;
-  }
-  
-  .log-in .p {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "SF Pro Display-Regular", Helvetica;
-    font-weight: 400;
-    color: var(--black);
-    font-size: 18px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .log-in .textfeld {
-    display: flex;
-    width: 278px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    position: relative;
-    background-color: var(--white);
-    border-radius: 8px;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .log-in .text-feld-wrapper {
-    display: flex;
-    gap: 10px;
-    flex: 1;
-    align-self: stretch;
-    flex-grow: 1;
-    align-items: center;
-    position: relative;
-  }
-  
-  .log-in .text-feld {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "SF Pro Display-Bold", Helvetica;
-    font-weight: 700;
-    color: var(--black);
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: 19.7px;
-    white-space: nowrap;
-  }
-  
-  .log-in .section-forgot {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px 0px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .log-in .frame-3 {
-    display: inline-flex;
-    justify-content: center;
-    gap: 5px;
-    flex: 0 0 auto;
-    align-items: center;
-    position: relative;
-  }
-  
-  .log-in .text-wrapper-2 {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "SF Pro Display-Bold", Helvetica;
-    font-weight: 700;
-    color: var(--black);
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .log-in .checkbox {
-    position: relative;
-    width: 18px;
-    height: 17px;
-  }
-  
-  .log-in .rectangle {
-    height: 18px;
-    background-color: var(--black);
-    border-radius: 5px;
-  }
-  
-  .log-in .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    position: relative;
-    flex: 0 0 auto;
-    border-radius: 8px;
-    border: 2px solid;
-    border-color: #000000;
-    all: unset;
-    box-sizing: border-box;
-  }
-  
-  .log-in .button-text {
-    position: relative;
-    width: fit-content;
-    margin-top: -2px;
-    font-family: "SF Pro Display-Regular", Helvetica;
-    font-weight: 400;
-    color: var(--black);
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: 19.7px;
-    white-space: nowrap;
-  }
-  
+.wrapper_sign-in {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper_halfVP {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftSide {
+  background-color: var(--black);
+}
+
+.rightSide {
+  background-color: var(--white);
+}
+
+.wrapper_logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+.wrapper_logo .img {
+  position: relative;
+  width: 500px;
+  height: 239.62px;
+  object-fit: contain;
+}
+
+.wrapper_sign-in .frame-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: var(--white);
+  align-items: center;
+  position: relative;
+}
+
+.wrapper_sign-in .div {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
+  flex: 0 0 auto;
+  align-items: center;
+  position: relative;
+}
+
+.wrapper_sign-in .text-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "SF Pro Display-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 72px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.wrapper_sign-in .frame-2 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  flex: 0 0 auto;
+  align-items: center;
+  position: relative;
+}
+
+.wrapper_sign-in .p {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "SF Pro Display-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.wrapper_sign-in .textfeld {
+  display: flex;
+  width: 278px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  position: relative;
+  background-color: var(--white);
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.wrapper_sign-in .text-feld-wrapper {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  align-items: center;
+  position: relative;
+}
+
+.wrapper_sign-in .text-feld {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "SF Pro Display-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 19.7px;
+  white-space: nowrap;
+}
+
+.wrapper_sign-in .section-forgot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.wrapper_sign-in .frame-3 {
+  display: inline-flex;
+  justify-content: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  align-items: center;
+  position: relative;
+}
+
+.wrapper_sign-in .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "SF Pro Display-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.wrapper_sign-in .checkbox {
+  position: relative;
+  width: 18px;
+  height: 17px;
+}
+
+.wrapper_sign-in .rectangle {
+  height: 18px;
+  background-color: var(--black);
+  border-radius: 5px;
+}
+
+.wrapper_sign-in .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: #000000;
+  all: unset;
+  box-sizing: border-box;
+}
+
+.wrapper_sign-in .button-text {
+  position: relative;
+  width: fit-content;
+  margin-top: -2px;
+  font-family: "SF Pro Display-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 19.7px;
+  white-space: nowrap;
+}
