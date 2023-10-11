@@ -168,6 +168,10 @@ input::placeholder {
   cursor: pointer;
 }
 
+.form button:active {
+  border: 2px solid var(--gray);
+}
+
 .status-signal {
   display: flex;
   flex-direction: row;

@@ -1,8 +1,9 @@
 :root {
   --black: rgba(0, 0, 0, 1);
   --white: rgba(255, 255, 255, 1);
-  --grey: rgba(128, 128, 128, 1);
+  --gray: rgba(128, 128, 128, 1);
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
+  --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
 }
 
 @font-face {
@@ -51,6 +52,17 @@ body {
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+}
+
+.link {
+  font-family: "SF-Pro-Display_bold", Helvetica;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--gray);
+  cursor: pointer;
 }
 
 /* Seiten Struktur */
@@ -104,6 +116,14 @@ body {
   gap: 20px;
 }
 
+.link-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 /* Komponenten Stile */
 /* ---------------------------------------------- */
 
@@ -120,9 +140,8 @@ body {
   object-fit: contain;
 }
 
-input[type="email"] {
+input {
   box-sizing: border-box;
-  width: 100%;
   border: 1px solid var(--black);
   padding: 10px 20px;
   font-style: normal;
@@ -130,7 +149,7 @@ input[type="email"] {
   border-radius: 8px;
 }
 
-input[type="email"]::placeholder {
+input::placeholder {
   font-family: "SF-Pro-Display_bold", Helvetica;
   font-size: 0.9rem;
   font-weight: 700;
@@ -145,7 +164,12 @@ input[type="email"]::placeholder {
   border: 2px solid var(--black);
   background-color: var(--white);
   text-transform: uppercase;
-  font-size: .8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.form button:active {
+  border: 2px solid var(--gray);
 }
 
 .status-signal {
