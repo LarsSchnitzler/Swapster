@@ -3,6 +3,9 @@ main {
 }
 
 body {
+  width: 100vw; 
+  height: 100vh;
+  margin: 0;
   padding: 0;
 }
 
@@ -42,160 +45,78 @@ body {
   object-fit: contain;
 }
 
-/* .wrapper_sign-in .div {
-  display: inline-flex;
+.txt {
+  font-family: "SF Pro Display-Bold", Helvetica;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--black);
+}
+
+.title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.sub-title_1 {
+  font-size: 1.13rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+input[type="email"] {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--black);
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+input[type="email"]::placeholder {
+  font-family: "SF Pro Display-Bold", Helvetica;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.text-wrapper {
+  display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 80px 60px;
-  flex: 0 0 auto;
-  align-items: center;
-  position: relative;
-} */
+  gap: 30px;
+}
 
-/* .wrapper_sign-in .text-wrapper {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "SF Pro Display-Bold", Helvetica;
-  font-weight: 700;
-  color: var(--black);
-  font-size: 72px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-} */
-
-/* .wrapper_sign-in .frame-2 {
-  display: inline-flex;
+.text-wrapper_multipleHeadlines {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  flex: 0 0 auto;
-  align-items: center;
-  position: relative;
-}
-
-.wrapper_sign-in .p {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "SF Pro Display-Regular", Helvetica;
-  font-weight: 400;
-  color: var(--black);
-  font-size: 18px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.wrapper_sign-in .textfeld {
-  display: flex;
-  width: 278px;
-  height: 40px;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  position: relative;
-  background-color: var(--white);
-  border-radius: 8px;
-  border: 1px solid;
-  border-color: #000000;
+  gap: 0.1rem;
 }
 
-.wrapper_sign-in .text-feld-wrapper {
+.form {
   display: flex;
-  gap: 10px;
-  flex: 1;
-  align-self: stretch;
-  flex-grow: 1;
-  align-items: center;
-  position: relative;
-}
-
-.wrapper_sign-in .text-feld {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "SF Pro Display-Bold", Helvetica;
-  font-weight: 700;
-  color: var(--black);
-  font-size: 14px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 19.7px;
-  white-space: nowrap;
-}
-
-.wrapper_sign-in .section-forgot {
-  display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 10px 0px;
-  position: relative;
-  flex: 0 0 auto;
 }
 
-.wrapper_sign-in .frame-3 {
-  display: inline-flex;
-  justify-content: center;
-  gap: 5px;
-  flex: 0 0 auto;
-  align-items: center;
-  position: relative;
-}
-
-.wrapper_sign-in .text-wrapper-2 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "SF Pro Display-Bold", Helvetica;
-  font-weight: 700;
-  color: var(--black);
-  font-size: 14px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.wrapper_sign-in .checkbox {
-  position: relative;
-  width: 18px;
-  height: 17px;
-}
-
-.wrapper_sign-in .rectangle {
-  height: 18px;
-  background-color: var(--black);
-  border-radius: 5px;
-}
-
-.wrapper_sign-in .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  position: relative;
-  flex: 0 0 auto;
-  border-radius: 8px;
-  border: 2px solid;
-  border-color: #000000;
-  all: unset;
+.form button {
   box-sizing: border-box;
+  width: 40%;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--black);
+  background-color: var(--white);
+  text-transform: uppercase;
+  font-size: .8rem;
 }
-
-.wrapper_sign-in .button-text {
-  position: relative;
-  width: fit-content;
-  margin-top: -2px;
-  font-family: "SF Pro Display-Regular", Helvetica;
-  font-weight: 400;
-  color: var(--black);
-  font-size: 14px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 19.7px;
-  white-space: nowrap;
-} */
