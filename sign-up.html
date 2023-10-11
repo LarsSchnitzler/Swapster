@@ -20,22 +20,31 @@
     <div class="wrapper_halfVP rightSide">
       <div class="text-wrapper">
         <div class="text-wrapper_multipleHeadlines">
-          <div class="txt title">Log in</div>
-          <div class="txt sub-title_1">Log in to start Swapping!</div>
+          <div class="txt title">Sign up</div>
+          <div class="txt sub-title_1">Sign up to start Swapping!</div>
         </div>
         <div class="form-wrapper">
           
           <form class="form">
-            <input class= "txt" type="email" id="email" name="email" placeholder="Email">
             <input class= "txt" type="text" id="firstName" name="firstName" placeholder="First Name">
             <input class= "txt" type="text" id="lastName" name="lastName" placeholder="Last Name">
             <input class= "txt" type="email" id="email" name="email" placeholder="Email">
-
-            <div class="status-signal">
-              <div class="checkbox"></div>
-              <div class="txt">By signing up, I confirm that I have read and agreed to our Terms and Privacy Policy</div>
+            <div class="wrapper_dateOfBirth">
+              <label class="txt label" id="Label_dateOfBirth" for="dateOfBirth">Date of Birth</label>
+              <input class= "txt" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="Date of Birth">
             </div>
-            <button class="txt buttonText" type="submit">Log in</button>
+
+            <div class="wrapper_terms">
+              <div class="wrapper_CB">
+                <input type="checkbox" name="TermsCB" id="TermsCB">
+                <label for="TermsCB" class="txt label">By signing up, I confirm that I have read and agreed to our Terms and Privacy Policy</label>
+              </div>
+              <div class="link-wrapper">
+                <div class="txt">Want to Log in instead?</div>
+                <a href= "./log-in.html" class="txt link">Log in</a>
+              </div>
+              <button class="txt buttonText" type="submit">Sign up</button>
+            </div>
           </form>
 
         </div>
