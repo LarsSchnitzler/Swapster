@@ -36,11 +36,11 @@ body {
 }
 
 .container-horizontal:nth-child(1) {
-  background-image: url('./img/landingpage/ClothingVariant1.png');
+  background-image: url('../img/landingpage/ClothingVariant1.png');
 }
 
 .container-horizontal:nth-child(3) {
-  background-image: url('./img/landingpage/ClothingVariant2.png');
+  background-image: url('../img/landingpage/ClothingVariant2.png');
 }
 
 .fontStyle_1 {
