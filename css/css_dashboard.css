@@ -3,39 +3,62 @@
 body {
     /*overflow: hidden; */
     font-family: Helvetica, Arial, sans-serif;
-    background-color: #fff;
+    background-color: #F9F5F6;
 }
 
-/* THIS IS THE CONTAINER OBEN */
+/* THIS IS THE CONTAINER OBEN UND UNTEN */
 
-.container_oben {
+.container_oben_unten {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100vw;
-  background-color: blue;
+  gap: 10px;
 }
 
-.container_oben img {
+.container_oben_unten img {
   width: 150px;
   height: 150px;
-  margin: 30px;
+  margin: 30px 0px;
+  border-radius: 15px;
 }
 
-.container_oben div {
-  background-color: red;
+.container_oben_unten div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container_oben button {
+.container_oben_unten button {
+  padding: 10px 0px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #F9F5F6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
-.container_oben div.right{
+
+.container_oben_unten div.right{
   transform: scaleX(-1);
-  background-color: green;
 }
+
+
+
+
+@media (max-width: 780px) {
+  .one {
+    display: none;
+  }
+
+  .three {
+    display: none;
+  }
+}
+
 
 /* THIS IS THE CONTAINER CENTER */
 
@@ -51,6 +74,8 @@ border: 3px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
+  color: white;
 }
 
 .container_center {
@@ -61,6 +86,7 @@ border: 3px solid black;
 .container_center img {
   width: 90px;
   height: 90px;
+  padding: 8px;
 }
 
 .swap {
@@ -87,6 +113,28 @@ border: 3px solid black;
 .top_horizontal_line {
   border-bottom: 3px solid black;
 }
+
+
+/* THIS IS THE PRICE TOLERANCE */
+
+.price_tolerance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.price_tolerance input[type="text"] {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  margin-right: 10px;
+  caret-color: white;
+}
+
 
 
 /* THIS IS THE NAVBAR */
@@ -125,16 +173,9 @@ border: 3px solid black;
     float: left;
     height: inherit;
     line-height: inherit;
-    padding: 0 30px;
-    font-size: 22px;
-    text-transform: uppercase;
-    font-weight: 400;
-    letter-spacing: 2px;
+    padding: 0px 30px;
   }
-  .navbar a.navbar-brand span {
-    font-size: 28px;
-    font-weight: 700;
-  }
+
   .navbar ul {
     float: right;
     list-style: none;
