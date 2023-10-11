@@ -1,64 +1,82 @@
 body {
-    margin: 0;
-    padding: 0;
     /*overflow: hidden; */
     font-family: Helvetica, Arial, sans-serif;
     background-color: #fff;
-    color: #333;
 }
 
-.container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    position: relative; /* Fügen Sie die Position relative hinzu */
+.container_oben {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  background-color: blue;
 }
 
-.horizontal-line {
-    width: 100%;
-    height: 2px;
-    background-color: #000;
-    position: absolute; /* Fügen Sie die Position absolute hinzu */
-    top: 50%; /* Platzieren Sie den Strich genau in der Mitte */
+.container_oben img {
+  width: 150px;
+  height: 150px;
+  margin: 30px;
 }
 
-.square-box {
-    width: 100px; /* Anpassen der Größe der quadratischen Box */
-    height: 100px; /* Anpassen der Größe der quadratischen Box */
-    background-color: #ffffff; /* Hintergrundfarbe der Box */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative; /* Fügen Sie die Position relative hinzu */
-    z-index: 1; /* Damit die Box über dem horizontalen Strich liegt */
-    border: 2px solid #000; /* Fügen Sie einen schwarzen Rahmen hinzu */
+.container_oben button.left {
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.square-box img {
-    max-width: 100%; /* Das Bild bleibt innerhalb der Box und ist responsive */
-    max-height: 100%; /* Das Bild bleibt innerhalb der Box und ist responsive */
+.container_oben button.right{
+  transform: scaleX(-1);
+  background-color: green;
+}
+
+.swap_button {
+display: flex;
+flex-direction: column;
+border: 3px solid black;
 }
 
 
-
-
-
-.flex-container {;
-    display: flex;
-    justify-content: space-between; /* Verteilt die Flexboxen horizontal gleichmäßig */
+.amount {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.flex-item {
-    flex: 1; /* Gleichmäßige Verteilung des verfügbaren Platzes */
-    min-width: 100px; /* Mindestbreite für die Flexboxen */
-    height: 100px; /* Höhe der quadratischen Flexboxen */
-    background-color: #ccc; /* Hintergrundfarbe der Flexboxen (kann angepasst werden) */
-    margin: 10px; /* Abstand zwischen den Flexboxen (kann angepasst werden) */
+.container_center {
+  display:flex;
+  height: 150px;
 }
 
+.container_center img {
+  width: 90px;
+  height: 90px;
+}
+
+.swap {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+.horizontal_line {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.horizontal_line div {
+  flex:1;
+
+}
+
+.top_horizontal_line {
+  border-bottom: 3px solid black;
+}
 
 
 /* navbar: */
@@ -84,7 +102,7 @@ body {
     line-height: 80px;
     font-size: 18px;
     padding: 0 30px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 10;
