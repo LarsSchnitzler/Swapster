@@ -18,3 +18,19 @@ function navbarLinkClick() {
     navbarToggler.click();
   }
 }
+
+
+// JavaScript
+const box1 = document.getElementById("box1");
+const box2 = document.getElementById("box2");
+const box3 = document.getElementById("box3");
+
+// Ändere den Inhalt der Flexboxen
+box1.textContent = "Box 1";
+box2.textContent = "Box 2";
+box3.textContent = "Box 3";
+
+// Ändere die Hintergrundfarben der Flexboxen
+box1.style.backgroundColor = "#e34f26";
+box2.style.backgroundColor = "#002561";
+box3.style.backgroundColor = "#333";
