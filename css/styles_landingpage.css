@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: sf-pro-display_medium;
-  src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"),
+  src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF");
 }
 
 body {
