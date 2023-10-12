@@ -24,6 +24,69 @@
         </button>
     </nav>
 
+    <div id="profile">
+      <div id="showProfile">
+        
+        <div class="profilePic">
+          <img src="./img/profilePictures/profile001.png" alt="profilePic">
+        </div>
+
+        <div class="showProfile_profileInfo">
+          <div class="profileName">
+            <div class="txt">Vorname Nachname</div>
+          </div>
+          <div class="showProfile_dob">
+            <p class="txt">01.01.2000</p>
+          </div>
+          <div class="showProfile_emailAdress">
+            <p class="txt mailto">xy@xyz.ch</p>
+          </div>
+          <div class="showProfile_aboutme">
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="editProfile">
+        
+        <div id="editProfile_TitleButtons">
+          <div class="txt title2" id="editProfile_Title">Edit Profile</div>
+          <div id="editProfile_Buttons">
+            <button class="txt" id="editProfile_Cancel">Cancel</button>
+            <button class="txt" id="editProfile_Save">Save</button>
+          </div>
+        </div>
+
+        <div id="hrztlGrayLine"></div>
+
+        <form id="editProfile_Inputs">
+
+              <div class="inputgroup">
+                <label class="txt label" for="fName">First Name:</label>
+                <input class="input" type="text" id="fName" name="fName">
+              </div>
+
+              <div class="inputgroup">
+                <label class="txt label" for="lName">Last Name:</label>
+                <input class="input" type="text" id="lName" name="lName">
+              </div>
+
+              <div class="inputgroup">
+                <label class="txt label" for="dob">Date of Birth:</label>
+                <input class="input" type="date" id="dob" name="dob">
+              </div>
+
+              <div class="inputgroup">
+                <label class="txt label" for="aboutMe">About Me:</label>
+                <textarea class="input" type="text" id="big-textarea" name="aboutMe"></textarea>
+              </div>
+
+        </form>
+      
+      </div>
+    </div>
+
     <script src="navbar.js"></script>
 </body>
 
