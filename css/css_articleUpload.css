@@ -97,7 +97,7 @@ button {
 }
 
 .inputgroup {
-  width: 100%;
+  width: 10%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -191,7 +191,16 @@ body {
   display: none;
 }
 
-#profile {
+.article-Upload_top-wrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#article-Upload {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,65 +209,26 @@ body {
   padding: 60px 0 60px 0;
 }
 
-#showProfile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.showProfile_profileInfo {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.profileInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.profileName .txt{
-  font-weight: 800;
-}
-
-#editProfile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-#editProfile_TitleButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 120px;
-  min-width: 60%;
-}
-
-#editProfile_Buttons {
+#article-Upload_titleButtons {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+#article-Upload_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
-#editProfile_Inputs {
-  width: 70%;
+#article-Upload_Inputs {
+  width: 50%;
   padding: 40px 0 0 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 40px;
