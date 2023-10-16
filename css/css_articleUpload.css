@@ -45,7 +45,7 @@ p {
   font-weight: 300;
   color: var(--black);
   line-height: 1;
-  text-align: center;
+  text-align: start;
 }
 
 .title {
@@ -62,11 +62,12 @@ p {
   font-size: 3.5rem;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: .8;
+  line-height: 1;
   white-space: nowrap;
 }
 
 .sub-title_1 {
+  align-self: flex-start;
   font-size: 1.13rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -94,26 +95,6 @@ button {
   padding: 10px 25px;
   border-radius: 5px;
   text-transform: uppercase;
-}
-
-.inputgroup {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: left;
-  gap: 2px;
-}
-
-input {
-  width: 100%;
-  min-height: 38px;
-  box-sizing: border-box;
-  border: 1px solid var(--black);
-  padding: 10px 20px;
-  font-style: normal;
-  font-weight: 700;
-  border-radius: 8px;
 }
 
 #big-textarea {
@@ -191,7 +172,16 @@ body {
   display: none;
 }
 
-#profile {
+.article-Upload_top-wrapper {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#article-Upload {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,69 +190,85 @@ body {
   padding: 60px 0 60px 0;
 }
 
-#showProfile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.showProfile_profileInfo {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.profileInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.profileName .txt{
-  font-weight: 800;
-}
-
-#editProfile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-#editProfile_TitleButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 120px;
-  min-width: 60%;
-}
-
-#editProfile_Buttons {
+#article-Upload_titleButtons {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+#article-Upload_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
-#editProfile_Inputs {
+#article-Upload_Inputs {
   width: 70%;
-  padding: 40px 0 0 0;
+  padding: 0 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 40px;
 }
+
+.Article_PropertyInputs {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.uploadgroup {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  gap: 2px;
+}
+
+.inputgroup {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  gap: 2px;
+}
+
+input {
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  border: 1px solid var(--black);
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.wrapper_status_link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.wrapper_status{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 /* Komponenten Stile */
 /* ---------------------------------------------- */
 
@@ -314,6 +320,25 @@ body {
 #editProfile_Cancel:active {
   background-color: var(--white);
   border: 2px solid var(--black);
+}
+
+#file-upload {
+  box-sizing: border-box;¨
+  padding: 10px 20px;
+  height: 100px;
+  border: 1.5px dashed var(--black);
+  background-color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  font-family: "SF-Pro-Display_regular", Helvetica;
+}
+
+.status-signal{
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--black);
+  background-color: var(--black);
 }
 
 /* Media Queries */
