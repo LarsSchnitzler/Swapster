@@ -1,14 +1,11 @@
 import { supa } from "./SupaBaseClient/supabase.js";
 
-console.log(window.location.origin);
-
 // Funktion, um Magic Link zu senden
 async function sendMagicLink() {
     const email = document.getElementById('emailInput').value;
-    const { error } = await supa.auth.signIn({ email });
+    const {error} = await supa.auth.signIn({ email });
     
     if (error) {
-
         console.error("Error sending magic link: ", error.message);
     } else {
         console.log("Magic link sent to ", email);

@@ -1,11 +1,21 @@
 :root {
-  --fontStyle_1-color: #BCBCBC;
-  --black: #000000;
+  --black: rgba(0, 0, 0, 1);
+  --white: rgba(255, 255, 255, 1);
+  --gray: rgba(128, 128, 128, 1);
+  --lightGray: #ccc;
+  --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
+  --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
+  --blue_fromFigma: #2E7985;
 }
 
 @font-face {
-  font-family: sf-pro-display_medium;
-  src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF");
+  font-family: "SF-Pro-Display_regular";
+  src: url("../font/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF");
+}
+
+@font-face {
+  font-family: "SF-Pro-Display_bold";
+  src: url("../font/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF");
 }
 
 body {
@@ -14,6 +24,17 @@ body {
   display: flex;
   flex-direction: row;
   height: 100vh;
+}
+
+.txt {
+  font-family: "SF-Pro-Display_regular", Helvetica;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.fontStyle_1 {
+  color: var(--white);
+  font-size: 1.4vw;
 }
 
 /* Style for each of the three divs */
@@ -43,25 +64,17 @@ body {
   background-image: url('../img/landingpage/ClothingVariant2.png');
 }
 
-.fontStyle_1 {
-  font-family: sf-pro-display_medium;
-  color: var(--fontStyle_1-color);
-  font-size: 1.6vw;
-}
-
 .logo-button {
   padding: 0;
   width: 95%;
   border: none;
   background-color: black;
+  cursor: pointer;
 }
 
 .logo-button img {
   object-fit: contain;
 }
-
-
-
 
 @media (max-width: 1200px) {
   /* Styles for screens up to 1200px wide */
