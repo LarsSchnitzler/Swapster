@@ -33,17 +33,6 @@ body {
   padding: 0;
 }
 
-#content-wrapper {
-  box-sizing: border-box;
-  height: calc(100vh - var(--heightNavbar));
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0 20px 0;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
 p {
   margin: 0;
   padding: 0;
@@ -146,6 +135,17 @@ label {
 
 /* THIS IS THE CONTAINER OBEN UND UNTEN */
 
+#content-wrapper {
+  box-sizing: border-box;
+  height: calc(100vh - var(--heightNavbar));
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 20px 0;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 30px;
+}
+
 .container_oben_unten {
   display: flex;
   justify-content: center;
@@ -162,11 +162,11 @@ label {
   gap: 50px;
 }
 
-.ownItems_content-wrapper {
+#ownItems_content-wrapper {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 
 .container_oben_unten img {
