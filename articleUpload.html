@@ -34,27 +34,39 @@
               <button class="txt" id="editProfile_Save">Upload</button>
             </div>
           </div>
-          <div class="txt subTitle">You can only upload one Item at a time.</div>
+          <div class="txt sub-title_1">You can only upload one Item at a time.</div>
 
           <div id="hrztlGrayLine"></div>
         </div>
 
         <form id="article-Upload_Inputs">
+        
+          <div class="uploadgroup">
+            <label class="txt label" for="file-upload">Choose an image of your Article:</label>
+            <input type="file" id="file-upload" name="file-upload" accept="image/*">
+          </div>
 
-              <div class="inputgroup">
-                <label class="txt label" for="fName">First Name:</label>
-                <input class="input" type="text" id="fName" name="fName">
-              </div>
+          <div class="Article_PropertyInputs">
+            <div class="inputgroup">
+              <label class="txt label" for="fName">Article Name:</label>
+              <input class="input" type="text" id="fName" name="fName">
+            </div>
 
-              <div class="inputgroup">
-                <label class="txt label" for="lName">Last Name:</label>
-                <input class="input" type="text" id="lName" name="lName">
-              </div>
+            <div class="inputgroup">
+              <label class="txt label" for="lName">Short clarification if necessary:</label>
+              <input class="input" type="text" id="lName" name="lName">
+            </div>
 
-              <div class="inputgroup">
-                <label class="txt label" for="dob">Date of Birth:</label>
-                <input class="input" type="date" id="dob" name="dob">
-              </div>
+            <div class="inputgroup">
+              <label class="txt label" for="estValue">Estimated Vale</label>
+              <input class="input" type="text" id="estValue" name="estValue">
+            </div>
+          </div>
+
+          <div class="wrapper_status">
+            <label for="status-signal" class="txt">Upload-Status:</label>
+            <div class="txt status-signal" name="status-signal"></div>
+          </div>
 
         </form>
       
