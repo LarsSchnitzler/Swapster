@@ -8,6 +8,9 @@
   --blue_fromFigma: #2E7985;
 
   --heightNavbar: 120px;
+  --gap_articleIMG-wrapper2: 20px;
+  --heightTrashIMG: 40px;
+  --gap_ZwischenBildUndPfeilTasten: 30px;
 }
 
 @font-face {
@@ -50,7 +53,7 @@ a {
   font-weight: 300;
   color: var(--black);
   line-height: 1;
-  text-align: start;
+  text-align: center;
 }
 
 .title {
@@ -119,16 +122,15 @@ label {
   font-size: 1.2rem;
 }
 
-/* input {
-  width: 100%;
-  min-height: 38px;
+input {
   box-sizing: border-box;
   border: 1px solid var(--black);
-  padding: 10px 20px;
-  font-style: normal;
+  padding: 5px 10px;
+  font-family: "SF-Pro-Display_regular", Helvetica;
   font-weight: 700;
   border-radius: 8px;
-} */
+  text-align: center;
+}
 
 /* Seiten Struktur */
 /* ---------------------------------------------- */
@@ -150,7 +152,7 @@ label {
   display: flex;
   justify-content: center;
   width: 100%;
-  gap: 10px;
+  gap: var(--gap_ZwischenBildUndPfeilTasten);
 }
 
 #matchedItems {
@@ -166,19 +168,62 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: var(--gap_ZwischenBildUndPfeilTasten);
 }
 
-.container_oben_unten img {
+.articleIMG-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap_articleIMG-wrapper2);
+}
+
+.articleIMG-wrapper1 {
   width: 200px;
   height: 200px;
-  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 8px;
+  background-image: url("../img/articles/Velo_65.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.container_oben_unten div {
+.articleTitle, .articleInfo {
+  color: var(--white);
+}
+
+.articleIMG-wrapper1 > .txt {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.articleIMG-wrapper1:hover > .txt {
+  opacity: 1;
+}
+
+.trashIMG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--heightTrashIMG);
+  height: var(--heightTrashIMG);
+  cursor: pointer;
+}
+
+.arrowbutton {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container_oben_unten div.right{
+  transform: scaleX(-1);
 }
 
 .container_oben_unten button {
@@ -186,10 +231,7 @@ label {
   background-color: var(--white);
   border: none;
   cursor: pointer;
-}
-
-.container_oben_unten div.right{
-  transform: scaleX(-1);
+  transform: translateY(calc((var(--gap_articleIMG-wrapper2) + var(--heightTrashIMG)) / 2));
 }
 
 /* THIS IS THE CONTAINER CENTER */
@@ -204,6 +246,8 @@ label {
   border: 3px solid var(--black);
   border-radius: 8px;
   background-color: var(--black);
+  justify-content: center;
+  align-items: center;
 }
   
 .amount {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupaBase Auth - Magiclink</title>
+    <title>Swapster_Dashboard</title>
     <link rel="stylesheet" href="/css/css_dashboard.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
@@ -29,8 +29,7 @@
     <div id="content-wrapper">
         <div class="container_oben_unten" id="matchedItems">
             
-            <div class="left">
-                <a href="www.google.com">
+            <div class="arrowbutton left">
                     <button>
                         <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -39,10 +38,15 @@
                 </a>
             </div>
 
-            <img src="img/articles/Screenshot 2023-09-25 at 15.59.49.png" alt="">
+            <div class="articleIMG-wrapper2">
+                <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                <div class="articleIMG-wrapper1">
+                    <div class="txt articleTitle">Platzhalter</div>
+                    <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                </div>
+            </div>
 
-            <div class="right">
-                <a href="www.google.com">
+            <div class="arrowbutton right">
                     <button>
                         <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -50,13 +54,14 @@
                     </button>
                 </a>
             </div>
+
         </div>
 
         <div class="container_center">
 
             <div class="horizontal_line"></div>
 
-            <div class="swap_button">
+            <button class="swap_button">
                 <div class="txt amount">
                     CHF 20.-
                 </div>
@@ -68,7 +73,7 @@
                 <div class="txt amount">
                     CHF 18.-
                 </div>
-            </div>
+            </button>
 
             <div class="horizontal_line"></div>
 
@@ -77,8 +82,7 @@
         <div class="container_oben_unten" id="ownItems">
                     
             <div id="ownItems_content-wrapper">
-                <div class="left" >
-                    <a href="www.google.com">
+                <div class="arrowbutton left" >
                         <button>
                             <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -87,14 +91,31 @@
                     </a>
                 </div>
 
-                <img src="img/articles/Screenshot 2023-09-25 at 15.59.49.png" alt="" class="one">
+                <div class="articleIMG-wrapper2">
+                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <div class="articleIMG-wrapper1">
+                        <div class="txt articleTitle">Platzhalter</div>
+                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
 
-                <img src="img/articles/Screenshot 2023-09-25 at 15.59.49.png" alt="" class="two">
+                <div class="articleIMG-wrapper2">
+                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <div class="articleIMG-wrapper1">
+                        <div class="txt articleTitle">Platzhalter</div>
+                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
 
-                <img src="img/articles/Screenshot 2023-09-25 at 15.59.49.png" alt="" class="three">
+                <div class="articleIMG-wrapper2">
+                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <div class="articleIMG-wrapper1">
+                        <div class="txt articleTitle">Platzhalter</div>
+                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
                 
-                <div class="right">
-                    <a href="www.google.com">
+                <div class="arrowbutton right">
                         <button>
                             <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -112,7 +133,7 @@
             </div>
             
         </div>
-    
+    </div>
     <script src="navbar.js"></script>
 
 </body>
