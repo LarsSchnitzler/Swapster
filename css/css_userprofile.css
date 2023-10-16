@@ -6,6 +6,8 @@
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
   --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
   --blue_fromFigma: #2E7985;
+
+  --heightNavbar: 120px;
 }
 
 @font-face {
@@ -152,7 +154,7 @@ body {
   background-color: #000;
   color: #fff;
   width: 100%;
-  height: 120px;
+  height: var(--heightNavBar);
   padding: 0 50px 0 50px;
   position: sticky;
   top: 0;

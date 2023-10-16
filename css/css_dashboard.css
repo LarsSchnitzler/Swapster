@@ -7,7 +7,7 @@
   --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
   --blue_fromFigma: #2E7985;
 
-  --heightNavBar: 120px;
+  --heightNavbar: 120px;
 }
 
 @font-face {
@@ -35,7 +35,7 @@ body {
 
 #content-wrapper {
   box-sizing: border-box;
-  height: calc(100vh - var(--heightNavBar)); /* replace 100px with the height of any other elements */
+  height: calc(100vh - var(--heightNavbar));
   display: flex;
   flex-direction: column;
   padding: 20px 0 20px 0;
@@ -254,7 +254,7 @@ label {
   background-color: #000;
   color: #fff;
   width: 100%;
-  height: var(--heightNavBar);
+  height: var(--heightNavbar);
   padding: 0 50px 0 50px;
   position: sticky;
   top: 0;
