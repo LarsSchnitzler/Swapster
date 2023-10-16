@@ -248,6 +248,7 @@ input {
   background-color: var(--black);
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
   
 .amount {
