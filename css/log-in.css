@@ -189,7 +189,7 @@ body {
 }
 
 input {
-  width: 80%;
+  width: 60%;
   box-sizing: border-box;
   border: 1px solid var(--black);
   padding: 10px 20px;
