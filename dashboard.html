@@ -4,85 +4,138 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupaBase Auth - Magiclink</title>
+    <title>Swapster_Dashboard</title>
     <link rel="stylesheet" href="/css/css_dashboard.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
+
 <body>
 
     <nav class="navbar">
-        <a href="" class="navbar-brand"><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" style="width: 150px; vertical-align: middle;"></a></a>
+        <a href=""><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" class="logo-img"></a>
         <ul>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#profile">Profile</a></li>
-          <!--<li><a href="#javascript"></a></li>-->
+            <li><a href="./userprofile.html" class="txt link">Profile</a></li>
+            <li><a href="./dashboard.html" class="txt link">Dashboard</a></li>
+            <li><a href="./articleUpload.html" class="txt link">Article-Upload</a></li>
+            <li><a href="./landingPage.html" class="txt link" id="logout">Log-out</a></li>
+            <!--<li><a href="#javascript"></a></li>-->
         </ul>
         <button class="navbar-toggler">
-          <span></span>
+            <span class="txt"></span>
         </button>
     </nav>
 
-    <div class="container_oben">
-        
-        <div class="left">
-            <a href="www.google.com">
-                <button>
-                    <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
-                    </svg>
-                </button>
-            </a>
+    <div id="content-wrapper">
+        <div class="container_oben_unten" id="matchedItems">
+            
+            <div class="arrowbutton left">
+                    <button>
+                        <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+
+            <div class="articleIMG-wrapper2">
+                <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                <div class="articleIMG-wrapper1">
+                    <div class="txt articleTitle">Platzhalter</div>
+                    <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                </div>
+            </div>
+
+            <div class="arrowbutton right">
+                    <button>
+                        <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+
         </div>
 
-        <img src="img/articles/Boots_20.png" alt="">
+        <div class="container_center">
 
-        <div class="right">
-            <a href="www.google.com">
-                <button>
-                    <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
-                    </svg>
-                </button>
-            </a>
+            <div class="horizontal_line"></div>
+
+            <button class="swap_button">
+                <div class="txt amount">
+                    CHF 20.-
+                </div>
+
+                <div class="swap">
+                    <img src="/img/logo/swapsterLogo_renders_justTheS/Swapster_justTheS.png" alt="Swap Button">
+                </div>
+
+                <div class="txt amount">
+                    CHF 18.-
+                </div>
+            </button>
+
+            <div class="horizontal_line"></div>
+
+        </div>
+
+        <div class="container_oben_unten" id="ownItems">
+                    
+            <div id="ownItems_content-wrapper">
+                <div class="arrowbutton left" >
+                        <button>
+                            <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </a>
+                </div>
+
+                <div class="articleIMG-wrapper2">
+                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <div class="articleIMG-wrapper1">
+                        <div class="txt articleTitle">Platzhalter</div>
+                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
+
+                <div class="articleIMG-wrapper2">
+                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <div class="articleIMG-wrapper1">
+                        <div class="txt articleTitle">Platzhalter</div>
+                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
+
+                <div class="articleIMG-wrapper2">
+                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <div class="articleIMG-wrapper1">
+                        <div class="txt articleTitle">Platzhalter</div>
+                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
+                
+                <div class="arrowbutton right">
+                        <button>
+                            <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div id="price_tolerance">
+                <label for="price_tolerance_label">Preis Toleranz [CHF.-]:</label>
+                    <form>
+                        <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="100" value="1">
+                    </form>
+            </div>
+            
         </div>
     </div>
-
-<div class="container_center">
-
-    <div class="horizontal_line">
-        <div class="top_horizontal_line"></div>
-        <div class="down_horizontal_line"></div>
-    </div>
-
-    <div class="swap_button">
-        <div class="amount">
-            dfgsdfd
-        </div>
-
-        <div class="swap">
-            <img src="/img/logo/swapsterLogo_renders_justTheS/Swapster_justTheS.png" alt="Swap Button">
-        </div>
-
-        <div class="amount">
-            fgdfgd
-        </div>
-    </div>
-
-    <div class="horizontal_line">
-        <div class="top_horizontal_line"></div>
-        <div class="down_horizontal_line"></div>
-    </div>
-
-</div>
-
-    
-    <!--<div class="container_unten">
-        <div class="flex-item" id="box1"></div>
-        <div class="flex-item" id="box2"></div>
-        <div class="flex-item" id="box3"></div>
-    </div>-->
-    
     <script src="navbar.js"></script>
+
 </body>
+
 </html>

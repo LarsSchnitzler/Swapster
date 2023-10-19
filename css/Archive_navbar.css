@@ -6,11 +6,6 @@
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
   --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
   --blue_fromFigma: #2E7985;
-
-  --heightNavbar: 120px;
-  --gap_articleIMG-wrapper2: 20px;
-  --heightTrashIMG: 40px;
-  --gap_ZwischenBildUndPfeilTasten: 30px;
 }
 
 @font-face {
@@ -32,19 +27,16 @@ main {
 
 body {
   width: 100vw; 
+  height: 100vh;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction:column;
 }
 
 p {
   margin: 0;
   padding: 0;
-}
-
-a {
-  display: flex;
-  align-items: center; 
-  justify-content: center;
 }
 
 .txt {
@@ -70,12 +62,11 @@ a {
   font-size: 3.5rem;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: .8;
   white-space: nowrap;
 }
 
 .sub-title_1 {
-  align-self: flex-start;
   font-size: 1.13rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -105,6 +96,26 @@ button {
   text-transform: uppercase;
 }
 
+.inputgroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  gap: 2px;
+}
+
+input {
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  border: 1px solid var(--black);
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
 #big-textarea {
   width: 100%;
   height: 150px;
@@ -115,180 +126,22 @@ button {
   resize: none;
 }
 
-label {
-  font-family: "SF-Pro-Display_regular", Helvetica;
+.label {
   max-width: 50%;
+  font-size: 0.8rem;
   font-weight: 500;
-  font-size: 1.2rem;
-}
-
-input {
-  box-sizing: border-box;
-  border: 1px solid var(--black);
-  padding: 5px 10px;
-  font-family: "SF-Pro-Display_regular", Helvetica;
-  font-weight: 700;
-  border-radius: 8px;
-  text-align: center;
 }
 
 /* Seiten Struktur */
 /* ---------------------------------------------- */
 
-/* THIS IS THE CONTAINER OBEN UND UNTEN */
-
-#content-wrapper {
-  box-sizing: border-box;
-  height: calc(100vh - var(--heightNavbar));
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0 20px 0;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 30px;
-}
-
-.container_oben_unten {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: var(--gap_ZwischenBildUndPfeilTasten);
-}
-
-#matchedItems {
-  flex-direction: row;
-}
-
-#ownItems {
-  flex-direction: column;
-  gap: 50px;
-}
-
-#ownItems_content-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--gap_ZwischenBildUndPfeilTasten);
-}
-
-.articleIMG-wrapper2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--gap_articleIMG-wrapper2);
-}
-
-.articleIMG-wrapper1 {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border-radius: 8px;
-  background-image: url("../img/articles/Velo_65.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.articleTitle, .articleInfo {
-  color: var(--white);
-}
-
-.articleIMG-wrapper1 > .txt {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.articleIMG-wrapper1:hover > .txt {
-  opacity: 1;
-}
-
-.trashIMG {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--heightTrashIMG);
-  height: var(--heightTrashIMG);
-  cursor: pointer;
-}
-
-.arrowbutton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container_oben_unten div.right{
-  transform: scaleX(-1);
-}
-
-.container_oben_unten button {
+main{
   padding: 0;
-  background-color: var(--white);
-  border: none;
-  cursor: pointer;
-  transform: translateY(calc((var(--gap_articleIMG-wrapper2) + var(--heightTrashIMG)) / 2));
 }
 
-/* THIS IS THE CONTAINER CENTER */
-
-.swap_button {
-  box-sizing: border-box;
+body {
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  border: 3px solid var(--black);
-  border-radius: 8px;
-  background-color: var(--black);
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-  
-.amount {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 0px 2px 0px;
-  background-color: var(--black);
-  color: white;
-}
-
-.container_center {
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  display:flex;
-  background-color: var(--white);
-}
-
-.swap > img {
-  width: 90px;
-  height: 90px;
-  padding: 8px;
-  background-color: white;
-}
-
-.swap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Komponenten Stile */
-/* ---------------------------------------------- */
-
-/* THIS IS THE NAVBAR */
-
-#logout {
-  color: var(--gray);
 }
 
 .navbar {
@@ -299,7 +152,7 @@ input {
   background-color: #000;
   color: #fff;
   width: 100%;
-  height: var(--heightNavbar);
+  height: 120px;
   padding: 0 50px 0 50px;
   position: sticky;
   top: 0;
@@ -338,51 +191,133 @@ input {
   display: none;
 }
 
-/* THIS IS THE LINE */
-
-.horizontal_line {
-  width: 100%;
-  height: 3px;
-  background-color: var(--black);
+#profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  padding: 60px 0 60px 0;
 }
 
-/* THIS IS THE PRICE TOLERANCE */
-
-#price_tolerance {
+#showProfile {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
-.price_tolerance_input {
+.showProfile_profileInfo {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profileName .txt{
+  font-weight: 800;
+}
+
+#editProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#editProfile_TitleButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  min-width: 60%;
+}
+
+#editProfile_Buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#editProfile_Inputs {
+  width: 70%;
+  padding: 40px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+/* Komponenten Stile */
+/* ---------------------------------------------- */
+
+#logout {
+  color: var(--gray);
+}
+
+#logout:active {
+  color: var(--white);
+}
+
+.profilePic {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+  clip-path: circle(50% at center);
+}
+
+.profilePic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(50% at center);
+}
+
+#hrztlGrayLine {
+  width: 100%;
+  height: 3px;
+  border-radius: 5px;
+  background-color: var(--gray);
+  opacity: 0.5;
+}
+
+#editProfile_Cancel {
+  background-color: var(--lightGray);
+  border: 0 solid var(--black);
+}
+
+#editProfile_Save {
+  appearance: none;
   background-color: var(--white);
-  border: 1px solid var(--black);
-  padding: 10px 20px;
+  border: 2px solid var(--black);
+}
+
+#editProfile_Save:active {
+  border-color: var(--lightGray);
+}
+
+#editProfile_Cancel:active {
+  background-color: var(--white);
+  border: 2px solid var(--black);
 }
 
 /* Media Queries */
 /* ---------------------------------------------- */
-
-@media (max-width: 780px) {
-  .one {
-    display: none;
-  }
-
-  .three {
-    display: none;
-  }
-}
-
-@media (max-width: 991px) {
-  .navbar ul {
-    padding: 0 10px;
-  }
-  .navbar ul li a {
-    min-width: 100px;
-    padding: 0 20px;
-  }
-}
 
 @media (max-width: 767px) {
   .navbar {
@@ -440,7 +375,7 @@ input {
   .navbar .navbar-toggler span::after {
     transform: translateY(5px);
   }
-  
+
   .navbar .navbar-toggler.open-navbar-toggler span {
     /* transform: rotate(90deg); */
     background-color: transparent;
