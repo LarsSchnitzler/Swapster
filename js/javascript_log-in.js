@@ -1,4 +1,4 @@
-import { supa } from "./SupaBaseClient/supabase.js";
+import { supa } from "../SupaBaseClient/supabase.js";
 
 console.log(window.location.origin);
 
