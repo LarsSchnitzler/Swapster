@@ -26,3 +26,12 @@ async function signUp() {
 
     }
 
+    supa.auth.onAuthStateChange((event, session) => {
+        if (event === "SIGNED_IN") {
+            console.log("User signed in: ", session.user);
+            updateUserStatus(session.user);
+        } else if (event === "SIGNED_OUT") {
+            console.log("User signed out");
+            updateUserStatus(null);
+        }
+      });

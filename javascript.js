@@ -32,15 +32,7 @@ document.getElementById('sendMagicLinkButton').addEventListener('click', sendMag
 
 // Listener, für Änderungen des Auth Status
 // UserStatus wird aktualisiert, wenn sich der Auth Status ändert
-supa.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_IN") {
-      console.log("User signed in: ", session.user);
-      updateUserStatus(session.user);
-  } else if (event === "SIGNED_OUT") {
-      console.log("User signed out");
-      updateUserStatus(null);
-  }
-});
+
 
 // 3. Logout Logik
 async function logout() {
@@ -55,7 +47,7 @@ async function logout() {
 
 document.getElementById('logoutButton').addEventListener('click', logout);
 
-
+// 
 
 
 
