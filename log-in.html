@@ -7,6 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SupaBase_SignIn</title>
   <link rel="stylesheet" href="./css/log-in.css" />
+     <!-- Gian input -->
+     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script> -->
+     <!-- Gian End -->
 </head>
 
 <body> 
@@ -39,7 +43,7 @@
                 <div class="txt">Not authenticated?</div>
                 <a href= "./sign-up.html" class="txt link">Sign up</a>
               </div>
-              <button class="txt buttonText" type="submit">Log in</button>
+              <button id="log-in-button" class="txt buttonText" type="submit">Log in</button>
             </div>
           </form>
 
@@ -47,7 +51,7 @@
       </div>
     </div>
   </div>
-
+  <script type="module" src="./js/log-in.js"></script>
 </body>
 
 </html>
