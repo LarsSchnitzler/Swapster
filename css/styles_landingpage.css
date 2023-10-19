@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: sf-pro-display_medium;
-  src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF");
+  src: url("./font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF") format("opentype"),
 }
 
 body {
@@ -112,10 +112,6 @@ body {
     background-position: center left; 
   }
 }
-
-
-
-
 
 @media (max-width: 480px) {
   .fontStyle_1 {
