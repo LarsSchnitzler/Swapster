@@ -60,3 +60,17 @@ supa.auth.onAuthStateChange((event, session) => {
       updateUserStatus(null);
   }
 });
+
+//Eventlistener for SignIn (html contents need to be changed to sign on). Then the contents of sign-up.html should replace the whole body of the log in page using fetch()
+// 
+fetch('other-file.html')
+  .then(response => response.text())
+  .then(html => {
+    // Parse the HTML string into a DOM tree
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Replace the current HTML body with the body from the other file
+    document.body.innerHTML = doc.body.innerHTML;
+  })
+  .catch(error => console.log(error));
