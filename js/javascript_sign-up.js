@@ -14,17 +14,7 @@ async function signUpWithEmailAndPassword() {
     }
 }
 
-/* async function logout() {                                     //no logout Button existing in this file yet
-    const { error } = await supa.auth.signOut();
-    if (error) {
-        console.error("Error during logout:", error);
-    } else {
-        updateUserStatus(null);
-        console.log("User logged out successfully.");
-    }
-} */
-
-function updateUserStatus(user) {                                //no userStatus Signal existing in this file
+function updateUserStatus(user) {                              
     const userStatusElement = document.getElementById('userStatus');
 
     if (user) {
@@ -39,37 +29,5 @@ function updateUserStatus(user) {                                //no userStatus
 const initialUser = supa.auth.user();
 updateUserStatus(initialUser);
 
-// Check wether Terms Checkbox is checked an nest the signUp-function in the if-Clause, else alert "Please accept our Terms and Conditions"
+// Check wether Terms Checkbox is checked AND all other fields are filled out, and nest the signUp-function in the if-Clause, else alert the user to fill out all fields and check the checkbox 
 document.getElementById('sign-up-button').addEventListener('click', signUpWithEmailAndPassword);
-
-/* supa.auth.onAuthStateChange((event, session) => {                //no userStatus Signal and logout Button existing in this file
-    if (event === "SIGNED_IN") {
-        console.log("User signed in: ", session.user);
-        updateUserStatus(session.user);
-    } else if (event === "SIGNED_OUT") {
-        console.log("User signed out");
-        updateUserStatus(null);
-    }
-});
- */
-//document.getElementById('logoutButton').addEventListener('click', logout);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

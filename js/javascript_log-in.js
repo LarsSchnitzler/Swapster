@@ -1,21 +1,9 @@
 import { supa } from "../SupaBaseClient/supabase.js";
 
-console.log(window.location.origin);
-
-async function sendMagicLink() {
-    const email = document.getElementById('email').value;
-    const { error } = await supa.auth.signIn({email}); //the signIn method of the auth object returns an object that contains an error property. By using object destructuring (const {error}), we can extract the error property from the returned object and assign it to a variable named error
-
-    if (error) {
-        console.error("Error sending magic link: ", error.message);
-    } else {
-        console.log("Magic link sent to ", email);
-    }
-}
-
-async function signInWithEmailAndPassword(email, password) {
+async function signInWithEmailAndPassword() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    console.log("read email and password");
 
     const { user, error } = await supa.auth.signIn({
       email: email,
@@ -27,7 +15,6 @@ async function signInWithEmailAndPassword(email, password) {
     } else {
       console.log('Signed in successfully:', user);
     }
-
   }
 
 function updateUserStatus(user) {
@@ -38,32 +25,38 @@ function updateUserStatus(user) {
     if (user) {    
         userStatusElement.style.backgroundColor = 'var(--lightGreen)';
 
+        //Creates div with userEmail in it
         const newDiv = document.createElement('div');
-        newDiv.textContent = supa.auth.user();
+        newDiv.textContent = `The following UserEmail is logged in: ${user.email}`;
         newDiv.className = 'txt';
         parentDiv.insertBefore(newDiv, childDiv.nextSibling);
 
+        //Changes the loginButtons Content and href to Dashboard
         const button = document.getElementById('LoginButton');
         button.textContent = 'Go to dashboard';
         button.setAttribute('href', './dashboard.html');
+        console.log('User logged in1');
     } 
     else {
         userStatusElement.style.backgroundColor = 'var(--lightRed)';
-        console.log(supa.auth.user());
-        
+        console.log('No User logged in');
     }
 }
 
+//checks wether user is already in localStorage
 const initialUser = supa.auth.user();
 updateUserStatus(initialUser);
 
+//Makes it so that when LoginButton is pressed, supa.auth.signIn is executed
 document.getElementById('LoginButton').addEventListener('click', signInWithEmailAndPassword);
 
-/* 
+/* Checks seemingly redunantly, trough the supa.auth.onAuthStateChange - Method, wether Authentication-State has changed. (could have been done in the signIn-Function instead) 
+This is done so that you don't have to execute updateUserStatus() in a logoutfunction, for example. */
 supa.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_IN") {
       updateUserStatus(session.user);
+      console.log('User logged in0');
   } else if (event === "SIGNED_OUT") {
       updateUserStatus(null);
   }
-}); */
+});
