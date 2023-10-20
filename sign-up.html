@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SupaBase_SignIn</title>
   <link rel="stylesheet" href="./css/sign-up.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
 
 <body> 
@@ -31,6 +33,7 @@
             <input class= "txt" type="text" id="firstName" name="firstName" placeholder="First Name">
             <input class= "txt" type="text" id="lastName" name="lastName" placeholder="Last Name">
             <input class= "txt" type="email" id="email" name="email" placeholder="Email">
+            <input class= "txt" type="password" id="password" name="password" placeholder="Password">
             <div class="wrapper_dateOfBirth">
               <label class="txt label" id="Label_dateOfBirth" for="dateOfBirth">Date of Birth</label>
               <input class= "txt" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="Date of Birth">
@@ -53,10 +56,10 @@
       </div>
     </div>
   </div>
-<script type="module" src="./js/sign-up.js"></script>
+<!-- <script type="module" src="./js/sign-up.js"></script> --> 
 </body>
 
 <script type="module" src="./SupaBaseClient/supabase.js"></script>
-<script type="module" src="./javascript_sign-up.js"></script>
+<script type="module" src="./js/javascript_sign-up.js"></script>
 
 </html>

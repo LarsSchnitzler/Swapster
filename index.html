@@ -2,33 +2,58 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupaBase Auth - Magiclink</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SupaBase_SignIn</title>
+  <link rel="stylesheet" href="./css/log-in.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
 
-<body>
-
-    <h2 style="color:red" id="rootCheck">Checking location...</h2>
-
-    <div>
-        <h2>Magic Link Authentication</h2>
-        <input type="email" id="emailInput" placeholder="Enter your email" />
-        <button id="sendMagicLinkButton">Send Magic Link</button>
+<body> 
+  
+  <div class="wrapper_sign-in">
+    <div class="wrapper_halfVP leftSide">
+      <div class="wrapper_logo">
+        <a href= "./landingPage.html" class="txt link">
+          <img class="img" src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" />
+        </a>
+      </div>
     </div>
+    <div class="wrapper_halfVP rightSide">
+      <div class="text-wrapper">
+        <div class="text-wrapper_multipleHeadlines">
+          <div class="txt title">Log in</div>
+          <div class="txt sub-title_1">Log in to start Swapping!</div>
+        </div>
+        <div class="form-wrapper">
+          
+          <form class="form">
+            <input class= "txt" type="email" id="email" name="email" placeholder="Email">
+            <input class="txt" type="password" id="password" name="password" placeholder="Password">
+            
+            <div class="wrapper_status_link">
+              <div class="wrapper_status">
+                <div class="txt">Authentication-Status:</div>
+                <div class="txt status-signal" id="status-signal" name="status-signal"></div>
+              </div>
+              <div class="link-wrapper">
+                <div class="txt">Not authenticated?</div>
+                <a href= "./sign-up.html" class="txt link">Sign up</a>
+              </div>
+              <button class="txt buttonText" id ="LoginButton" type="submit">Log in</button>
+            </div>
+          </form>
 
-    <p id="userStatus">Checking authentication status...</p>
-
-    <button id="logoutButton">Logout</button>
-
-    <script type="module" src="./SupaBaseClient/supabase.js"></script>
-    <script type="module" src="javascript.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
+
+<script type="module" src="./SupaBaseClient/supabase.js"></script>
+<script type="module" src="./js/javascript_log-in.js"></script>
 
 </html>

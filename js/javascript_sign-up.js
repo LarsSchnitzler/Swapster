@@ -1,59 +1,58 @@
-import { supa } from "./SupaBaseClient/supabase.js";
+import { supa } from "../SupaBaseClient/supabase.js";
 
-// Funktion, um Magic Link zu senden
-async function sendMagicLink() {
-    const email = document.getElementById('emailInput').value;
-    const {error} = await supa.auth.signIn({ email });
-    
+//Funtion that reads all other inputs and writes it into the profiles table
+
+async function signUpWithEmailAndPassword() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const { user, error } = await supa.auth.signUp({email: email, password: password});
+
     if (error) {
-        console.error("Error sending magic link: ", error.message);
+    console.log('Error signing up:', error.message);
     } else {
-        console.log("Magic link sent to ", email);
+    console.log('Signed up successfully:', user);
     }
 }
 
-// Funktion, um User Status zu aktualisieren
-function updateUserStatus(user) {
-  const userStatusElement = document.getElementById('userStatus');
-  
-  if (user) {
-      userStatusElement.textContent = `Authenticated as: ${user.email}`;
-  } else {
-      userStatusElement.textContent = "Not authenticated.";
-  }
-}
+/* async function logout() {                                     //no logout Button existing in this file yet
+    const { error } = await supa.auth.signOut();
+    if (error) {
+        console.error("Error during logout:", error);
+    } else {
+        updateUserStatus(null);
+        console.log("User logged out successfully.");
+    }
+} */
 
-// Prüfe und zeige den initialen User Status an
+function updateUserStatus(user) {                                //no userStatus Signal existing in this file
+    const userStatusElement = document.getElementById('userStatus');
+
+    if (user) {
+        const button = document.getElementById('sign-up-button');
+        button.textContent = 'Go to dashboard';
+        button.setAttribute('href', './dashboard.html');
+    } else {
+        console.log("No User logged in");
+    }
+} 
+
 const initialUser = supa.auth.user();
 updateUserStatus(initialUser);
 
-// Eventlistener für Magic Link Button
-document.getElementById('sendMagicLinkButton').addEventListener('click', sendMagicLink);
+// Check wether Terms Checkbox is checked an nest the signUp-function in the if-Clause, else alert "Please accept our Terms and Conditions"
+document.getElementById('sign-up-button').addEventListener('click', signUpWithEmailAndPassword);
 
-// Listener, für Änderungen des Auth Status
-// UserStatus wird aktualisiert, wenn sich der Auth Status ändert
-supa.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_IN") {
-      console.log("User signed in: ", session.user);
-      updateUserStatus(session.user);
-  } else if (event === "SIGNED_OUT") {
-      console.log("User signed out");
-      updateUserStatus(null);
-  }
+/* supa.auth.onAuthStateChange((event, session) => {                //no userStatus Signal and logout Button existing in this file
+    if (event === "SIGNED_IN") {
+        console.log("User signed in: ", session.user);
+        updateUserStatus(session.user);
+    } else if (event === "SIGNED_OUT") {
+        console.log("User signed out");
+        updateUserStatus(null);
+    }
 });
-
-// 3. Logout Logik
-async function logout() {
-  const { error } = await supa.auth.signOut();
-  if (error) {
-      console.error("Error during logout:", error);
-  } else {
-      updateUserStatus(null);
-      console.log("User logged out successfully.");
-  }
-}
-
-document.getElementById('logoutButton').addEventListener('click', logout);
+ */
+//document.getElementById('logoutButton').addEventListener('click', logout);
 
 
 
