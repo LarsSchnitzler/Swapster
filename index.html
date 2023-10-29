@@ -2,58 +2,47 @@
 <html lang="de">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SupaBase_SignIn</title>
-  <link rel="stylesheet" href="./css/log-in.css" />
-  <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
-</head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupaBase_SignIn</title>
+    <link rel="stylesheet" href="./css/log-in.css" />
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+  </head>  
 
-<body> 
-  
-  <div class="wrapper_sign-in">
-    <div class="wrapper_halfVP leftSide">
-      <div class="wrapper_logo">
-        <a href= "./landingPage.html" class="txt link">
-          <img class="img" src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="wrapper_halfVP rightSide">
-      <div class="text-wrapper">
-        <div class="text-wrapper_multipleHeadlines">
-          <div class="txt title">Log in</div>
-          <div class="txt sub-title_1">Log in to start Swapping!</div>
-        </div>
-        <div class="form-wrapper">
-          
-          <form class="form">
-            <input class= "txt" type="email" id="email" name="email" placeholder="Email">
-            <input class="txt" type="password" id="password" name="password" placeholder="Password">
-            
-            <div class="wrapper_status_link">
-              <div class="wrapper_status">
-                <div class="txt">Authentication-Status:</div>
-                <div class="txt status-signal" id="status-signal" name="status-signal"></div>
-              </div>
-              <div class="link-wrapper">
-                <div class="txt">Not authenticated?</div>
-                <a href= "" class="txt link">Sign up</a>
-              </div>
-              <button class="txt buttonText" id ="LoginButton" type="submit">Log in</button>
+<body>
+
+    <div class="wrapper_sign-in">
+        <div class="wrapper_halfVP leftSide">
+            <div class="wrapper_logo">
+                <a href= "./landingPage.html" class="txt link">
+                    <img class="img" src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" />
+                </a>
             </div>
-          </form>
-
         </div>
-      </div>
+        <div class="wrapper_halfVP rightSide">
+          <div class="text-wrapper">
+            <div class="text-wrapper_multipleHeadlines">
+              <div class="txt title">Log in</div>
+              <div class="txt sub-title_1">Log in to start Swapping!</div>
+            </div>
+            <div class="form-wrapper">
+                <input type="email" id="emailInput" placeholder="Enter your email" />
+                <input type="password" id="passwordInput" placeholder="Enter your password" />
+            </div>
+            <div class="wrapper_nonInputs">
+              <div class="txt" id="userStatus"></div>
+              <a href= "./sign-up.html" class="txt link" id="sign-up">Sign up</a>
+              <button class="txt buttonText" id="loginButton">Login</button>
+            </div>
+          </div>
+        </div>
     </div>
-  </div>
+
+    <script type="module" src="./SupaBaseClient/supabase.js"></script>
+    <script type="module" src="./js/javascript_log-in.js"></script>
 
 </body>
-
-<script type="module" src="./SupaBaseClient/supabase.js"></script>
-<script type="module" src="./js/javascript_log-in.js"></script>
 
 </html>

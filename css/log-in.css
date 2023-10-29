@@ -2,8 +2,8 @@
   --black: rgba(0, 0, 0, 1);
   --white: rgba(255, 255, 255, 1);
   --gray: rgba(128, 128, 128, 1);
-  --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
-  --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
+  --lightGreen: rgba(0, 255, 0, 1);
+  --lightRed: rgb(229, 79, 46); 
   --blue_fromFigma: #2E7985;
 }
 
@@ -112,15 +112,6 @@ body {
   gap: 0.1rem;
 }
 
-.form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
 .form-wrapper{
   width: 100%;
   display: flex;
@@ -130,57 +121,16 @@ body {
   gap: 20px;
 }
 
-.link-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.wrapper_dateOfBirth {
-  width: 100%;
-  box-sizing: border-box;
+.wrapper_nonInputs {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 18px;
 }
 
 /* Komponenten Stile */
 /* ---------------------------------------------- */
-
-.wrapper_logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 60px;
-}
-
-.wrapper_status_link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
-.wrapper_status{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.status-signal{
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  border: 2px solid var(--black);
-  background-color: var(--black);
-}
 
 .wrapper_logo .img {
   width: 500px;
@@ -204,7 +154,7 @@ input::placeholder {
   color: var(--black);
 }
 
-.form button {
+button {
   box-sizing: border-box;
   padding: 10px 20px;
   border-radius: 8px;
@@ -215,6 +165,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-.form button:active {
+button:active {
   border: 2px solid var(--gray);
 }
