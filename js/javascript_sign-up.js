@@ -1,33 +1,45 @@
 import { supa } from "../SupaBaseClient/supabase.js";
 
-//Funtion that reads all other inputs and writes it into the profiles table
+function createProfilesEntry(firstName, lastName, dob){
+    //get userId from userobject
+    //write firstName, lastName, dob, userId into new Profiles Entry
+}
 
 async function signUpWithEmailAndPassword() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const { user, error } = await supa.auth.signUp({email: email, password: password});
+    const checkboxElement = document.getElementById(/* 'checkbox' */).value;
+    const InputElement_firstName = document.getElementById(/* 'InputElement_firstName' */).value;
+    const InputElement_lastName = document.getElementById(/* 'InputElement_lastName' */).value;
+    const InputElement_dob = document.getElementById(/* 'InputElement_dob' */).value;
 
-    if (error) {
-    console.log('Error signing up:', error.message);
-    } else {
-    console.log('Signed up successfully:', user);
+    const inputComplete = true;
+
+    if ((InputElement_firstName === null) or (InputElement_firstName === null) or (InputElement_firstName === null)) {
+        const inputComplete = false;
+    }
+
+    if (checkboxElement && inputComplete) {
+        const emailElement = document.getElementById('email').value;
+        const passwordElement = document.getElementById('password').value;
+        const { user, error } = await supa.auth.signUp({emailElement, passwordElement});
+    
+        if (error) {
+        console.log('Error signing up:', error.message);
+        } else {
+        console.log('Signed up successfully:', user);
+        }
+
+        createProfilesEntry(InputElement_firstName, InputElement_lastName, dob);
+        
+        window.location.href='./dashboard.html';
+    }
+    else if ((inputComplete === false) && (checkboxElement === true)){
+        //alert input is missing
+    else if ((inputComplete === true) && (checkboxElement === false)){
+        //alert checkbox is missing
+    }
+    else {
+        //alert many missing required fields
     }
 }
 
-function updateUserStatus(user) {                              
-    const userStatusElement = document.getElementById('userStatus');
-
-    if (user) {
-        const button = document.getElementById('sign-up-button');
-        button.textContent = 'Go to dashboard';
-        button.setAttribute('href', './dashboard.html');
-    } else {
-        console.log("No User logged in");
-    }
-} 
-
-const initialUser = supa.auth.user();
-updateUserStatus(initialUser);
-
-// Check wether Terms Checkbox is checked AND all other fields are filled out, and nest the signUp-function in the if-Clause, else alert the user to fill out all fields and check the checkbox 
 document.getElementById('sign-up-button').addEventListener('click', signUpWithEmailAndPassword);
