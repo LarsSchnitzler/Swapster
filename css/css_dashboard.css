@@ -155,10 +155,6 @@ input {
   gap: var(--gap_ZwischenBildUndPfeilTasten);
 }
 
-#matchedItems {
-  flex-direction: row;
-}
-
 #ownItems {
   flex-direction: column;
   gap: 50px;
@@ -171,7 +167,7 @@ input {
   gap: var(--gap_ZwischenBildUndPfeilTasten);
 }
 
-.articleIMG-wrapper2 {
+.articleIMG-wrapper2_typeOwnArticle {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -192,6 +188,10 @@ input {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+#matchedItem {
+  
 }
 
 .articleTitle, .articleInfo {
@@ -222,16 +222,19 @@ input {
   justify-content: center;
 }
 
-.container_oben_unten div.right{
-  transform: scaleX(-1);
-}
-
-.container_oben_unten button {
+.arrowbutton button{
   padding: 0;
   background-color: var(--white);
   border: none;
   cursor: pointer;
+}
+
+.arButOwnItem button {
   transform: translateY(calc((var(--gap_articleIMG-wrapper2) + var(--heightTrashIMG)) / 2));
+}
+
+.right{
+  transform: scaleX(-1);
 }
 
 /* THIS IS THE CONTAINER CENTER */
