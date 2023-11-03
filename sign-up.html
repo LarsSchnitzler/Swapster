@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
 
-<body> 
+<body>  
   
   <div class="wrapper_sign-in">
     <div class="wrapper_halfVP leftSide">
@@ -21,7 +21,7 @@
         </a>
       </div>
     </div>
-    <div class="wrapper_halfVP rightSide">
+    <div class="wrapper_halfVP rightSide" id="signUpContent">
       <div class="text-wrapper">
         <div class="text-wrapper_multipleHeadlines">
           <div class="txt title">Sign up</div>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-wrapper">
           
-          <form class="form">
+          <div id="form">
             <input class= "txt" type="text" id="firstName" name="firstName" placeholder="First Name">
             <input class= "txt" type="text" id="lastName" name="lastName" placeholder="Last Name">
             <input class= "txt" type="email" id="email" name="email" placeholder="Email">
@@ -39,7 +39,7 @@
               <input class= "txt" type="date" id="dateOfBirth" name="dateOfBirth" placeholder="Date of Birth">
             </div>
 
-            <div class="wrapper_terms">
+            <div id="wrapper_terms">
               <div class="wrapper_CB">
                 <input type="checkbox" name="TermsCB" id="TermsCB">
                 <label for="TermsCB" class="txt label">By signing up, I confirm that I have read and agreed to our Terms and Privacy Policy</label>
@@ -48,15 +48,14 @@
                 <div class="txt">Want to Log in instead?</div>
                 <a href= "./index.html" class="txt link">Log in</a>
               </div>
-              <button id="sign-up-button" class="txt buttonText" type="submit">Sign up</button>
+              <button id="sign-up-button" class="txt buttonText">Sign up</button>
             </div>
-          </form>
+          </div>
 
         </div>
       </div>
     </div>
   </div>
-<!-- <script type="module" src="./js/sign-up.js"></script> --> 
 </body>
 
 <script type="module" src="./SupaBaseClient/supabase.js"></script>

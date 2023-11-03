@@ -92,6 +92,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .leftSide {
@@ -130,7 +131,7 @@ body {
   justify-content: center;
 }
 
-.form {
+#form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -195,7 +196,7 @@ input[type="checkbox"]:checked {
   background-color: var(--blue_fromFigma);
 }
 
-.form button {
+#form button {
   box-sizing: border-box;
   padding: 10px 20px;
   border-radius: 8px;
@@ -206,11 +207,11 @@ input[type="checkbox"]:checked {
   cursor: pointer;
 }
 
-.form button:active {
+#form button:active {
   border: 2px solid var(--gray);
 }
 
-.wrapper_terms {
+#wrapper_terms {
   display: flex;
   flex-direction: column;
   align-items: center;
