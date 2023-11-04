@@ -1,4 +1,7 @@
 import { supa } from "../SupaBaseClient/supabase.js";
+import { authenticated } from './javascript_helpers.js';
+
+const user = authenticated();
 
 async function insertArtInf_articles(parameterImgPath, parameterTitle, parameterCaption, parameterPrice, parameterobjectId) {
     console.log('uploadArticleInfo');
@@ -51,17 +54,6 @@ async function uploadPhoto(bucketName) {
     } else {
         console.log('No file selected.');
     }
-}
-
-const { user, error } = await supa.auth.signIn({
-    email: 'lars@schnitzler.ch',
-    password: 'abc.123',
-});
-
-if (error) {
-    console.error('Error signing in:', error)
-}else{
-    console.log('sign in successful:', user)
 }
 
 const uploadButton = document.getElementById('articleUpload_Upload');
