@@ -195,9 +195,11 @@ body {
 #article-Upload_titleButtons {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
 }
 
 #article-Upload_buttons {
@@ -269,6 +271,12 @@ input {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.txt.sub-title_1 {
+  text-align: center; /* Center-align the text horizontally */
+  margin: 0; /* Reset margin for the text */
+  align-self: center; /* Center the text vertically */
 }
 
 /* Komponenten Stile */
@@ -346,7 +354,34 @@ input {
 /* Media Queries */
 /* ---------------------------------------------- */
 
+@media (max-width: 1332px) {
+  .Article_PropertyInputs {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .inputgroup {
+    width: 100%; 
+    text-align: center; 
+  }
+}
+
 @media (max-width: 767px) {
+  
+  .article-Upload_top-wrapper {
+    flex-direction: column;
+  }
+  #article-Upload_title {
+    margin-bottom: 20px; 
+  }
+
+  #article-Upload_buttons {
+    text-align: center;
+  }
+  button {
+    padding: 5px 15px;
+    font-size: 0.8rem;
+  }
   .navbar {
     padding: 0;
   }
