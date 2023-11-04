@@ -12,7 +12,7 @@ async function login() {
         console.log("Logged in as ", user.email);
     }
 
-    window.location.href='./dashboard.html';
+    /* window.location.href='./dashboard.html'; */
 }
 
 function updateUserStatus(user) {
