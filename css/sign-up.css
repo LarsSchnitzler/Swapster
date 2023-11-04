@@ -238,10 +238,22 @@ input[type="checkbox"]:checked {
   gap: 2px;
 }
 
+.txt.label {
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+
 #dateOfBirth {
   width: 100%;
 }
 
 #Label_dateOfBirth {
   align-self: flex-start;
+}
+
+@media (max-width: 1240px) {
+  .wrapper_halfVP.leftSide {
+    display: none;
+  }
 }
