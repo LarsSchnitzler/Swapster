@@ -13,7 +13,7 @@
 <body>
 
     <nav class="navbar">
-        <a href=""><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" class="logo-img"></a>
+        <a href=""><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.png" class="logo-img"></a>
         <ul>
             <li><a href="./userprofile.html" class="txt link">Profile</a></li>
             <li><a href="./dashboard.html" class="txt link">Dashboard</a></li>
@@ -59,7 +59,7 @@
 
             <div class="horizontal_line"></div>
 
-            <button class="swap_button">
+            <button class="swap_button" id="swap_button">
                 <div class="txt amount">
                     CHF 20.-
                 </div>
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="articleIMG-wrapper2_typeOwnArticle">
-                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="trashIMG" id="delete_button" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     <div class="articleIMG-wrapper1" id="ownArticle_image">
                         <div class="txt articleTitle" id="ownArticle_title">Platzhalter</div>
                         <div class="txt articleInfo" id="ownArticle_caption">Platzhalter Platzhalter Platzhalter Platzhalter</div>
@@ -124,9 +124,9 @@
             </div>
 
             <div id="price_tolerance">
-                <label for="price_tolerance_label">Price-Tolerance [CHF.-]:</label>
+                <label for="price_tolerance_input">Price-Tolerance [CHF.-]:</label>
                     <form>
-                        <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="1000" value="1">
+                        <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="1000" value="100">
                     </form>
             </div>
             

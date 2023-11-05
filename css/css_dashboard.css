@@ -228,6 +228,11 @@ input {
   cursor: pointer;
 }
 
+.trashIMG:hover {
+  color: red;
+}
+
+
 .arrowbutton {
   display: flex;
   align-items: center;
@@ -322,7 +327,6 @@ input {
 }
 
 .navbar .logo-img {
-  height: 120px;
   width: 180px;
 }
 

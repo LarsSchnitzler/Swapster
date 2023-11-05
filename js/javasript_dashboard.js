@@ -3,6 +3,7 @@ import { authenticated_sendBack } from './javascript_helpers.js';
 
 const user = await authenticated_sendBack();
 const queryRate_PriTolChange = 1000; //in ms
+const match_color = "#ddff00";
 
 async function getMyArticles() {
     try {
@@ -66,8 +67,13 @@ async function getImage(parameter_bucketName, parameter_articles, i) {
 }
 
 async function setArticle(index, parameter_articlesArray, parameter_divName) {
+    //log index
+    if (parameter_divName === 'ownArticle_image') {
+        console.log(`ownArticleIndex: ${index}`);
+    } else if (parameter_divName === 'otherArticle_image') {
+        console.log(`otherArticleIndex: ${index}`);        
+    }
     //set background image
-    console.log(`OwnArticleIndex: ${index}`);
     const url = await getImage('article_img', parameter_articlesArray, index);
     const parentElement = document.getElementById(parameter_divName);
     parentElement.style.backgroundImage = `url(${url})`;
@@ -81,6 +87,96 @@ async function setArticle(index, parameter_articlesArray, parameter_divName) {
 
     titleElement.textContent = title;
     captionElement.textContent = caption;
+}
+
+async function checkWetherWishExists(parameter_offered, parameter_desired) {
+    let returnValue = false;
+
+    try {
+        const { data, error } = await supa
+            .from('wishlist')
+            .select('*')
+            .eq('offeredArticle_id', parameter_offered)
+            .eq('desiredArticle_id', parameter_desired)
+
+        if (data && data.length > 0) {
+            /* console.log('Wish exists in wishlist.'); */
+            returnValue = true;
+        } else {
+            /* console.log('Wish does not exist in wishlist.'); */
+            returnValue = false;
+        }
+
+        if (error) {
+            throw error;
+        }
+
+    } catch (error) {
+        console.error('Error querying Supabase wether wish exists in wishlist: ', error.message);
+    }
+    /* console.log(`returnValue: ${returnValue}`); */
+    return returnValue;
+}
+
+async function putArticleOnWishlist(parameter_offered, parameter_desired) {
+    const wishExists = await checkWetherWishExists(parameter_offered, parameter_desired);
+    /* console.log(`wishExists: ${wishExists}`); */
+    if (wishExists === false) {
+        //put wish on wishlist
+        console.log('trying to put wish on wishlist'); 
+        try {
+            const { data, error } = await supa
+                .from("wishlist")
+                .insert([
+                    {
+                        offeredArticle_id: parameter_offered,
+                        desiredArticle_id: parameter_desired
+                    }
+                ]);
+
+            if (error) {
+                throw error;
+            }
+            /* console.log(data); */
+            } 
+        catch (error){
+            console.error('Error querying Supabase for putting article on wishlist: ', error.message);
+        }
+        console.log('wish put on wishlist');
+    }
+}
+
+async function readOut_curArtSets_Matches () {
+    ownArticles.forEach((ownArt) => {
+        console.log(ownArt);
+        
+        //check for each of otherArticles wether a corresponding wish exists AND wether inverted wish exists
+        otherArticles.forEach((othArt) => {
+            console.log(othArt.id);         
+            const check1 = checkWetherWishExists(ownArt.id, othArt.id);
+            const check2 = checkWetherWishExists(othArt.id, ownArt.id);
+            console.log(check1)
+            /* console.log("check1: " + check1 + "");
+            console.log("check2: " + check2 + ""); */
+
+            //if yes, write combination as object into matches-array
+            if (check1 === true && check2 === true) {
+                matches.push({ownArticle: ownArt.id, otherArticle: othArt.id});
+            }
+        });
+    });
+}
+
+async function checkWether_CurrentArticlesMatching(artId1, artId2) {
+    const entryExists = matches.some(obj => obj.ownArticle === artId1 && obj.otherArt === artId2); //The array.some() method in tests whether at least one element in the array passes the test implemented by the provided function
+    
+    if (entryExists) {
+    console.log('This article-combination is matching.');
+    return true;
+    } else {
+    console.log('This article-combination is NOT matching.');
+    return false;
+    }
 }
 
 function noArticlesFound(string_ownOrOtherArticles) {
@@ -149,55 +245,79 @@ function noArticlesFound(string_ownOrOtherArticles) {
 
     //get own articles-array
     const ownArticles = await getMyArticles();
-
+    let indexObj_ownArticles = 0 ; //its global so that it can be used in the otherArticles-section
+    
     if (ownArticles.length === 0) {
         noArticlesFound("own");
     }
     else {
         //set index, maxIndex for own articles
-        let indexObj_ownArticles = { value: 0 }; //because of "pass by value" for primitives I used an object. So that it is passed by reference.
         const OwnArticles_MaxIndex = ownArticles.length-1;
 
         //set initial OwnArticle
-        await setArticle(indexObj_ownArticles.value, ownArticles, 'ownArticle_image');
+        await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
 
         //set next Article on right-arrow click
         document.getElementById('arrowRight_OwnArticle').addEventListener('click', async () => {
-        
-            if (indexObj_ownArticles.value < OwnArticles_MaxIndex) {
-                indexObj_ownArticles.value++;
+            
+            if (indexObj_ownArticles < OwnArticles_MaxIndex) {
+                indexObj_ownArticles++;
             } else {
-                indexObj_ownArticles.value = 0;
+                indexObj_ownArticles = 0;
             }
-            await setArticle(indexObj_ownArticles.value, ownArticles, 'ownArticle_image');
+            await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
+
+            /* //check wether new articles are matching
+            const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+            if (artMatch === true) {
+                console.log('This article-combination is matching.');
+                document.getElementById('swap_button').style.borderColor = match_color;
+            } else {
+                console.log('This article-combination is NOT matching.');
+            } */
         }); 
         
         //set previous Article on left-arrow click
         document.getElementById('arrowLeft_OwnArticle').addEventListener('click', async () => {
         
-            if (indexObj_ownArticles.value > 0) {
-                indexObj_ownArticles.value--;
+            if (indexObj_ownArticles > 0) {
+                indexObj_ownArticles--;
             } else {
-                indexObj_ownArticles.value = 0;
+                indexObj_ownArticles = 0;
             }
-            await setArticle(indexObj_ownArticles.value, ownArticles, 'ownArticle_image');
+            await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
+
+            /* //check wether new articles are matching
+            const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+            if (artMatch === true) {
+                console.log('This article-combination is matching.');
+                document.getElementById('swap_button').style.borderColor = match_color;
+            } else {
+                console.log('This article-combination is NOT matching.');
+            } */
         }); 
     }
 
 //OtherArticles
 
     //set index, maxIndex for other articles
-    let indexObj_otherArticles = { value: 0 }; //because of "pass by value" for primitives I used an object. So that it is passed by reference.
+    let indexObj_otherArticles = 0 ; 
 
     //set initial OtherArticle
     const priceTolerance = document.getElementById('price_tolerance_input').value;
-    const otherArticles = await getOtherArticles(ownArticles[indexObj_otherArticles.value], priceTolerance);
-    await setArticle(indexObj_otherArticles.value, otherArticles, 'otherArticle_image');
+    let otherArticles = await getOtherArticles(ownArticles[indexObj_otherArticles], priceTolerance);
+    await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
+        
+    //define matches globally so that it can be used in function readOut_curArtSets_Matches  
+        let matches = [];
+        //check wether matches exist. THIS NEEDS TO BE DONE EVERYTIME EITHER OTHERARTICLES OR OWNARTICLES GET QUERIED AGAIN.
+        await readOut_curArtSets_Matches();
+        console.log('matches:', matches);
 
     //set maxIndex for other articles
     let OtherArticles_MaxIndex = otherArticles.length-1;
 
-    /* //set initial lastChangeTime
+    //set initial lastChangeTime
     let lastChangeTime = new Date().getTime();
 
     //get other articles-array again, when price tolerance changes
@@ -205,24 +325,93 @@ function noArticlesFound(string_ownOrOtherArticles) {
         const currentTime = new Date().getTime();
         if (currentTime - lastChangeTime >= queryRate_PriTolChange) { //so that it has been at least 1 second since the last change of price tolerance until we query again.
             
-            //get other articles-array
+            //get other_articles-array
             const priceTolerance = document.getElementById('price_tolerance_input').value;
-            console.log(ownArticles[indexObj_ownArticles.value]);
-            const otherArticles = await getOtherArticles(ownArticles[indexObj_ownArticles.value], priceTolerance);
-            console.log(otherArticles);
+            otherArticles = await getOtherArticles(ownArticles[indexObj_ownArticles], priceTolerance); //overwrite otherArticles with new array
+                
+                //check wether matches exist. THIS NEEDS TO BE DONE EVERYTIME EITHER OTHERARTICLES OR OWNARTICLES GET QUERIED AGAIN.
+                await readOut_curArtSets_Matches();
+                console.log('matches:', matches);
 
-            //set index, maxIndex for other articles
-            indexObj_otherArticles.value = 0; //because of "pass by value" for primitives I used an object. So that it is passed by reference.
+            //set index, maxIndex for other articles again so that the index is reset to 0
+            indexObj_otherArticles = 0; 
             OtherArticles_MaxIndex = otherArticles.length-1;
 
             //set OtherArticle
-            await setArticle(indexObj_otherArticles.value, otherArticles, 'otherArticle_image');
+            await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
 
             // Update the last change time
             lastChangeTime = currentTime;
         }
+        else {
+            const currentTime = new Date().getTime();
+            lastChangeTime = currentTime;
+            console.log("last Price-tolerance Change too recent, so no query has been sent.");
+        }
     });
 
     //set next Article on right-arrow click
+    document.getElementById('arrowRight_OtherArticle').addEventListener('click', async () => {
+        
+        if (indexObj_otherArticles < OtherArticles_MaxIndex) {
+            indexObj_otherArticles++;
+        } else {
+            indexObj_otherArticles = 0;
+        }
+        await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
 
-    //set previous Article on left-arrow click   */
+        /* //check wether new articles are matching
+            const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+            if (artMatch === true) {
+                console.log('This article-combination is matching.');
+                document.getElementById('swap_button').style.borderColor = match_color;
+            } else {
+                console.log('This article-combination is NOT matching.');
+            } */
+    }); 
+    
+    //set previous Article on left-arrow click
+    document.getElementById('arrowLeft_OtherArticle').addEventListener('click', async () => {
+    
+        if (indexObj_otherArticles > 0) {
+            indexObj_otherArticles--;
+        } else {
+            indexObj_otherArticles = 0;
+        }
+        await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
+
+        /* //check wether new articles are matching
+            const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+            if (artMatch === true) {
+                console.log('This article-combination is matching.');
+                document.getElementById('swap_button').style.borderColor = match_color;
+            } else {
+                console.log('This article-combination is NOT matching.');
+            } */
+    });
+
+document.getElementById('swap_button').addEventListener('click', async () => {
+    //put article on wishlist
+    await putArticleOnWishlist(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+});
+
+//delete article from articles-table
+document.getElementById('delete_button').addEventListener('click', async () => {
+    const articleId = ownArticles[indexObj_ownArticles].id;
+    try {
+        const { data, error } = await supa
+            .from("articles")
+            .delete()
+            .match({ id: articleId });
+
+        if (error) {
+            throw error;
+        }
+        /* console.log(data); */
+        } 
+    catch (error){
+        console.error('Error querying Supabase for deleting article: ', error.message);
+    }
+    
+    window.location.reload(); //No readOut of current matches needs to be done here, because of reload it will be done either way.
+});
