@@ -18,6 +18,11 @@
   src: url("../font/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF");
 }
 
+@font-face {
+  font-family: "SF-Pro-Display_italic";
+  src: url("../font/sf-pro-display-cufonfonts/SFPRODISPLAYBLACKITALIC.OTF");
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -33,6 +38,7 @@ body {
 }
 
 .fontStyle_1 {
+  font-family: "SF-Pro-Display_italic", Helvetica;
   color: var(--white);
   font-size: 1.4vw;
 }
@@ -48,11 +54,11 @@ body {
 /*Style for the middle-div*/
 .black-bg {
   display: flex;
-  padding: 0rem 0.875rem;
+  padding: 0rem 1.875rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 2rem;
   background-color: var(--black);
 }
 
@@ -66,7 +72,7 @@ body {
 
 .logo-button {
   padding: 0;
-  width: 95%;
+  width: 100%;
   border: none;
   background-color: black;
   cursor: pointer;
@@ -74,6 +80,7 @@ body {
 
 .logo-button img {
   object-fit: contain;
+  width: 100%;
 }
 
 @media (max-width: 1200px) {

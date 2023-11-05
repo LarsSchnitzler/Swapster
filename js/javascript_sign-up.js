@@ -1,6 +1,5 @@
 import { supa } from "../SupaBaseClient/supabase.js";
-
-
+ 
 async function updateProfilesEntry(parameter_firstName, parameter_lastName, parameter_dob) {
     const { user } = supa.auth.session();
     
@@ -25,7 +24,6 @@ async function updateProfilesEntry(parameter_firstName, parameter_lastName, para
         console.log('No user is signed in');
     }
 }
-
 
 async function signUpWithEmailAndPassword() {
     const checkboxElement = document.getElementById('TermsCB').checked;

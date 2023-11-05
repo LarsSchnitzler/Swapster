@@ -23,10 +23,9 @@ function navbarLinkClick() {
 logoutButton.addEventListener("click", () => {
   supa.auth.signOut()
     .then(() => {
-      window.location.href = "/index.html"; // Replace with the appropriate URL
+      window.location.href = "/index.html"; 
     })
     .catch(error => {
-      // Handle any errors that may occur during logout
       console.error("Error logging out:", error);
     });
 });

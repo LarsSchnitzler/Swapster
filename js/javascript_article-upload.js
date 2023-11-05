@@ -1,53 +1,58 @@
 import { supa } from "../SupaBaseClient/supabase.js";
-import { authenticated } from './javascript_helpers.js';
+import { authenticated_sendBack } from './javascript_helpers.js';
 
-const user = authenticated();
+const user = await authenticated_sendBack();
 
 async function insertArtInf_articles(parameterImgPath, parameterTitle, parameterCaption, parameterPrice, parameterobjectId) {
-    console.log('uploadArticleInfo');
+    console.log('TryingInsertArticleInfo');
+    try {
+        const { error: error } = await supa.from('articles').insert([
+            {
+                user_id: user.id,
+                img_path: parameterImgPath,
+                title: parameterTitle,
+                caption: parameterCaption,
+                price: parameterPrice,
+            }
+        ]);
 
-    const user = supa.auth.user();
-    const userId = user ? user.id : null;
-
-    const {error: articleInsertError} = await supa.from('articles').insert([
-        {
-            user_id: userId,
-            img_path: parameterImgPath,
-            title: parameterTitle,
-            caption: parameterCaption,
-            price: parameterPrice,
-            object_id: parameterobjectId
+        if (error) {
+            throw error;
         }
-    ]);
-    
-    if (articleInsertError) {
-        console.error('Error saving to "articles" table:', articleInsertError.message);
-    } else {
-        console.log('ArticleInfo Insert successfull:');
     } 
+    catch (error){
+        console.error('Error querying Supabase: ', error.message);
+    }
 }
 
-async function uploadPhoto(bucketName) {
+async function uploadArticle(bucketName) {
     const fileInput = document.getElementById('file-upload');
-    const inputValue_title = document.getElementById('articleCaption').value;
+    const inputValue_title = document.getElementById('articleTitle').value;
     const inputValue_caption = document.getElementById('articleCaption').value;
     const inputValue_price = document.getElementById('estValue').value;
     console.log('uploadPhoto');
 
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        const filePath = `uploads/${file.name}`;
-        const { data, error: uploadError } = await supa.storage.from(bucketName).upload(filePath, file);
-        
-        if (uploadError) {
-            console.error('Error uploading file:', uploadError);
-            return;
-        } else{
-            console.log('File uploaded successfully');
-        }
 
-        const objectId = data.id;
-        console.log('objectId: ', objectId);
+        const timestamp = Date.now();
+        console.log(timestamp);
+
+        const newFile = new File([file], timestamp, { type: file.type });
+
+        const filePath = `uploads/${newFile.name}`;
+        
+        try {
+            const { data: data, error: error } = await supa.storage.from(bucketName).upload(filePath, newFile);
+    
+            if (error) {
+                throw error;
+            }
+    
+            console.log(data);
+        } catch (error){
+            console.error('Error querying Supabase: ', error.message);
+        }
 
         insertArtInf_articles(filePath, inputValue_title, inputValue_caption, inputValue_price);
 
@@ -56,5 +61,10 @@ async function uploadPhoto(bucketName) {
     }
 }
 
-const uploadButton = document.getElementById('articleUpload_Upload');
-uploadButton.addEventListener('click', function() {uploadPhoto('article_img');});
+document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {window.location.reload();});
+
+document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    uploadArticle('article_img');
+    window.location.reload();
+});

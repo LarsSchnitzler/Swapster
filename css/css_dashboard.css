@@ -184,6 +184,16 @@ input {
   align-items: center;
   gap: 20px;
   border-radius: 8px;
+}
+
+#ownArticle_image{
+  background-image: url("../img/articles/Velo_65.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#otherArticle_image{
   background-image: url("../img/articles/Velo_65.png");
   background-size: cover;
   background-position: center;
