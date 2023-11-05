@@ -3,7 +3,7 @@ import { authenticated_sendBack } from './javascript_helpers.js';
 
 const user = await authenticated_sendBack();
 const queryRate_PriTolChange = 1000; //in ms
-const match_color = "#ddff00";
+const match_color = "#2E7985";
 
 async function getMyArticles() {
     try {
@@ -15,8 +15,8 @@ async function getMyArticles() {
         if (error) {
             throw error;
         }
-        console.log("Own Articles:");
-        console.log(data);
+        /* console.log("Own Articles:");
+        console.log(data); */
         return(data);
         } 
     catch (error){
@@ -27,8 +27,8 @@ async function getMyArticles() {
 async function getOtherArticles(currentOwnArtObj, priceTolerance) {
     const lowerPriceBorder = currentOwnArtObj.price - priceTolerance;
     const upperPriceBorder = currentOwnArtObj.price + priceTolerance;
-    console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
-    console.log(`upperPriceBorder: ${upperPriceBorder}`);
+    /* console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
+    console.log(`upperPriceBorder: ${upperPriceBorder}`); */
     try {
         const { data, error } = await supa
             .from("articles")
@@ -41,7 +41,9 @@ async function getOtherArticles(currentOwnArtObj, priceTolerance) {
         if (error) {
             throw error;
         }
-        console.log(data);
+        if (data.length === 0) {
+            return null;
+        }
         return(data);
         } 
     catch (error){
@@ -50,7 +52,10 @@ async function getOtherArticles(currentOwnArtObj, priceTolerance) {
 }
 
 async function getImage(parameter_bucketName, parameter_articles, i) {
+    console.log("article-array in getImage:" + parameter_articles);
+
     const path = parameter_articles[i].img_path;
+    console.log(path);
     try{
         const { data, error } = await supa.storage.from(parameter_bucketName).download(path);
 
@@ -147,35 +152,48 @@ async function putArticleOnWishlist(parameter_offered, parameter_desired) {
 }
 
 async function readOut_curArtSets_Matches () {
-    ownArticles.forEach((ownArt) => {
+    matches = []; //reset matches-array
+
+    for (const ownArt of ownArticles) {
         console.log(ownArt);
         
-        //check for each of otherArticles wether a corresponding wish exists AND wether inverted wish exists
-        otherArticles.forEach((othArt) => {
-            console.log(othArt.id);         
-            const check1 = checkWetherWishExists(ownArt.id, othArt.id);
-            const check2 = checkWetherWishExists(othArt.id, ownArt.id);
-            console.log(check1)
+        //check for each of otherArticles whether a corresponding wish exists AND whether inverted wish exists
+        for (const othArt of otherArticles) {
+         
+            const check1 = await checkWetherWishExists(ownArt.id, othArt.id);
+            const check2 = await checkWetherWishExists(othArt.id, ownArt.id);
             /* console.log("check1: " + check1 + "");
             console.log("check2: " + check2 + ""); */
 
             //if yes, write combination as object into matches-array
             if (check1 === true && check2 === true) {
-                matches.push({ownArticle: ownArt.id, otherArticle: othArt.id});
+                console.log("pushing into matches-array");
+                matches.push({ownItemMatched: ownArt.id, otherItemMatched: othArt.id});
             }
-        });
-    });
+        }
+    }
 }
 
-async function checkWether_CurrentArticlesMatching(artId1, artId2) {
-    const entryExists = matches.some(obj => obj.ownArticle === artId1 && obj.otherArt === artId2); //The array.some() method in tests whether at least one element in the array passes the test implemented by the provided function
+function checkWether_CurrentArticlesMatching() {
+    const artId1 = ownArticles[indexObj_ownArticles].id;
+    const artId2 = otherArticles[indexObj_otherArticles].id;
+    /* console.log('artId1:', artId1);
+    console.log('artId2:', artId2); */
+    const entryExists = matches.some(obj => obj.ownItemMatched === artId1 && obj.otherItemMatched === artId2); //The array.some() method in tests whether at least one element in the array passes the test implemented by the provided function
     
     if (entryExists) {
-    console.log('This article-combination is matching.');
-    return true;
+        console.log('This article-combination is matching.');
+        const swap_button = document.getElementById('swap_button');
+        swap_button.href = "./userprofile.html"; 
+        swap_button.style.boxShadow = `0px 0px 85px 0px ${match_color}`;
+        return true;
     } else {
-    console.log('This article-combination is NOT matching.');
-    return false;
+        console.log('This article-combination is NOT matching.');
+        const swap_button = document.getElementById('swap_button');
+        swap_button.style.borderColor = "black";
+        swap_button.style.boxShadow = 'none';
+        swap_button.removeAttribute('href');
+        return false;
     }
 }
 
@@ -246,7 +264,6 @@ function noArticlesFound(string_ownOrOtherArticles) {
     //get own articles-array
     const ownArticles = await getMyArticles();
     let indexObj_ownArticles = 0 ; //its global so that it can be used in the otherArticles-section
-    
     if (ownArticles.length === 0) {
         noArticlesFound("own");
     }
@@ -267,14 +284,8 @@ function noArticlesFound(string_ownOrOtherArticles) {
             }
             await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
 
-            /* //check wether new articles are matching
+            //check wether new articles are matching
             const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
-            if (artMatch === true) {
-                console.log('This article-combination is matching.');
-                document.getElementById('swap_button').style.borderColor = match_color;
-            } else {
-                console.log('This article-combination is NOT matching.');
-            } */
         }); 
         
         //set previous Article on left-arrow click
@@ -287,15 +298,12 @@ function noArticlesFound(string_ownOrOtherArticles) {
             }
             await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
 
-            /* //check wether new articles are matching
+            //check wether new articles are matching
             const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
             if (artMatch === true) {
-                console.log('This article-combination is matching.');
                 document.getElementById('swap_button').style.borderColor = match_color;
-            } else {
-                console.log('This article-combination is NOT matching.');
-            } */
-        }); 
+            }
+        });
     }
 
 //OtherArticles
@@ -306,16 +314,26 @@ function noArticlesFound(string_ownOrOtherArticles) {
     //set initial OtherArticle
     const priceTolerance = document.getElementById('price_tolerance_input').value;
     let otherArticles = await getOtherArticles(ownArticles[indexObj_otherArticles], priceTolerance);
-    await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
+    if (otherArticles !== null) { //so that no error occurs when no articles are found
+        await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
+    } else {
+        noArticlesFound("other");
+    }
+
+    //set maxIndex for other articles
+    let OtherArticles_MaxIndex = otherArticles.length-1;
+
         
-    //define matches globally so that it can be used in function readOut_curArtSets_Matches  
+    //define matches globally
         let matches = [];
         //check wether matches exist. THIS NEEDS TO BE DONE EVERYTIME EITHER OTHERARTICLES OR OWNARTICLES GET QUERIED AGAIN.
         await readOut_curArtSets_Matches();
         console.log('matches:', matches);
-
-    //set maxIndex for other articles
-    let OtherArticles_MaxIndex = otherArticles.length-1;
+        //check wether new articles are matching
+        const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+        if (artMatch === true) {
+            document.getElementById('swap_button').style.borderColor = match_color;
+        }
 
     //set initial lastChangeTime
     let lastChangeTime = new Date().getTime();
@@ -328,17 +346,17 @@ function noArticlesFound(string_ownOrOtherArticles) {
             //get other_articles-array
             const priceTolerance = document.getElementById('price_tolerance_input').value;
             otherArticles = await getOtherArticles(ownArticles[indexObj_ownArticles], priceTolerance); //overwrite otherArticles with new array
-                
-                //check wether matches exist. THIS NEEDS TO BE DONE EVERYTIME EITHER OTHERARTICLES OR OWNARTICLES GET QUERIED AGAIN.
+            if (otherArticles !== null) { //so that no error occurs when no articles are found
+                await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
+                //check wether matches exist. THIS NEEDS TO BE DONE EVERYTIME EITHER otherArticles OR ownArticles GET QUERIED AGAIN.
                 await readOut_curArtSets_Matches();
                 console.log('matches:', matches);
-
-            //set index, maxIndex for other articles again so that the index is reset to 0
-            indexObj_otherArticles = 0; 
-            OtherArticles_MaxIndex = otherArticles.length-1;
-
-            //set OtherArticle
-            await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
+                //set index, maxIndex for other articles again so that the index is reset to 0
+                indexObj_otherArticles = 0; 
+                OtherArticles_MaxIndex = otherArticles.length-1;
+            } else {
+                noArticlesFound("other");
+            }
 
             // Update the last change time
             lastChangeTime = currentTime;
@@ -360,14 +378,11 @@ function noArticlesFound(string_ownOrOtherArticles) {
         }
         await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
 
-        /* //check wether new articles are matching
+        //check wether new articles are matching
             const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
             if (artMatch === true) {
-                console.log('This article-combination is matching.');
                 document.getElementById('swap_button').style.borderColor = match_color;
-            } else {
-                console.log('This article-combination is NOT matching.');
-            } */
+            }
     }); 
     
     //set previous Article on left-arrow click
@@ -380,14 +395,11 @@ function noArticlesFound(string_ownOrOtherArticles) {
         }
         await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
 
-        /* //check wether new articles are matching
+        //check wether new articles are matching
             const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
             if (artMatch === true) {
-                console.log('This article-combination is matching.');
                 document.getElementById('swap_button').style.borderColor = match_color;
-            } else {
-                console.log('This article-combination is NOT matching.');
-            } */
+            }
     });
 
 document.getElementById('swap_button').addEventListener('click', async () => {

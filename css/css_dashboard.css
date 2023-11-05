@@ -293,7 +293,7 @@ input {
   width: 90px;
   height: 90px;
   padding: 8px;
-  background-color: white;
+  background-color: transparent;
 }
 
 .swap {
