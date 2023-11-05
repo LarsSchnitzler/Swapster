@@ -38,29 +38,77 @@ async function getImage(parameter_bucketName, parameter_articles, i) {
     }
 }
 
-async function articles_Next(indexObj, parameter_maxIndex, parameter_articlesArray, parameter_divName) {
-    if (indexObj.value < parameter_maxIndex) {
-        indexObj.value++;
-    } else {
-        indexObj.value = 0;
-    }
-    console.log(`OwnArticleIndex: ${indexObj.value}`);
-    const url = await getImage('article_img', parameter_articlesArray, indexObj.value);
-    document.getElementById(parameter_divName).style.backgroundImage = `url(${url})`;
+async function setArticle(index, parameter_articlesArray, parameter_divName) {
+    //set background image
+    console.log(`OwnArticleIndex: ${index}`);
+    const url = await getImage('article_img', parameter_articlesArray, index);
+    const parentElement = document.getElementById(parameter_divName);
+    parentElement.style.backgroundImage = `url(${url})`;
+
+    //set title and caption
+    const title = parameter_articlesArray[index].title;
+    const caption = parameter_articlesArray[index].caption;
+
+    const titleElement = parentElement.querySelector('.articleTitle');
+    const captionElement = parentElement.querySelector('.articleInfo');
+
+    titleElement.textContent = title;
+    captionElement.textContent = caption;
 }
 
+//OwnArticles
+
+    //get own articles-array
+    const ownArticles = await getMyArticles();
+
+    //set index, maxIndex for own articles
+    let indexObj_ownArticles = { value: 0 }; //because of "pass by value" for primitives I used an object. So that it is passed by reference.
+    const OwnArticles_MaxIndex = ownArticles.length-1;
+
+    //set initial OwnArticle
+    await setArticle(indexObj_ownArticles.value, ownArticles, 'ownArticle_image');
+
+    //set next Article on right-arrow click
+    document.getElementById('arrowRight_OwnArticle').addEventListener('click', async () => {
+    
+        if (indexObj_ownArticles.value < OwnArticles_MaxIndex) {
+            indexObj_ownArticles.value++;
+        } else {
+            indexObj_ownArticles.value = 0;
+        }
+        await setArticle(indexObj_ownArticles.value, ownArticles, 'ownArticle_image');
+    }); 
+    
+    //set previous Article on left-arrow click
+
+    document.getElementById('arrowLeft_OwnArticle').addEventListener('click', async () => {
+    
+        if (indexObj_ownArticles.value > 0) {
+            indexObj_ownArticles.value--;
+        } else {
+            indexObj_ownArticles.value = 0;
+        }
+        await setArticle(indexObj_ownArticles.value, ownArticles, 'ownArticle_image');
+    }); 
+    
+
+/* 
 //define index, maxIndex for own articles
-const ownArticles = await getMyArticles();
-let indexObj_ownArticles = { value: 0 }; //because of "pass by value" for primitives I used an object. So that it is passed by reference.
+
 console.log(`indexObj_ownArticles: ${indexObj_ownArticles.value}`);
-const OwnArticles_MaxIndex = ownArticles.length-1;
+
 console.log(`OwnArticleMaxIndex: ${OwnArticles_MaxIndex}`);
 
 //load inital Article
+const art1_Title = ownArticles[indexObj_ownArticles.value].title;
+const art1_Caption = ownArticles[indexObj_ownArticles.value].caption;
+document.getElementById('ownArticle_title').textContent = art1_Title;
+document.getElementById('ownArticle_caption').textContent = art1_Caption;
+
 const img1_Url = await getImage('article_img', ownArticles, indexObj_ownArticles.value);
 document.getElementById('ownArticle_image').style.backgroundImage = `url(${img1_Url})`;
 
 //EventListener to arrowRight
 document.getElementById('arrowRight_OwnArticle').addEventListener('click', async () => {
     await articles_Next(indexObj_ownArticles, OwnArticles_MaxIndex, ownArticles, 'ownArticle_image');
-});   
+});    */
