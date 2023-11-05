@@ -227,8 +227,17 @@ body {
   gap: 20px;
 }
 
+.showProfile_aboutme {
+  margin: 0 10vw 0 10vw;
+}
+
 .profileName .txt{
   font-weight: 800;
+}
+
+
+#bold {
+  font-weight: bold;
 }
 
 #editProfile {
