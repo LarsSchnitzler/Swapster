@@ -241,11 +241,26 @@ body {
 
 #editProfile_TitleButtons {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 120px;
+  gap: 20px;
   min-width: 60%;
+}
+
+@media screen and (max-width: 600px) {
+  #editProfile_TitleButtons {
+    flex-direction: column; /* Stack elements vertically for mobile */
+    align-items: center; /* Center items horizontally for mobile */
+    min-width: 80%; /* Adjust the minimum width as needed */
+  }
+  #editProfile_Buttons {
+    margin-top: 10px; /* Add some top margin for spacing between the title and buttons */
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally for mobile */
+  }
+  #editProfile_Cancel, #editProfile_Save {
+    margin: 5px; /* Add some margin to separate the buttons */
+  }
 }
 
 #editProfile_Buttons {
