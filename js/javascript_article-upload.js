@@ -54,7 +54,7 @@ async function uploadArticle(bucketName) {
             console.error('Error querying Supabase: ', error.message);
         }
 
-        insertArtInf_articles(filePath, inputValue_title, inputValue_caption, inputValue_price);
+        await insertArtInf_articles(filePath, inputValue_title, inputValue_caption, inputValue_price);
 
     } else {
         console.log('No file selected.');
@@ -65,6 +65,6 @@ document.getElementById('articleUpload_Cancel').addEventListener('click', functi
 
 document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
     event.preventDefault();
-    uploadArticle('article_img');
-    window.location.reload();
-});
+    await uploadArticle('article_img');
+/*     window.location.reload();
+ */});
