@@ -168,3 +168,8 @@ button {
 button:active {
   border: 2px solid var(--gray);
 }
+@media (max-width: 1240px) {
+  .wrapper_halfVP.leftSide {
+    display: none;
+  }
+}
