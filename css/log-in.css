@@ -168,3 +168,58 @@ button {
 button:active {
   border: 2px solid var(--gray);
 }
+
+
+
+
+
+@media (max-width: 767px) {
+  .wrapper_sign-in {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .wrapper_halfVP {
+    flex: 1;
+  }
+
+  .leftSide, .rightSide {
+    width: 100%;
+    height: auto;
+  }
+
+  .text-wrapper {
+    padding: 20px;
+  }
+
+  .form-wrapper {
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 768px) and (min-width: 992px) {
+  .wrapper_sign-in {
+    flex-direction: row;
+  }
+
+  .wrapper_halfVP {
+    flex: 1;
+  }
+
+  .leftSide {
+    width: 50%;
+  }
+
+  .rightSide {
+    width: 50%;
+  }
+
+  .text-wrapper {
+    padding: 80px 60px;
+  }
+
+  .form-wrapper {
+    width: 50%;
+  }
+}
