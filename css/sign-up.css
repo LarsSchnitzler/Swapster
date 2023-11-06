@@ -245,3 +245,51 @@ input[type="checkbox"]:checked {
 #Label_dateOfBirth {
   align-self: flex-start;
 }
+
+
+
+@media (max-width: 767px) {
+  .wrapper_sign-in {
+    flex-direction: column;
+  }
+
+  .leftSide, .rightSide {
+    width: 100%;
+  }
+
+  .text-wrapper {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wrapper_sign-in {
+    flex-direction: column;
+  }
+
+  .leftSide, .rightSide {
+    width: 100%;
+  }
+
+  .text-wrapper {
+    padding: 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper_sign-in {
+    flex-direction: row;
+  }
+
+  .leftSide {
+    width: 50%;
+  }
+
+  .rightSide {
+    width: 50%;
+  }
+
+  .text-wrapper {
+    padding: 80px 60px;
+  }
+}
