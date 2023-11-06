@@ -312,22 +312,22 @@ input {
   opacity: 0.5;
 }
 
-#editProfile_Cancel {
+#articleUpload_Cancel {
   background-color: var(--lightGray);
   border: 0 solid var(--black);
 }
 
-#editProfile_Save {
+#articleUpload_Upload {
   appearance: none;
   background-color: var(--white);
   border: 2px solid var(--black);
 }
 
-#editProfile_Save:active {
+#articleUpload_Upload:active {
   border-color: var(--lightGray);
 }
 
-#editProfile_Cancel:active {
+#articleUpload_Cancel:active {
   background-color: var(--white);
   border: 2px solid var(--black);
 }

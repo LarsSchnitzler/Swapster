@@ -1,4 +1,16 @@
 import { supa } from "../SupaBaseClient/supabase.js";
+import { authenticated } from './javascript_helpers.js';
+
+async function updateUserStatus() {
+    const userStatusElement = document.getElementById('userStatus');
+    const authArray = await authenticated();
+
+    if (authArray[0] === true) {
+        userStatusElement.textContent = `Authenticated as: ${authArray[1].email}`;
+    } else {
+        userStatusElement.textContent = "Not authenticated";
+    }
+}
 
 async function login() {
     const email = document.getElementById('emailInput').value; 
@@ -7,35 +19,21 @@ async function login() {
     const { user, error } = await supa.auth.signIn({ email, password });
 
     if (error) {
-        console.error("Error during login: ", error.message);
+        updateUserStatus();
+        console.error("Error during SupaBase-SignIn: ", error.message);
+        return false;
     } else {
-        console.log("Logged in as ", user.email);
-    }
-
-    window.location.href='./dashboard.html';
-}
-
-function updateUserStatus(user) {
-    const userStatusElement = document.getElementById('userStatus');
-
-    if (user) {
-        userStatusElement.textContent = `Authenticated as: ${user.email}`;
-    } else {
-        userStatusElement.textContent = "Not authenticated";
+        updateUserStatus();
+        return true;
     }
 }
 
-const initialUser = supa.auth.user();
-updateUserStatus(initialUser);
+updateUserStatus();
 
-document.getElementById('loginButton').addEventListener('click', login);
-
-supa.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_IN") {
-        console.log("User signed in: ", session.user);
-        updateUserStatus(session.user);
-    } else if (event === "SIGNED_OUT") {
-        console.log("User signed out");
-        updateUserStatus(null);
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const loginSuccess = await login();
+    if (loginSuccess === true) {
+        window.location.href = "/dashboard.html";
     }
 });

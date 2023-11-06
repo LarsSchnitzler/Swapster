@@ -35,8 +35,8 @@
         </div>
         <div id="hrztlGrayLine"></div>
         <div id="article-Upload_buttons">
-          <button class="txt" id="editProfile_Cancel">Cancel</button>
-          <button class="txt" id="editProfile_Save">Upload</button>
+          <button class="txt" id="articleUpload_Cancel">Cancel</button>
+          <button class="txt" id="articleUpload_Upload" form="article-Upload_Inputs" type="submit">Upload</button>
         </div>
         <div class="txt sub-title_1">You can only upload one Item at a time.</div>
       </div>
@@ -52,23 +52,18 @@
           <div class="Article_PropertyInputs">
             <div class="inputgroup">
               <label class="txt label" for="fName">Article Name:</label>
-              <input class="input" type="text" id="fName" name="fName">
+              <input class="input" type="text" id="articleTitle" name="fName">
             </div>
 
             <div class="inputgroup">
               <label class="txt label" for="lName">Clarification if necessary:</label>
-              <input class="input" type="text" id="lName" name="lName">
+              <input class="input" type="text" id="articleCaption" name="lName">
             </div>
 
             <div class="inputgroup">
-              <label class="txt label" for="estValue">Estimated Value</label>
+              <label class="txt label" for="estValue">Estimated Value[CHF.-]</label>
               <input class="input" type="text" id="estValue" name="estValue">
             </div>
-          </div>
-
-          <div class="wrapper_status">
-            <label for="status-signal" class="txt">Upload-Status:</label>
-            <div class="txt status-signal" name="status-signal"></div>
           </div>
 
         </form>
@@ -76,7 +71,7 @@
     </div>
 
     <script type="module" src="./SupaBaseClient/supabase.js"></script>
-    <script src="./js/javascript_article-upload.js"></script>
+    <script type="module" src="./js/javascript_article-upload.js"></script>
 </body>
 
 </html>

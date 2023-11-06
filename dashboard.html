@@ -13,12 +13,12 @@
 <body>
 
     <nav class="navbar">
-        <a href=""><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.svg" class="logo-img"></a>
+        <a href=""><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.png" class="logo-img"></a>
         <ul>
             <li><a href="./userprofile.html" class="txt link">Profile</a></li>
             <li><a href="./dashboard.html" class="txt link">Dashboard</a></li>
             <li><a href="./articleUpload.html" class="txt link">Article-Upload</a></li>
-            <li><a href="./landingPage.html" class="txt link" id="logout">Log-out</a></li>
+            <li><a class="txt link" id="logout">Log-out</a></li>
             <!--<li><a href="#javascript"></a></li>-->
         </ul>
         <button class="navbar-toggler">
@@ -29,7 +29,7 @@
     <div id="content-wrapper">
         <div class="container_oben_unten">
             
-            <div class="arrowbutton left">
+            <div class="arrowbutton left" id="arrowLeft_OtherArticle">
                     <button>
                         <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -38,13 +38,13 @@
                 </a>
             </div>
 
-            <div class="articleIMG-wrapper1">
+            <div class="articleIMG-wrapper1" id="otherArticle_image">
                 <div class="txt articleTitle">Platzhalter</div>
                 <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
             </div>
 
 
-            <div class="arrowbutton right">
+            <div class="arrowbutton right" id="arrowRight_OtherArticle">
                     <button>
                         <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -59,7 +59,7 @@
 
             <div class="horizontal_line"></div>
 
-            <button class="swap_button">
+            <button class="swap_button" id="swap_button">
                 <div class="txt amount">
                     CHF 20.-
                 </div>
@@ -80,7 +80,7 @@
         <div class="container_oben_unten" id="ownItems">
                     
             <div id="ownItems_content-wrapper">
-                <div class="arrowbutton left arButOwnItem" >
+                <div class="arrowbutton left arButOwnItem" id="arrowLeft_OwnArticle">
                         <button>
                             <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -90,6 +90,14 @@
                 </div>
 
                 <div class="articleIMG-wrapper2_typeOwnArticle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="trashIMG" id="delete_button" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    <div class="articleIMG-wrapper1" id="ownArticle_image">
+                        <div class="txt articleTitle" id="ownArticle_title">Platzhalter</div>
+                        <div class="txt articleInfo" id="ownArticle_caption">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                    </div>
+                </div>
+
+                <!--<div class="articleIMG-wrapper2_typeOwnArticle">
                     <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
                     <div class="articleIMG-wrapper1">
                         <div class="txt articleTitle">Platzhalter</div>
@@ -103,17 +111,9 @@
                         <div class="txt articleTitle">Platzhalter</div>
                         <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
                     </div>
-                </div>
-
-                <div class="articleIMG-wrapper2_typeOwnArticle">
-                    <img src="./img/elements/trash-outline.svg" alt="img" class="trashIMG">
-                    <div class="articleIMG-wrapper1">
-                        <div class="txt articleTitle">Platzhalter</div>
-                        <div class="txt articleInfo">Platzhalter Platzhalter Platzhalter Platzhalter</div>
-                    </div>
-                </div>
+                </div> -->
                 
-                <div class="arrowbutton right arButOwnItem">
+                <div class="arrowbutton right arButOwnItem" id="arrowRight_OwnArticle">
                         <button>
                             <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.34692 20.117C-0.319749 18.5774 -0.319743 14.7284 2.34692 13.1888L24.0969 0.631451C26.7636 -0.908154 30.0969 1.01635 30.0969 4.09555L30.0969 29.2103C30.0969 32.2895 26.7636 34.214 24.0969 32.6744L2.34692 20.117Z" fill="black"/>
@@ -124,9 +124,9 @@
             </div>
 
             <div id="price_tolerance">
-                <label for="price_tolerance_label">Preis Toleranz [CHF.-]:</label>
+                <label for="price_tolerance_input">Price-Tolerance [CHF.-]:</label>
                     <form>
-                        <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="100" value="1">
+                        <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="1000" value="100">
                     </form>
             </div>
             
@@ -134,7 +134,8 @@
     </div>
     <!-- <script src="navbar.js"></script> -->
     <script type="module" src="./SupaBaseClient/supabase.js"></script>
-    <script type="module" src="./javasript_dashboard.js"></script>
+    <script type="module" src="./js/javasript_dashboard.js"></script>
+    <script type="module" src="./js/navbar.js"></script>
 </body>
 
 </html>

@@ -184,14 +184,26 @@ input {
   align-items: center;
   gap: 20px;
   border-radius: 8px;
+}
+
+#ownArticle_image{
   background-image: url("../img/articles/Velo_65.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-#matchedItem {
-  
+#otherArticle_image{
+  background-image: url("../img/articles/Velo_65.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.articleTitle {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .articleTitle, .articleInfo {
@@ -215,6 +227,11 @@ input {
   height: var(--heightTrashIMG);
   cursor: pointer;
 }
+
+.trashIMG:hover {
+  color: red;
+}
+
 
 .arrowbutton {
   display: flex;
@@ -276,7 +293,7 @@ input {
   width: 90px;
   height: 90px;
   padding: 8px;
-  background-color: white;
+  background-color: transparent;
 }
 
 .swap {
@@ -310,7 +327,6 @@ input {
 }
 
 .navbar .logo-img {
-  height: 120px;
   width: 180px;
 }
 
