@@ -52,6 +52,8 @@ body {
   height: inherit;
   line-height: inherit;
   padding: 0 50px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .navbar ul li {
@@ -75,86 +77,91 @@ body {
 
 @media (max-width: 991px) {
   .navbar ul {
-      padding: 0 10px;
+    padding: 0 10px;
   }
 
   .navbar ul li a {
-      min-width: 100px;
-      padding: 0 20px;
+    min-width: 100px;
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 767px) {
   .navbar {
-      padding: 0;
+    padding: 0;
   }
 
   .navbar ul {
-      width: 100%;
-      padding: 0;
-      background-color: rgba(0, 0, 0, 0.9);
-      height: auto;
-      max-height: 100vh;
-      overflow: hidden;
-      transition: all ease-in-out 0.3s;
+    width: 100%;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    max-height: 0;
+    overflow: hidden;
+    transition: all ease-in-out 0.3s;
   }
 
   .navbar ul.open {
-      max-height: 100vh;
+    max-height: 100vh;
   }
 
   .navbar ul li {
-      width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
   }
 
   .navbar ul li a {
-      padding: 0;
+    padding: 0;
   }
 
   .navbar .navbar-toggler {
-      display: block;
-      position: absolute;
-      height: 40px;
-      top: 20px;
-      right: 20px;
-      background-color: transparent;
-      color: #fff;
-      border: 3px solid #fff;
-      outline: none;
-      padding: 0 5px;
-      cursor: pointer;
+    display: block;
+    position: absolute;
+    height: 40px;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: 3px solid #fff;
+    outline: none;
+    padding: 0 5px;
+    cursor: pointer;
   }
 
   .navbar .navbar-toggler span,
   .navbar .navbar-toggler span::before,
   .navbar .navbar-toggler span::after {
-      display: block;
-      content: '';
-      background-color: #fff;
-      height: 3px;
-      width: 28px;
-      border-radius: 4px;
-      transition: all ease-in-out 0.3s;
+    display: block;
+    content: '';
+    background-color: #fff;
+    height: 3px;
+    width: 28px;
+    border-radius: 4px;
+    transition: all ease-in-out 0.3s;
   }
 
   .navbar .navbar-toggler span::before {
-      transform: translateY(-8px);
+    transform: translateY(-8px);
   }
 
   .navbar .navbar-toggler span::after {
-      transform: translateY(5px);
+    transform: translateY(5px);
   }
 
   .navbar .navbar-toggler.open-navbar-toggler span {
-      background-color: transparent;
+    background-color: transparent;
   }
 
   .navbar .navbar-toggler.open-navbar-toggler span::before {
-      transform: translateY(0px) rotate(45deg);
+    transform: translateY(0px) rotate(45deg);
   }
 
   .navbar .navbar-toggler.open-navbar-toggler span::after {
-      transform: translateY(-3px) rotate(-45deg);
+    transform: translateY(-3px) rotate(-45deg);
+  }
+
+  @media (max-width: 500px) {
+    .navbar ul li {
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
   }
 }
