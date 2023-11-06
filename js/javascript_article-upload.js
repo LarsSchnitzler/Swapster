@@ -64,7 +64,13 @@ async function uploadArticle(bucketName) {
 document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {window.location.reload();});
 
 document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
+    document.getElementById('article-Upload_Inputs').disabled = true;
     event.preventDefault();
     await uploadArticle('article_img');
-/*     window.location.reload();
- */});
+    document.getElementById('file-upload').value = null;
+    document.getElementById('articleTitle').value = "";
+    document.getElementById('articleCaption').value = "";
+    document.getElementById('estValue').value = "";
+    document.getElementById('article-Upload_Inputs').disabled = false;
+    window.location.reload();
+});
