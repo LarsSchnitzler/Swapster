@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swapster_UserProfile</title>
     <link rel="stylesheet" href="/css/css_userprofile.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
 
 <body>
@@ -18,7 +20,6 @@
           <li><a href="./dashboard.html" class="txt link">Dashboard</a></li>
           <li><a href="./articleUpload.html" class="txt link" id="articleUpload">Article-Upload</a></li>
           <li><a href="./landingPage.html" class="txt link" id="logout">Log-out</a></li>
-          <!--<li><a href="#javascript"></a></li>-->
         </ul>
         <button class="navbar-toggler">
           <span class="txt"></span>
@@ -32,22 +33,23 @@
           <img src="./img/profilePictures/profile001.png" alt="profilePic">
         </div> -->
 
-        <div class="showProfile_profileInfo">
-          <div class="profileName">
-            <div class="txt">Vorname Nachname</div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M364.13 125.25L87 403l-23 45 44.99-23 277.76-277.13-22.62-22.62zM420.69 68.69l-22.62 22.62 22.62 22.63 22.62-22.63a16 16 0 000-22.62h0a16 16 0 00-22.62 0z"/></svg>
-          </div>
-          <div class="showProfile_dob">
-            <p class="txt">01.01.2000</p>
-          </div>
-          <div class="showProfile_emailAdress">
-            <p class="txt mailto">xy@xyz.ch</p>
-          </div>
-          <div class="showProfile_aboutme">
-            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-          </div>
+      <div class="showProfile_profileInfo">
+        <div class="profileName">
+            <div class="profileName_firstElement">
+              <button id="trashBin"><svg xmlns="http://www.w3.org/2000/svg" class="trashIMG" id="delete_button" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg></button>
+              <div class="txt" id="name"></div>
+              <button id="editPen"><svg xmlns="http://www.w3.org/2000/svg" id="editPenSVG" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256"><g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="translate(-55.64699,127.52787) rotate(-45) scale(8,8)"><path d="M23.90625,3.96875c-1.04687,0 -2.09375,0.40625 -2.90625,1.21875l-15.8125,15.8125l-0.0625,0.3125l-1.09375,5.5l-0.3125,1.46875l1.46875,-0.3125l5.5,-1.09375l0.3125,-0.0625l15.8125,-15.8125c1.625,-1.625 1.625,-4.1875 0,-5.8125c-0.8125,-0.8125 -1.85937,-1.21875 -2.90625,-1.21875zM23.90625,5.875c0.50391,0 1.01172,0.23047 1.5,0.71875c0.97266,0.97266 0.97266,2.02734 0,3l-0.71875,0.6875l-2.96875,-2.96875l0.6875,-0.71875c0.48828,-0.48828 0.99609,-0.71875 1.5,-0.71875zM20.3125,8.71875l2.96875,2.96875l-12.09375,12.09375c-0.65625,-1.28125 -1.6875,-2.3125 -2.96875,-2.96875zM6.9375,22.4375c1.19922,0.48438 2.14063,1.42578 2.625,2.625l-3.28125,0.65625z"></path></g></g></svg></button>
+            </div>
+            <div class="showProfile_dob">
+              <p class="txt" id="dob"></p>
+            </div>
+            <div class="showProfile_emailAdress">
+              <p class="txt mailto" id="email"></p>
+            </div>
+            <div class="showProfile_aboutme">
+              <p class="txt" id="aboutMe"></p>
+            </div>
         </div>
-
       </div>
 
       <div id="editProfile">
@@ -88,8 +90,9 @@
       
       </div>
     </div>
-
-    <script src="navbar.js"></script>
+    
 </body>
+
+<script type="module" src="./js/javascript_profile.js"></script>
 
 </html>

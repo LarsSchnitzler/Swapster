@@ -61,10 +61,16 @@ async function uploadArticle(bucketName) {
     }
 }
 
-document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {window.location.reload();});
+function clearInputs() {
+    document.getElementById('articleTitle').value = '';
+    document.getElementById('articleCaption').value = '';
+    document.getElementById('estValue').value = '';
+}
+
+document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {clearInputs();});
 
 document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
     event.preventDefault();
     await uploadArticle('article_img');
-/*     window.location.reload();
- */});
+    clearInputs();
+});

@@ -28,8 +28,8 @@ async function getMyArticles() {
 async function getOtherArticles(currentOwnArtObj, priceTolerance) {
     const lowerPriceBorder = currentOwnArtObj.price - priceTolerance;
     const upperPriceBorder = parseInt(currentOwnArtObj.price) + parseInt(priceTolerance);
-    console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
-    console.log(`upperPriceBorder: ${upperPriceBorder}`);
+    /* console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
+    console.log(`upperPriceBorder: ${upperPriceBorder}`); */
     try {
         const { data, error } = await supa
             .from("articles")
@@ -140,8 +140,9 @@ async function setArticle(index, parameter_articlesArray, parameter_divName) {
     }
 }
 
-function checkWether_curOthArt_wants_curOwnArt(parameter_ownArticleId, parameter_otherArticleId) {
-    if ('wishlist' in window) {	
+function checkWether_curOthArt_wants_curOwnArt() {
+    /* console.log("checkWether_curOthArt_wants_curOwnArt is being called"); */
+    if (wishlist !== null) {	
         const curOthArt_wants_curMyArt = wishlist.some(entry => entry.desiredArticle_id === ownArticles[index_ownArticles].id && entry.offeredArticle_id === otherArticles[index_otherArticles].id); /* (gibt es einen entry in wishlist wo der momentane OwnArt entsprich dem desiredArt) && (gibt es entry in wishlist wo der momentane OthArt dem angebotenenArtikel entspr.?) */
         
         if (curOthArt_wants_curMyArt) {
@@ -216,12 +217,19 @@ async function putArticleOnWishlist(parameter_offered, parameter_desired) {
     }
 }
 
-/* function configure_swapButton() { //true = matchState, false = putonWishlistState
-    const artMatch = checkWether_CurrentArticlesMatching();
-        if (artMatch === true) {
-            document.getElementById('swap_button').style.borderColor = match_color;
-        }
-} */
+function configure_swapButton(state) { //true = matchState, false = putonWishlistState
+    if (state === true) {
+        //styling
+        document.getElementById('swap_button').style.boxShadow = `0 0 60px ${match_color}`;
+        //set swapButton_State so that it can be used in eventlistener for swap_button
+        swapButton_State = true;
+    } else if (state === false) {
+        //styling
+        document.getElementById('swap_button').style.boxShadow = 'none';
+        //set swapButton_State so that it can be used in eventlistener for swap_button
+        swapButton_State = false;
+    }
+}
 
 function noArticlesFound(string_ownOrOtherArticles) {
     console.log(`No ${string_ownOrOtherArticles} articles found.`);
@@ -322,7 +330,7 @@ function noArticlesFound(string_ownOrOtherArticles) {
     };
 } */
 
-const wishlist = await getWishlist();
+let wishlist = await getWishlist();
 
 //OwnArticles
 
@@ -341,7 +349,8 @@ const wishlist = await getWishlist();
 
         
         document.getElementById('arrowRight_OwnArticle').addEventListener('click', async () => {
-            
+            console.log("arrowRight_OwnArticle clicked");
+
             //set next Article
             if (index_ownArticles < OwnArticles_MaxIndex) {
                 index_ownArticles++;
@@ -351,12 +360,14 @@ const wishlist = await getWishlist();
             await setArticle(index_ownArticles, ownArticles, 'ownArticle_image');
 
             //checkWether curOthArt wants curOwnArt
-            if ('otherArticles' in window){
-                const check_a = checkWether_curOthArt_wants_curOwnArt;
+            if (otherArticles !== null){
+                console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                const check_a = checkWether_curOthArt_wants_curOwnArt();
                 if (check_a === true) {
-                    /* configure_swapButton(true); */
+                    configure_swapButton(true);
                 } else {
-                    /* configure_swapButton(false); */
+                    configure_swapButton(false);
                 }
             }
             
@@ -364,7 +375,8 @@ const wishlist = await getWishlist();
         
         
         document.getElementById('arrowLeft_OwnArticle').addEventListener('click', async () => {
-            
+            console.log("arrowLeft_OwnArticle clicked");
+
             //set previous Article on left-arrow click
             if (index_ownArticles > 0) {
                 index_ownArticles--;
@@ -372,14 +384,16 @@ const wishlist = await getWishlist();
                 index_ownArticles = 0;
             }
             await setArticle(index_ownArticles, ownArticles, 'ownArticle_image');
-
+  
             //checkWether curOthArt wants curOwnArt
-            if ('otherArticles' in window){
-                const check_b = checkWether_curOthArt_wants_curOwnArt;
+            if (otherArticles !== null){
+                console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                const check_b = checkWether_curOthArt_wants_curOwnArt();
                 if (check_b === true) {
-                    /* configure_swapButton(true); */
+                    configure_swapButton(true);
                 } else {
-                    /* configure_swapButton(false); */
+                    configure_swapButton(false);
                 }
             }
 
@@ -402,6 +416,18 @@ const wishlist = await getWishlist();
         await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
         //set maxIndex for other articles
         OtherArticles_MaxIndex = otherArticles.length-1;
+    }
+
+    //checkWether curOthArt wants curOwnArt
+    if (otherArticles !== null){
+        console.log("checkWether_curOthArt_wants_curOwnArt");
+
+        const check_b = checkWether_curOthArt_wants_curOwnArt();
+        if (check_b === true) {
+            configure_swapButton(true);
+        } else {
+            configure_swapButton(false);
+        }
     }
 
     //Prepare OtherArticles-'Updater', which is the Eventlistener for price-tolerance-change
@@ -443,7 +469,7 @@ const wishlist = await getWishlist();
 
     //set next Article on right-arrow click
     document.getElementById('arrowRight_OtherArticle').addEventListener('click', async () => {
-        
+        console.log("arrowRight_OtherArticle clicked");
         //set next Article on right-arrow click
         if (index_otherArticles < OtherArticles_MaxIndex) {
             index_otherArticles++;
@@ -453,19 +479,22 @@ const wishlist = await getWishlist();
         await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
 
         //checkWether curOthArt wants curOwnArt
-        if ('otherArticles' in window){
-            const check_c = checkWether_curOthArt_wants_curOwnArt;
+        if (otherArticles !== null){
+            console.log("checkWether_curOthArt_wants_curOwnArt");
+
+            const check_c = checkWether_curOthArt_wants_curOwnArt();
             if (check_c === true) {
-                /* configure_swapButton(true); */
+                configure_swapButton(true);
             } else {
-                /* configure_swapButton(false); */
+                configure_swapButton(false);
             }
         }
     }); 
     
     //set previous Article on left-arrow click
     document.getElementById('arrowLeft_OtherArticle').addEventListener('click', async () => {
-        
+        console.log("arrowRight_OtherArticle clicked");
+
         //set previous Article on left-arrow click
         if (index_otherArticles > 0) {
             index_otherArticles--;
@@ -475,22 +504,34 @@ const wishlist = await getWishlist();
         await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
 
         //checkWether curOthArt wants curOwnArt
-        if ('otherArticles' in window){
-            const check_a = checkWether_curOthArt_wants_curOwnArt;
+        if (otherArticles !== null){
+            console.log("checkWether_curOthArt_wants_curOwnArt");
+
+            const check_a = checkWether_curOthArt_wants_curOwnArt();
             if (check_a === true) {
-                /* configure_swapButton(true); */
+                configure_swapButton(true);
             } else {
-                /* configure_swapButton(false); */
+                configure_swapButton(false);
             }
         }
     });
 
 document.getElementById('swap_button').addEventListener('click', async () => {
+    console.log(swapButton_State);
     if (swapButton_State === true) /* = matchState */ {
-        //go to userprofile
-    } else if (swapButton_State === false) /* = putonWishlistState */ {
-        //put article on wishlist
+
+        //add corresponding user_id to current otherArticle into URL-Parameter
+            const url = new URL('./userprofile.html', window.location.href);
+            const params = url.searchParams; //even if you know there are no search parameters in the URL, you still need to use url.searchParams to get a URLSearchParams object
+            params.append('otherUser', otherArticles[index_otherArticles].user_id);
+            /* console.log(url.toString()); */
+
+            window.location.href = url.toString(); //assigning the URL string to window.location.href will redirect the browser to the new page.
+
+    } else if (swapButton_State === false) /* = putonWishlist-State */ {
+        
         await putArticleOnWishlist(ownArticles[index_ownArticles].id, otherArticles[index_otherArticles].id);
+        wishlist = await getWishlist();
     }
 });
 

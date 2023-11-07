@@ -227,8 +227,47 @@ body {
   gap: 20px;
 }
 
+.profileName {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
 .profileName .txt{
   font-weight: 800;
+}
+
+#name {
+  font-family: "SF-Pro-Display_bold";
+  font-size: 1.6rem;
+}
+
+#editPen{
+  width: 28px;
+  height: 28px;
+  padding: 0px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#editPen svg{
+  width: 95%;
+  height: 95%;
+  padding: 0px;
+}
+
+.profileName_firstElement{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 #editProfile {
@@ -315,7 +354,27 @@ body {
 
 #editProfile_Cancel:active {
   background-color: var(--white);
-  border: 2px solid var(--black);
+  outline: 2px solid var(--black);
+}
+
+#trashBin {
+  width: 28px;
+  height: 28px;
+  padding: 0px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#trashBin svg {
+  width: 95%;
+  height: 95%;
+  padding: 0px;
+}
+
+#trashBin:hover svg {
+  fill: red;
 }
 
 /* Media Queries */
