@@ -1,6 +1,6 @@
 import { supa } from "../SupaBaseClient/supabase.js";
 import { authenticated_sendBack } from './javascript_helpers.js';
-import { logout } from './javascript_helpers.js';
+/* import { logout } from './javascript_helpers.js'; */
 
 const user = await authenticated_sendBack();
 
@@ -128,6 +128,44 @@ if (params.toString()) { // There are parameters in the URL
         document.getElementById('lName').value = '';
         document.getElementById('dob').value = '';
         document.getElementById('big-textarea').value = '';
+    });
+
+    //delete button click event
+    document.getElementById('trashBin').addEventListener('click', async () => {
+        //delete profile in profiles table
+        try {
+            const { data, error } = await supa
+                .from('profiles')
+                .delete()
+                .eq('id', user.id);
+
+            if (error) {
+                throw error;
+            } else {
+                console.log(data);
+            }
+            window.location.href = "/index.html";
+        } catch (error) {
+            console.error(`Error querying Supabase trying to delete profile: ${error.message}`);
+        }
+        //delete user in auth namespace: user table
+
+        //create admin client
+        const supaBaseAdmin = createClient('https://wovrufcmlvwhuegcwcif.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndvdnJ1ZmNtbHZ3aHVlZ2N3Y2lmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NjMxNzU0NywiZXhwIjoyMDExODkzNTQ3fQ.oedyBX6da84WcRtQ5XvalEuCzXFnqb8iSa-kZW26kvs', 
+        {
+            auth: {
+              autoRefreshToken: false,
+              persistSession: false
+            }
+        })
+
+        console.log('trying to delete user in auth namespace');
+
+        supaBaseAdmin.auth.deleteUser(user.id)
+            .then(response => console.log('User deleted:', response))
+            .catch(error => console.error('Error deleting user:', error))
+
+        authenticated_sendBack();
     });
 
 }

@@ -26,3 +26,13 @@ export async function authenticated() {
         return [authenticationStatus,'no user object'];
     }
 }
+
+export function logout() {
+    supa.auth.signOut()
+    .then(() => {
+      window.location.href = "/index.html"; 
+    })
+    .catch(error => {
+      console.error("Error logging out:", error);
+    });
+}

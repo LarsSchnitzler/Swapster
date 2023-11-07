@@ -65,6 +65,7 @@ function clearInputs() {
     document.getElementById('articleTitle').value = '';
     document.getElementById('articleCaption').value = '';
     document.getElementById('estValue').value = '';
+    document.getElementById('file-upload').value = '';
 }
 
 document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {clearInputs();});

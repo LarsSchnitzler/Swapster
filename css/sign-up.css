@@ -252,6 +252,10 @@ input[type="checkbox"]:checked {
   align-self: flex-start;
 }
 
+#rickroll {
+  display: inline; 
+}
+
 @media (max-width: 1240px) {
   .wrapper_halfVP.leftSide {
     display: none;

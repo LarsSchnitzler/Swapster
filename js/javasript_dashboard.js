@@ -2,7 +2,7 @@ import { supa } from "../SupaBaseClient/supabase.js";
 import { authenticated_sendBack } from './javascript_helpers.js';
 
 const user = await authenticated_sendBack();
-const queryRate_PriTolChange = 1000; //in ms
+const queryRate_PriTolChange = 500; //in ms
 const match_color = "#2E7985";
 let swapButton_State = false; //true = matchState, false = putonWishlistState
 
@@ -26,6 +26,7 @@ async function getMyArticles() {
 }
 
 async function getOtherArticles(currentOwnArtObj, priceTolerance) {
+
     const lowerPriceBorder = currentOwnArtObj.price - priceTolerance;
     const upperPriceBorder = parseInt(currentOwnArtObj.price) + parseInt(priceTolerance);
     /* console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
@@ -50,7 +51,8 @@ async function getOtherArticles(currentOwnArtObj, priceTolerance) {
 
         return(data);
 
-        } 
+    } 
+        
     catch (error){
         console.error('Error querying Supabase for OtherArticles: ', error.message);
     }
@@ -337,6 +339,7 @@ let wishlist = await getWishlist();
     //get own articles-array
     const ownArticles = await getMyArticles();
     let index_ownArticles = 0 ; //its global so that it can be used in the otherArticles-section
+    
     if (ownArticles.length === 0) {
         noArticlesFound("own");
     }
@@ -398,164 +401,162 @@ let wishlist = await getWishlist();
             }
 
         });
-    }
 
-//OtherArticles
+        //OtherArticles
 
-    //set index for other articles
-    let index_otherArticles = 0 ; 
+            //set index for other articles
+            let index_otherArticles = 0 ; 
 
-    //initialize otherArticles and set initial OtherArticle
-    const priceTolerance = document.getElementById('price_tolerance_input').value;
-    let otherArticles = await getOtherArticles(ownArticles[index_otherArticles], priceTolerance);
-    let OtherArticles_MaxIndex = 0;
-    
-    if (otherArticles === null) { 
-        noArticlesFound("other");
-    } else {
-        await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
-        //set maxIndex for other articles
-        OtherArticles_MaxIndex = otherArticles.length-1;
-    }
-
-    //checkWether curOthArt wants curOwnArt
-    if (otherArticles !== null){
-        console.log("checkWether_curOthArt_wants_curOwnArt");
-
-        const check_b = checkWether_curOthArt_wants_curOwnArt();
-        if (check_b === true) {
-            configure_swapButton(true);
-        } else {
-            configure_swapButton(false);
-        }
-    }
-
-    //Prepare OtherArticles-'Updater', which is the Eventlistener for price-tolerance-change
-        //set initial lastChangeTime
-        let lastChangeTime = new Date().getTime();
-
-    //get other articles-array again, when price tolerance changes
-    document.getElementById('price_tolerance_input').addEventListener('change', async () => {
-        const currentTime = new Date().getTime();
-        if (currentTime - lastChangeTime >= queryRate_PriTolChange) { //so that it has been at least 1 second since the last change of price tolerance until we query again.
-            
-            //get other_articles-array again
+            //initialize otherArticles and set initial OtherArticle
             const priceTolerance = document.getElementById('price_tolerance_input').value;
-            otherArticles = await getOtherArticles(ownArticles[index_ownArticles], priceTolerance); //overwrite otherArticles with new array
-
-            if (otherArticles !== null) {
-                //set index, so that the index is reset to 0
-                index_otherArticles = 0;
-                
-                //set maxIndex for other articles again
-                OtherArticles_MaxIndex = otherArticles.length-1;
-                
-                //set initial OtherArticle
-                await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
-                                
-            } else {
+            let otherArticles = await getOtherArticles(ownArticles[index_otherArticles], priceTolerance);
+            let OtherArticles_MaxIndex = 0;
+            
+            if (otherArticles === null) { 
                 noArticlesFound("other");
-            }
-
-            // Update the last change time
-            lastChangeTime = currentTime;
-        }
-        else {
-            const currentTime = new Date().getTime();
-            lastChangeTime = currentTime;
-            console.log("last Price-tolerance Change too recent, so no query has been sent.");
-        }
-    });
-
-    //set next Article on right-arrow click
-    document.getElementById('arrowRight_OtherArticle').addEventListener('click', async () => {
-        console.log("arrowRight_OtherArticle clicked");
-        //set next Article on right-arrow click
-        if (index_otherArticles < OtherArticles_MaxIndex) {
-            index_otherArticles++;
-        } else {
-            index_otherArticles = 0;
-        }
-        await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
-
-        //checkWether curOthArt wants curOwnArt
-        if (otherArticles !== null){
-            console.log("checkWether_curOthArt_wants_curOwnArt");
-
-            const check_c = checkWether_curOthArt_wants_curOwnArt();
-            if (check_c === true) {
-                configure_swapButton(true);
             } else {
-                configure_swapButton(false);
+                await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
+                OtherArticles_MaxIndex = otherArticles.length-1;
+
+                //checkWether curOthArt wants curOwnArt
+                console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                const check_b = checkWether_curOthArt_wants_curOwnArt();
+                if (check_b === true) {
+                    configure_swapButton(true);
+                } else {
+                    configure_swapButton(false);
+                }
             }
-        }
-    }); 
-    
-    //set previous Article on left-arrow click
-    document.getElementById('arrowLeft_OtherArticle').addEventListener('click', async () => {
-        console.log("arrowRight_OtherArticle clicked");
 
-        //set previous Article on left-arrow click
-        if (index_otherArticles > 0) {
-            index_otherArticles--;
-        } else {
-            index_otherArticles = 0;
-        }
-        await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
+            //Prepare OtherArticles-'Updater', which is the Eventlistener for price-tolerance-change
+                //set initial lastChangeTime
+                let lastChangeTime = new Date().getTime();
 
-        //checkWether curOthArt wants curOwnArt
-        if (otherArticles !== null){
-            console.log("checkWether_curOthArt_wants_curOwnArt");
+            //get other articles-array again, when price tolerance changes
+            document.getElementById('price_tolerance').addEventListener('submit', async (event) => {event.preventDefault();});
+            document.getElementById('price_tolerance_input').addEventListener('change', async () => {
+                const currentTime = new Date().getTime();
+                if (currentTime - lastChangeTime >= queryRate_PriTolChange) { //so that it has been at least 1 second since the last change of price tolerance until we query again.
+                    
+                    //get other_articles-array again
+                    const priceTolerance = document.getElementById('price_tolerance_input').value;
+                    otherArticles = await getOtherArticles(ownArticles[index_ownArticles], priceTolerance); //overwrite otherArticles with new array
 
-            const check_a = checkWether_curOthArt_wants_curOwnArt();
-            if (check_a === true) {
-                configure_swapButton(true);
+                    if (otherArticles !== null) {
+                        //set index, so that the index is reset to 0
+                        index_otherArticles = 0;
+                        
+                        //set maxIndex for other articles again
+                        OtherArticles_MaxIndex = otherArticles.length-1;
+                        
+                        //set initial OtherArticle
+                        await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
+                                        
+                    } else {
+                        noArticlesFound("other");
+                    }
+
+                    // Update the last change time
+                    lastChangeTime = currentTime;
+                }
+                else {
+                    const currentTime = new Date().getTime();
+                    lastChangeTime = currentTime;
+                    console.log("last Price-tolerance Change too recent, so no query has been sent.");
+                }
+            });
+
+            //set next Article on right-arrow click
+            document.getElementById('arrowRight_OtherArticle').addEventListener('click', async () => {
+                console.log("arrowRight_OtherArticle clicked");
+                //set next Article on right-arrow click
+                if (index_otherArticles < OtherArticles_MaxIndex) {
+                    index_otherArticles++;
+                } else {
+                    index_otherArticles = 0;
+                }
+                await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
+
+                //checkWether curOthArt wants curOwnArt
+                if (otherArticles !== null){
+                    console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                    const check_c = checkWether_curOthArt_wants_curOwnArt();
+                    if (check_c === true) {
+                        configure_swapButton(true);
+                    } else {
+                        configure_swapButton(false);
+                    }
+                }
+            }); 
+            
+            //set previous Article on left-arrow click
+            document.getElementById('arrowLeft_OtherArticle').addEventListener('click', async () => {
+                console.log("arrowRight_OtherArticle clicked");
+
+                //set previous Article on left-arrow click
+                if (index_otherArticles > 0) {
+                    index_otherArticles--;
+                } else {
+                    index_otherArticles = 0;
+                }
+                await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
+
+                //checkWether curOthArt wants curOwnArt
+                if (otherArticles !== null){
+                    console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                    const check_a = checkWether_curOthArt_wants_curOwnArt();
+                    if (check_a === true) {
+                        configure_swapButton(true);
+                    } else {
+                        configure_swapButton(false);
+                    }
+                }
+            });
+
+        document.getElementById('swap_button').addEventListener('click', async () => {
+            /* console.log(swapButton_State); */
+            if (swapButton_State === true) /* = matchState */ {
+
+                //add corresponding user_id to current otherArticle into URL-Parameter
+                    const url = new URL('./userprofile.html', window.location.href);
+                    const params = url.searchParams; //even if you know there are no search parameters in the URL, you still need to use url.searchParams to get a URLSearchParams object
+                    params.append('otherUser', otherArticles[index_otherArticles].user_id);
+                    /* console.log(url.toString()); */
+
+                    window.location.href = url.toString(); //assigning the URL string to window.location.href will redirect the browser to the new page.
+
+            } else if (swapButton_State === false) /* = putonWishlist-State */ {
+                
+                await putArticleOnWishlist(ownArticles[index_ownArticles].id, otherArticles[index_otherArticles].id);
+                wishlist = await getWishlist();
+            }
+        });
+
+        //delete article from articles-table
+        document.getElementById('delete_button').addEventListener('click', async () => {
+            if (ownArticles.length <= 0) {
+                return;
             } else {
-                configure_swapButton(false);
+                const articleId = ownArticles[index_ownArticles].id;
+                try {
+                    const { data, error } = await supa
+                        .from("articles")
+                        .delete()
+                        .match({ id: articleId });
+            
+                    if (error) {
+                        throw error;
+                    }
+                    /* console.log(data); */
+                    } 
+                catch (error){
+                    console.error('Error querying Supabase for deleting article: ', error.message);
+                }
+                
+                window.location.reload();    
             }
-        }
-    });
-
-document.getElementById('swap_button').addEventListener('click', async () => {
-    console.log(swapButton_State);
-    if (swapButton_State === true) /* = matchState */ {
-
-        //add corresponding user_id to current otherArticle into URL-Parameter
-            const url = new URL('./userprofile.html', window.location.href);
-            const params = url.searchParams; //even if you know there are no search parameters in the URL, you still need to use url.searchParams to get a URLSearchParams object
-            params.append('otherUser', otherArticles[index_otherArticles].user_id);
-            /* console.log(url.toString()); */
-
-            window.location.href = url.toString(); //assigning the URL string to window.location.href will redirect the browser to the new page.
-
-    } else if (swapButton_State === false) /* = putonWishlist-State */ {
-        
-        await putArticleOnWishlist(ownArticles[index_ownArticles].id, otherArticles[index_otherArticles].id);
-        wishlist = await getWishlist();
+        });
     }
-});
-
-//delete article from articles-table
-document.getElementById('delete_button').addEventListener('click', async () => {
-    if (ownArticles.length <= 0) {
-        return;
-    } else {
-        const articleId = ownArticles[index_ownArticles].id;
-        try {
-            const { data, error } = await supa
-                .from("articles")
-                .delete()
-                .match({ id: articleId });
-    
-            if (error) {
-                throw error;
-            }
-            /* console.log(data); */
-            } 
-        catch (error){
-            console.error('Error querying Supabase for deleting article: ', error.message);
-        }
-        
-        window.location.reload();    
-    }
-});

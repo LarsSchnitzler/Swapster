@@ -1,31 +1,8 @@
 import { supa } from "../SupaBaseClient/supabase.js";
+import { logout } from './javascript_helpers.js';
 
-const navbarToggler = document.querySelector(".navbar-toggler");
-const navbarMenu = document.querySelector(".navbar ul");
-const navbarLinks = document.querySelectorAll(".navbar a");
 const logoutButton = document.getElementById("logout");
 
-navbarToggler.addEventListener("click", navbarTogglerClick);
-
-function navbarTogglerClick() {
-  navbarToggler.classList.toggle("open-navbar-toggler");
-  navbarMenu.classList.toggle("open");
-}
-
-navbarLinks.forEach(elem => elem.addEventListener("click", navbarLinkClick));
-
-function navbarLinkClick() {
-  if(navbarMenu.classList.contains("open")) {
-    navbarToggler.click();
-  }
-}
-
 logoutButton.addEventListener("click", () => {
-  supa.auth.signOut()
-    .then(() => {
-      window.location.href = "/index.html"; 
-    })
-    .catch(error => {
-      console.error("Error logging out:", error);
-    });
+  logout();
 });

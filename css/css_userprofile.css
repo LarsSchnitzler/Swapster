@@ -241,9 +241,13 @@ body {
   font-weight: 800;
 }
 
+.profileName > * {
+  height: fit-content;
+}
+
 #name {
   font-family: "SF-Pro-Display_bold";
-  font-size: 1.6rem;
+  font-size: rem;
 }
 
 #editPen{

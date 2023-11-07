@@ -60,17 +60,13 @@
             <div class="horizontal_line"></div>
 
             <button class="swap_button" id="swap_button">
-                <div class="txt amount" id="price_otherArticles">
-                    CHF 20.-
-                </div>
+                <div class="txt amount" id="price_otherArticles"></div>
 
                 <div class="swap">
                     <img src="/img/logo/swapsterLogo_renders_justTheS/Swapster_justTheS.png" alt="Swap Button">
                 </div>
 
-                <div class="txt amount" id="price_ownArticles">
-                    CHF 18.-
-                </div>
+                <div class="txt amount" id="price_ownArticles"></div>
             </button>
 
             <div class="horizontal_line"></div>
@@ -92,8 +88,8 @@
                 <div class="articleIMG-wrapper2_typeOwnArticle">
                     <svg xmlns="http://www.w3.org/2000/svg" class="trashIMG" id="delete_button" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                     <div class="articleIMG-wrapper1" id="ownArticle_image">
-                        <div class="txt articleTitle" id="ownArticle_title">Platzhalter</div>
-                        <div class="txt articleInfo" id="ownArticle_caption">Platzhalter Platzhalter Platzhalter Platzhalter</div>
+                        <div class="txt articleTitle" id="ownArticle_title"></div>
+                        <div class="txt articleInfo" id="ownArticle_caption"></div>
                     </div>
                 </div>
 
@@ -123,12 +119,12 @@
                 </div>
             </div>
 
-            <div id="price_tolerance">
+            
+            <form id="price_tolerance">
                 <label for="price_tolerance_input">Price-Tolerance [CHF.-]:</label>
-                    <form>
-                        <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="1000" value="100">
-                    </form>
-            </div>
+                <input type="number" id="price_tolerance_input" name="price_tolerance_input" min="0" max="1000" value="100">    
+            </form>
+            
             
         </div>
     </div>
