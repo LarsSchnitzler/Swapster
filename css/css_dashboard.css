@@ -474,17 +474,3 @@ input {
     /* transform: translateY(-3px) scale(0.75) rotate(-45deg); */
   }
 }
-
-@media (max-width: 810px) {
-  #ownItems_content-wrapper {
-    transform: scale(0.8); 
-  }
-}
-
-@media (max-width: 652px) {
-  #ownItems_content-wrapper {
-    transform: scale(0.6); 
-  }
-}
-
-

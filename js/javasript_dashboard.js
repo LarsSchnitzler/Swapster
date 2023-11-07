@@ -26,15 +26,14 @@ async function getMyArticles() {
 
 async function getOtherArticles(currentOwnArtObj, priceTolerance) {
     const lowerPriceBorder = currentOwnArtObj.price - priceTolerance;
-    const upperPriceBorder = currentOwnArtObj.price + priceTolerance;
-    /* console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
-    console.log(`upperPriceBorder: ${upperPriceBorder}`); */
+    const upperPriceBorder = parseInt(currentOwnArtObj.price) + parseInt(priceTolerance);
+    console.log(`lowerPriceBorder: ${lowerPriceBorder}`);
+    console.log(`upperPriceBorder: ${upperPriceBorder}`);
     try {
         const { data, error } = await supa
             .from("articles")
             .select("*")
             .neq("user_id", user.id)
-            .neq("id", currentOwnArtObj.id )
             .gte("price", lowerPriceBorder)
             .lte("price", upperPriceBorder);
 
@@ -44,7 +43,9 @@ async function getOtherArticles(currentOwnArtObj, priceTolerance) {
         if (data.length === 0) {
             return null;
         }
+        console.log(data);
         return(data);
+
         } 
     catch (error){
         console.error('Error querying Supabase for OtherArticles: ', error.message);
@@ -285,7 +286,9 @@ function noArticlesFound(string_ownOrOtherArticles) {
             await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
 
             //check wether new articles are matching
+            if(otherArticles !== null) { //so that no error occurs when no articles are found
             const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+            }
         }); 
         
         //set previous Article on left-arrow click
@@ -299,10 +302,12 @@ function noArticlesFound(string_ownOrOtherArticles) {
             await setArticle(indexObj_ownArticles, ownArticles, 'ownArticle_image');
 
             //check wether new articles are matching
+            if(otherArticles !== null) { //so that no error occurs when no articles are found
             const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
             if (artMatch === true) {
                 document.getElementById('swap_button').style.borderColor = match_color;
             }
+        }
         });
     }
 
@@ -345,6 +350,7 @@ function noArticlesFound(string_ownOrOtherArticles) {
             
             //get other_articles-array
             const priceTolerance = document.getElementById('price_tolerance_input').value;
+            console.log(`priceTolerance: ${priceTolerance}`);
             otherArticles = await getOtherArticles(ownArticles[indexObj_ownArticles], priceTolerance); //overwrite otherArticles with new array
             if (otherArticles !== null) { //so that no error occurs when no articles are found
                 await setArticle(indexObj_otherArticles, otherArticles, 'otherArticle_image');
@@ -405,6 +411,12 @@ function noArticlesFound(string_ownOrOtherArticles) {
 document.getElementById('swap_button').addEventListener('click', async () => {
     //put article on wishlist
     await putArticleOnWishlist(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+    const artMatch = checkWether_CurrentArticlesMatching(ownArticles[indexObj_ownArticles].id, otherArticles[indexObj_otherArticles].id);
+    if (artMatch === true) {
+        console.log('its a match!');
+        window.location.href = "./view-profile.html?otheruser=" + otherArticles[indexObj_otherArticles].user_id + "&ownproduct=" + ownArticles[indexObj_ownArticles].id + "&otherproduct=" + otherArticles[indexObj_otherArticles].id;
+    }
+
 });
 
 //delete article from articles-table
