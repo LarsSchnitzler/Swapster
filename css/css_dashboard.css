@@ -187,14 +187,14 @@ input {
 }
 
 #ownArticle_image{
-  background-image: url("../img/articles/Velo_65.png");
+  background-image: url("../img/elements/blueGradient.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #otherArticle_image{
-  background-image: url("../img/articles/Velo_65.png");
+  background-image: url("../img/elements/blueGradient.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
