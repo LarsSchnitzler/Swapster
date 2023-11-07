@@ -235,6 +235,34 @@ body {
   font-weight: 800;
 }
 
+/* Edit Button */
+
+.edit-button {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Create space between items */
+  gap: 10px; /* Adjust the gap between text and button as needed */
+}
+
+.button_style {
+  appearance: none;
+  background-color: var(--white);
+  border: 2px solid var(--black);
+  padding: 0px 10px; /* Adjust the padding as needed to make the button smaller */
+  font-size: 14px; /* Adjust the font size to make the text smaller */
+}
+
+.button_style:hover {
+  background-color: #555; /* Darker background color on hover */
+}
+
+.button_style svg {
+  fill: #000000; /* SVG fill color for the icon */
+  height: 24px;
+  width: 24px;
+}
+
+
 
 #bold {
   font-weight: bold;
