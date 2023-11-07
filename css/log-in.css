@@ -176,7 +176,6 @@ button:active {
 @media (max-width: 767px) {
   .wrapper_sign-in {
     flex-direction: column;
-    padding: 20px;
   }
 
   .wrapper_halfVP {
