@@ -68,10 +68,57 @@ function clearInputs() {
     document.getElementById('file-upload').value = '';
 }
 
+function InputValidation() {
+    const inputTitle = document.getElementById('articleTitle').value;
+    const inputCaption = document.getElementById('articleCaption').value;
+    const inputPrice = document.getElementById('estValue').value;
+    const inputImg = document.getElementById('file-upload').value;
+
+    if (inputTitle === '' || inputCaption === '' || inputPrice === '' || inputImg === '') {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {clearInputs();});
 
 document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
     event.preventDefault();
+    if (!InputValidation()) {
+        //show error message in div
+        let newDiv = document.createElement('div');
+
+        newDiv.className = 'txt';
+
+        newDiv.textContent = 'Please fill out all fields.';
+
+        newDiv.style.color = 'red';
+
+        // Add a transition to the opacity
+        newDiv.style.transition = 'opacity 2s';
+        
+        document.getElementById('article-Upload').appendChild(newDiv);
+
+        // Wait for 2 seconds
+        setTimeout(function() {
+            // Start the fade out
+            newDiv.style.opacity = '0';
+
+            // Wait for the transition to finish and then remove the div
+            setTimeout(function() {
+                newDiv.parentNode.removeChild(newDiv);
+            }, 500); // the duration of the fade out
+        }, 2000); // the delay before the fade out starts
+
+        return;
+    }
     await uploadArticle('article_img');
     clearInputs();
+});
+
+document.getElementById('estValue').addEventListener('input', function(event) {
+    if (!Number.isInteger(Number(event.target.value))) {
+        event.target.value = '';
+    }
 });
