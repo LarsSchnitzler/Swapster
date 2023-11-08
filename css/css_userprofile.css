@@ -233,7 +233,7 @@ body {
 }
 
 .profileName {
-  width: 500px;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,17 +246,18 @@ body {
   margin: 0 10vw 0 10vw;
 }
 
-.profileName .txt{
-  font-weight: 800;
-}
-
 .profileName > * {
   height: fit-content;
 }
 
 #name {
   font-family: "SF-Pro-Display_bold";
-  font-size: rem;
+  font-size: 1.6rem;
+}
+
+.titleDiv{
+  align-content: center;
+  justify-content: center;
 }
 
 #editPen{

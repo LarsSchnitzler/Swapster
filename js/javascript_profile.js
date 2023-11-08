@@ -48,6 +48,16 @@ let edit_toggleState = false;
 document.getElementById('editProfile').style.display = 'none';
 
 if (params.toString()) { // There are parameters in the URL
+    //make new Div for Title
+    const titleDiv = document.createElement('div');
+    titleDiv.classList.add('txt');
+    titleDiv.classList.add('title2');
+    titleDiv.textContent = 'Contact this user to trade:';
+    titleDiv.style.marginBottom = '1rem';
+    const parentDiv = document.getElementById('profileInfo');
+    console.log(parentDiv);
+    parentDiv.prepend(titleDiv);
+
     //get Url parameters
     const profile_id = params.get('otherUser');
 
@@ -70,6 +80,8 @@ if (params.toString()) { // There are parameters in the URL
     document.getElementById('editPen').style.display = 'none';
     document.getElementById('trashBin').style.display = 'none';
 } else { // There are no parameters in the URL -> meaning it's the user's own profile
+    //hide editProfile section FOR NOW
+    document.getElementById('trashBin').style.display = 'none';
 
     //get profile data
     const profile = await getProfileData(user.id);
@@ -130,7 +142,7 @@ if (params.toString()) { // There are parameters in the URL
         document.getElementById('big-textarea').value = '';
     });
 
-    //delete button click event
+/*     //delete button click event
     document.getElementById('trashBin').addEventListener('click', async () => {
         //delete profile in profiles table
         try {
@@ -166,6 +178,8 @@ if (params.toString()) { // There are parameters in the URL
             .catch(error => console.error('Error deleting user:', error))
 
         authenticated_sendBack();
-    });
+    }); */
+
+    
 
 }

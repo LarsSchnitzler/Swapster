@@ -239,7 +239,7 @@ function noArticlesFound(string_ownOrOtherArticles) {
         const parentElement = document.getElementById('ownArticle_image');
 
     //set title and caption of ownArticle
-        const title = "No own articles yet.";
+        const title = "No own articles.";
         const caption = "Got to Article-Upload to upload articles.";
 
         const titleElement = parentElement.querySelector('.articleTitle');

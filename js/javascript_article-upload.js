@@ -35,10 +35,11 @@ async function uploadArticle(bucketName) {
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
 
-        const timestamp = Date.now();
-        console.log(timestamp);
+        const randomNumber = Math.floor(Math.random() * 10000000000000);
+        console.log(randomNumber);
 
-        const newFile = new File([file], timestamp, { type: file.type });
+        const newFileName = `${randomNumber}`;
+        const newFile = new File([file], newFileName, { type: file.type });
 
         const filePath = `uploads/${newFile.name}`;
         
@@ -74,4 +75,10 @@ document.getElementById('article-Upload_Inputs').addEventListener('submit', asyn
     event.preventDefault();
     await uploadArticle('article_img');
     clearInputs();
+});
+
+document.getElementById('estValue').addEventListener('input', function() {
+    if (!Number.isInteger(Number(this.value))) {
+        this.value = '';
+    }
 });

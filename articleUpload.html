@@ -51,12 +51,12 @@
           <div class="Article_PropertyInputs">
             <div class="inputgroup">
               <label class="txt label" for="fName">Article Name:</label>
-              <input class="input" type="text" id="articleTitle" name="fName">
+              <input class="input" type="text" id="articleTitle" name="fName" maxlength="40">
             </div>
 
             <div class="inputgroup">
               <label class="txt label" for="lName">Clarification if necessary:</label>
-              <input class="input" type="text" id="articleCaption" name="lName">
+              <input class="input" type="text" id="articleCaption" name="lName" maxlength="200">
             </div>
 
             <div class="inputgroup">
@@ -69,6 +69,7 @@
       
     </div>
 
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
     <script type="module" src="./SupaBaseClient/supabase.js"></script>
     <script type="module" src="./js/javascript_article-upload.js"></script>
     <script type="module" src="./js/navbar.js"></script>
