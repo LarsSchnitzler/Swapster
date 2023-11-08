@@ -142,7 +142,7 @@ async function setArticle(index, parameter_articlesArray, parameter_divName) {
     }
 }
 
-function checkWether_curOthArt_wants_curOwnArt() {
+function checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles) {
     /* console.log("checkWether_curOthArt_wants_curOwnArt is being called"); */
     if (wishlist !== null) {	
         const curOthArt_wants_curMyArt = wishlist.some(entry => entry.desiredArticle_id === ownArticles[index_ownArticles].id && entry.offeredArticle_id === otherArticles[index_otherArticles].id); /* (gibt es einen entry in wishlist wo der momentane OwnArt entsprich dem desiredArt) && (gibt es entry in wishlist wo der momentane OthArt dem angebotenenArtikel entspr.?) */
@@ -366,7 +366,7 @@ let wishlist = await getWishlist();
             if (otherArticles !== null){
                 console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                const check_a = checkWether_curOthArt_wants_curOwnArt();
+                const check_a = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_ownArticles);
                 if (check_a === true) {
                     configure_swapButton(true);
                 } else {
@@ -392,7 +392,7 @@ let wishlist = await getWishlist();
             if (otherArticles !== null){
                 console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                const check_b = checkWether_curOthArt_wants_curOwnArt();
+                const check_b = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
                 if (check_b === true) {
                     configure_swapButton(true);
                 } else {
@@ -412,7 +412,7 @@ let wishlist = await getWishlist();
             let otherArticles = await getOtherArticles(ownArticles[index_otherArticles], priceTolerance);
             let OtherArticles_MaxIndex = 0;
             
-            if (otherArticles === null) { 
+            if (typeof(otherArticles) === "undefined" || otherArticles === null || otherArticles.length === 0) {
                 noArticlesFound("other");
             } else {
                 await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
@@ -421,7 +421,7 @@ let wishlist = await getWishlist();
                 //checkWether curOthArt wants curOwnArt
                 console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                const check_b = checkWether_curOthArt_wants_curOwnArt();
+                const check_b = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
                 if (check_b === true) {
                     configure_swapButton(true);
                 } else {
@@ -482,7 +482,7 @@ let wishlist = await getWishlist();
                 if (otherArticles !== null){
                     console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                    const check_c = checkWether_curOthArt_wants_curOwnArt();
+                    const check_c = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
                     if (check_c === true) {
                         configure_swapButton(true);
                     } else {
@@ -507,7 +507,7 @@ let wishlist = await getWishlist();
                 if (otherArticles !== null){
                     console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                    const check_a = checkWether_curOthArt_wants_curOwnArt();
+                    const check_a = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
                     if (check_a === true) {
                         configure_swapButton(true);
                     } else {

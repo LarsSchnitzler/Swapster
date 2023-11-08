@@ -6,6 +6,7 @@
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
   --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
   --blue_fromFigma: #2E7985;
+  --yellow_fromFigma: #F2C94C;
 
   --heightNavbar: 120px;
   --gap_articleIMG-wrapper2: 20px;

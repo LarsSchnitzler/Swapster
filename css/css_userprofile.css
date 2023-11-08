@@ -41,6 +41,12 @@ p {
   padding: 0;
 }
 
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .txt {
   font-family: "SF-Pro-Display_regular", Helvetica;
   font-size: 1rem;
@@ -147,14 +153,14 @@ body {
 }
 
 .navbar {
-  box-sizing: border-box; /* otherwise width will do funny things */
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #000;
   color: #fff;
   width: 100%;
-  height: var(--heightNavBar);
+  height: var(--heightNavbar);
   padding: 0 50px 0 50px;
   position: sticky;
   top: 0;
@@ -162,7 +168,6 @@ body {
 }
 
 .navbar .logo-img {
-  height: 120px;
   width: 180px;
 }
 

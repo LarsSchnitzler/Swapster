@@ -68,7 +68,7 @@ if (params.toString()) { // There are parameters in the URL
     //hide edit Profile section and editPen
     document.getElementById('editProfile').style.display = 'none';
     document.getElementById('editPen').style.display = 'none';
-
+    document.getElementById('trashBin').style.display = 'none';
 } else { // There are no parameters in the URL -> meaning it's the user's own profile
 
     //get profile data
@@ -157,7 +157,7 @@ if (params.toString()) { // There are parameters in the URL
               autoRefreshToken: false,
               persistSession: false
             }
-        })
+        });
 
         console.log('trying to delete user in auth namespace');
 
