@@ -100,88 +100,26 @@ if (params.toString()) { // There are parameters in the URL
 
     //save button click event
     document.getElementById('editProfile_Save').addEventListener('click', async () => {
-        
-        if (document.getElementById('fName').value !== '') {
-            try {
-                const first_name = document.getElementById('fName').value;
-    
-                const { data, error } = await supa
-                    .from('profiles')
-                    .update({ first_name })
-                    .eq('id', user.id);
-    
-                if (error) {
-                    throw error;
-                } else {
-                    console.log('fName updated successfully!');
-                }
-                
-            } catch (error) {
-                console.error(`Error querying Supabase trying to update fName: ${error.message}`);
-            }
-        }
-        
-        if (document.getElementById('lName').value !== '') {
-            try {
-                const last_name = document.getElementById('lName').value;
-    
-                const { data, error } = await supa
-                    .from('profiles')
-                    .update({ last_name })
-                    .eq('id', user.id);
-    
-                if (error) {
-                    throw error;
-                } else {
-                    console.log('lName updated successfully!');
-                }
-                
-            } catch (error) {
-                console.error(`Error querying Supabase trying to update lName: ${error.message}`);
-            }    
-        }
-        
-        if (document.getElementById('dob').value !== '') {
-            try {
-                const date_of_birth = document.getElementById('dob').value;
-    
-                const { data, error } = await supa
-                    .from('profiles')
-                    .update({ date_of_birth })
-                    .eq('id', user.id);
-    
-                if (error) {
-                    throw error;
-                } else {
-                    console.log('dob updated successfully!');
-                }
-                
-            } catch (error) {
-                console.error(`Error querying Supabase trying to update dob: ${error.message}`);
-            }
-        }
+        try {
+            const first_name = document.getElementById('fName').value;
+            const last_name = document.getElementById('lName').value;
+            const date_of_birth = document.getElementById('dob').value;
+            const aboutMe = document.getElementById('big-textarea').value;
 
-        if (document.getElementById('big-textarea').value !== '') {
-            try {
-                const aboutMe = document.getElementById('big-textarea').value;
-    
-                const { data, error } = await supa
-                    .from('profiles')
-                    .update({ aboutMe })
-                    .eq('id', user.id);
-    
-                if (error) {
-                    throw error;
-                } else {
-                    console.log('aboutMe updated successfully!');
-                }
-                
-            } catch (error) {
-                console.error(`Error querying Supabase trying to update aboutMe: ${error.message}`);
-            }
-        }
+            const { data, error } = await supa
+                .from('profiles')
+                .update({ first_name, last_name, date_of_birth, aboutMe })
+                .eq('id', user.id);
 
-        window.location.reload();
+            if (error) {
+                throw error;
+            } else {
+                console.log('Profile updated successfully!');
+            }
+            window.location.reload();
+        } catch (error) {
+            console.error(`Error querying Supabase trying to update profile: ${error.message}`);
+        }
     });
 
     //cancel button click event

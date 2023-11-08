@@ -146,10 +146,6 @@ body {
   margin: 0;
 }
 
-#logout {
-  color: var(--gray);
-}
-
 .navbar {
   box-sizing: border-box; /* otherwise width will do funny things */
   display: flex;
@@ -158,7 +154,7 @@ body {
   background-color: #000;
   color: #fff;
   width: 100%;
-  height: var(--heightNavbar);
+  height: var(--heightNavBar);
   padding: 0 50px 0 50px;
   position: sticky;
   top: 0;
@@ -166,6 +162,7 @@ body {
 }
 
 .navbar .logo-img {
+  height: 120px;
   width: 180px;
 }
 
@@ -254,7 +251,7 @@ body {
 
 #name {
   font-family: "SF-Pro-Display_bold";
-  font-size: 1.6rem;
+  font-size: rem;
 }
 
 #editPen{
@@ -265,10 +262,6 @@ body {
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
-
-#delete_button{
-
 }
 
 #editPen svg{
@@ -430,14 +423,14 @@ body {
   cursor: pointer;
 }
 
-#delete_button {
+#trashBin svg {
   width: 95%;
   height: 95%;
   padding: 0px;
 }
 
-#delete_button:hover {
-  color: red;
+#trashBin:hover svg {
+  fill: red;
 }
 
 /* Media Queries */
