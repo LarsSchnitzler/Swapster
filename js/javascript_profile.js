@@ -42,6 +42,13 @@ function toggle_editSection(toggleState){
     }
 }
 
+function clearInputs() {
+    document.getElementById('fName').value = '';
+    document.getElementById('lName').value = '';
+    document.getElementById('dob').value = '';  
+    document.getElementById('big-textarea').value = '';
+}
+
 const url = new URL(window.location.href);
 const params = url.searchParams;
 let edit_toggleState = false;
@@ -111,27 +118,90 @@ if (params.toString()) { // There are parameters in the URL
     });
 
     //save button click event
-    document.getElementById('editProfile_Save').addEventListener('click', async () => {
-        try {
-            const first_name = document.getElementById('fName').value;
-            const last_name = document.getElementById('lName').value;
-            const date_of_birth = document.getElementById('dob').value;
-            const aboutMe = document.getElementById('big-textarea').value;
+    document.getElementById('editProfile_Save').addEventListener('click', async (event) => {
+        event.preventDefault();
 
-            const { data, error } = await supa
-                .from('profiles')
-                .update({ first_name, last_name, date_of_birth, aboutMe })
-                .eq('id', user.id);
+        if (document.getElementById('fName').value.trim() !== '') {
+            const first_name = document.getElementById('fName').value;
+
+            try {
+                const { data, error } = await supa
+                    .from('profiles')
+                    .update({ first_name })
+                    .eq('id', user.id);
 
             if (error) {
                 throw error;
             } else {
                 console.log('Profile updated successfully!');
             }
-            window.location.reload();
-        } catch (error) {
-            console.error(`Error querying Supabase trying to update profile: ${error.message}`);
+            } catch (error) {
+                console.error(`Error querying Supabase trying to update profile: ${error.message}`);
+            }
+            
         }
+        
+        if (document.getElementById('lName').value.trim() !== '') {
+            const last_name = document.getElementById('lName').value;
+
+            try {
+                const { data, error } = await supa
+                    .from('profiles')
+                    .update({ last_name })
+                    .eq('id', user.id);
+
+            if (error) {
+                throw error;
+            } else {
+                console.log('Profile updated successfully!');
+            }
+            } catch (error) {
+                console.error(`Error querying Supabase trying to update profile: ${error.message}`);
+            }
+            
+        }
+
+        if (document.getElementById('dob-input').value.trim() !== '') {
+            const date_of_birth = document.getElementById('dob-input').value;
+
+            try {
+                const { data, error } = await supa
+                    .from('profiles')
+                    .update({ date_of_birth })
+                    .eq('id', user.id);
+
+            if (error) {
+                throw error;
+            } else {
+                console.log('Profile updated successfully!');
+            }
+            } catch (error) {
+                console.error(`Error querying Supabase trying to update profile: ${error.message}`);
+            }
+            
+        }
+
+        if (document.getElementById('big-textarea').value.trim() !== '') {
+            console.log(document.getElementById('big-textarea').value);
+            const aboutMe = document.getElementById('big-textarea').value;
+
+            try {
+                const { data, error } = await supa
+                    .from('profiles')
+                    .update({ aboutMe })
+                    .eq('id', user.id);
+
+            if (error) {
+                throw error;
+            } else {
+                console.log('Profile updated successfully!');
+            }
+            } catch (error) {
+                console.error(`Error querying Supabase trying to update profile: ${error.message}`);
+            }
+        }
+        clearInputs();
+        window.location.reload();
     });
 
     //cancel button click event
@@ -180,6 +250,6 @@ if (params.toString()) { // There are parameters in the URL
         authenticated_sendBack();
     }); */
 
-    
+
 
 }

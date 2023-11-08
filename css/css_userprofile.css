@@ -203,7 +203,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  gap: 30px;
   padding: 60px 0 60px 0;
 }
 
@@ -378,10 +378,34 @@ body {
 }
 
 .profilePic {
+  position: relative;
   width: 200px;
   height: 200px;
-  background-color: #ccc;
+  background-color: transparent;
   clip-path: circle(50% at center);
+}
+
+.middle-button {
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  appearance: none;
+  background-color: var(--white);
+  border: 2px solid var(--black);
+  font-size: 0.8rem;
+}
+
+.middle-button:active {
+  border: 2px solid var(--lightGray);
+}
+
+.profilePic:hover .middle-button {
+  opacity: 1;
 }
 
 .profilePic img {
