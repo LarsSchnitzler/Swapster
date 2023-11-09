@@ -90,6 +90,8 @@ function clearInputs() {
     document.getElementById('file-upload').value = '';
 }
 
+
+
 document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {clearInputs();});
 
 document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
