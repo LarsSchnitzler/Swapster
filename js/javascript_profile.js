@@ -48,11 +48,6 @@ function clearInputs() {
     document.getElementById('big-textarea').value = '';
 }
 
-const url = new URL(window.location.href);
-const params = url.searchParams;
-let edit_toggleState = false;
-document.getElementById('editProfile').style.display = 'none';
-
 if (params.toString()) { // There are parameters in the URL
     //make new Div for Title
     const titleDiv = document.createElement('div');
@@ -212,7 +207,10 @@ if (params.toString()) { // There are parameters in the URL
     });
 
     document.getElementById('profilePic_upload').addEventListener('click', async () => {
-        
+        const url = new URL('./articleUpload.html', window.location.href);
+        const params = url.searchParams; //even if you know there are no search parameters in the URL, you still need to use url.searchParams to get a URLSearchParams object
+        params.append('profilePic_upload', true);
+        window.location.href = url.toString(); //assigning the URL string to window.location.href will redirect the browser to the new page.
     });	
 
 /*     //delete button click event
