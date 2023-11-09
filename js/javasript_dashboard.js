@@ -541,28 +541,19 @@ let wishlist = await getWishlist();
                 return;
             } else {
                 const articleId = ownArticles[index_ownArticles].id;
-                const imagePath = ownArticles[index_ownArticles].img_path;
                 try {
-                    const { data: deleteData, error: deleteError } = await supa
+                    const { data, error } = await supa
                         .from("articles")
                         .delete()
                         .match({ id: articleId });
-        
-                    if (deleteError) {
-                        throw deleteError;
+            
+                    if (error) {
+                        throw error;
                     }
-        
-                    const { data: removeData, error: removeError } = await supa
-                        .storage
-                        .from('article_img')
-                        .remove([imagePath]);
-        
-                    if (removeError) {
-                        throw removeError;
-                    }
-                } 
+                    /* console.log(data); */
+                    } 
                 catch (error){
-                    console.error('Error querying Supabase: ', error.message);
+                    console.error('Error querying Supabase for deleting article: ', error.message);
                 }
                 
                 window.location.reload();    
