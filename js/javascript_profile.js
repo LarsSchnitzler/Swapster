@@ -211,6 +211,10 @@ if (params.toString()) { // There are parameters in the URL
         document.getElementById('big-textarea').value = '';
     });
 
+    document.getElementById('profilePic_upload').addEventListener('click', async () => {
+        
+    });	
+
 /*     //delete button click event
     document.getElementById('trashBin').addEventListener('click', async () => {
         //delete profile in profiles table
@@ -248,7 +252,5 @@ if (params.toString()) { // There are parameters in the URL
 
         authenticated_sendBack();
     }); */
-
-
 
 }

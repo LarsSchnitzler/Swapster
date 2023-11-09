@@ -62,12 +62,35 @@ async function uploadArticle(bucketName) {
     }
 }
 
+async function getImage(parameter_bucketName, parameter_articles, i) {
+
+    /* console.log("article-array in getImage:" + parameter_articles); */
+
+    const path = parameter_articles[i].img_path;
+    /* console.log(path); */
+    try{
+        const { data, error } = await supa.storage.from(parameter_bucketName).download(path);
+
+        if (error) {
+            throw error;
+        }
+        const url = URL.createObjectURL(data);
+        return url;
+    }
+    catch (error){
+        console.error('Error querying Supabase for image-path: ', error.message);
+        return null;
+    }
+}
+
 function clearInputs() {
     document.getElementById('articleTitle').value = '';
     document.getElementById('articleCaption').value = '';
     document.getElementById('estValue').value = '';
     document.getElementById('file-upload').value = '';
 }
+
+
 
 document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {clearInputs();});
 
