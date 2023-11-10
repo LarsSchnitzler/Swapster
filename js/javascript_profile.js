@@ -87,7 +87,7 @@ const params = url.searchParams;
 let edit_toggleState = false;
 document.getElementById('editProfile').style.display = 'none';
 
-if (params.toString()) { // There are parameters in the URL
+if (params.toString()) { // There are parameters in the URL, meaning it's another user's profile
     //make new Div for Title
     const titleDiv = document.createElement('div');
     titleDiv.classList.add('txt');
@@ -96,6 +96,10 @@ if (params.toString()) { // There are parameters in the URL
     titleDiv.style.marginBottom = '1rem';
     titleDiv.style.margin = '0px';
     const parentDiv = document.getElementById('profile');
+
+    //make uploadProfilePic button invisible
+    document.getElementById('uplProfPic_button').style.display = 'none';
+
     /* console.log(parentDiv); */
     parentDiv.style.padding = '80px 0px 0px 0px';
     parentDiv.prepend(titleDiv);
@@ -109,8 +113,24 @@ if (params.toString()) { // There are parameters in the URL
 
     //set profile data
     document.getElementById('name').textContent = profile.first_name + ' ' + profile.last_name;
-    document.getElementById('dob').textContent = profile.date_of_birth;
-    document.getElementById('email').textContent = profile.email;
+
+    const dob = new Date(profile.date_of_birth);
+    document.getElementById('dob').textContent = dob.toLocaleDateString('en-GB');
+    
+    const emailElement = document.getElementById('email');
+
+    //make email address more noticeable as something usable
+    emailElement.textContent = profile.email;
+    emailElement.style.color = 'var(--blue_fromFigma)';
+    emailElement.style.cursor = 'pointer';
+    emailElement.style.fontWeight = 'bold';
+    
+        //add mailto: to email address (browser will open mail client)
+        emailElement.addEventListener('click', function() {
+            console.log('emailElement clicked');
+            window.location.href = `mailto:${profile.email}`;
+        });
+
     if (profile.aboutMe !== null) {
         document.getElementById('aboutMe').textContent = profile.aboutMe;
     } else {
@@ -127,6 +147,9 @@ if (params.toString()) { // There are parameters in the URL
 } else { // There are no parameters in the URL -> meaning it's the user's own profile
     //hide editProfile section FOR NOW
     document.getElementById('trashBin').style.display = 'none';
+
+    //make uploadProfilePic button visible
+    document.getElementById('uplProfPic_button').style.display = 'block';
 
     //get profile data
     const profile = await getProfileData(user.id);

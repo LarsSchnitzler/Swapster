@@ -419,6 +419,19 @@ let wishlist = await getWishlist();
                     lastChangeTime = currentTime;
                     console.log("last Price-tolerance Change too recent, so no query has been sent.");
                 }
+
+                if (ownArticles !== null){
+
+                    //checkWether curOthArt wants curOwnArt
+                        console.log("checkWether_curOthArt_wants_curOwnArt");
+    
+                        const check_b = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
+                        if (check_b === true) {
+                            configure_swapButton(true);
+                        } else {
+                            configure_swapButton(false);
+                        }
+                }
             });
 
             //set next Article on right-arrow click
@@ -540,5 +553,4 @@ let wishlist = await getWishlist();
                 }, 1010);
             });
 
-            
     }

@@ -4,7 +4,7 @@
   --gray: rgba(128, 128, 128, 1);
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
   --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
-  --blue_fromFigma: #2E7985;
+  --blue_fromFigma: #638582;
 }
 
 @font-face {
@@ -183,10 +183,10 @@ input::placeholder {
 }
 
 input[type="checkbox"] {
+  appearance: none;
   height: 20px;
   width: 20px;
   padding: 0;
-  appearance: none;
   border: 2px solid var(--black);
   border-radius: 5px;
   background-color: var(--white);
@@ -194,6 +194,19 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: var(--blue_fromFigma);
+}
+
+input[type="checkbox"]:checked:after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: var(--black);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #form button {
@@ -250,6 +263,7 @@ input[type="checkbox"]:checked {
 
 #Label_dateOfBirth {
   align-self: flex-start;
+  height: fit-content
 }
 
 #rickroll {

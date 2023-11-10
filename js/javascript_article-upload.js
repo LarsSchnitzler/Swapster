@@ -184,9 +184,9 @@ if (params.toString() && user.id === params.get('userId')) { //meaning its the p
         await uploadProfPic('avatars');
         clearInputs();
 
-        /* setTimeout(() => {
+        setTimeout(() => {
             window.location.href = `./userprofile.html`;
-        }, waitTime); */
+        }, waitTime);
         
     });
 
