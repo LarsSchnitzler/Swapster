@@ -6,8 +6,6 @@
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
   --lightRed: rgb(229, 79, 46); /* will be used to make auth.signal red incase of not being registered yet */
   --blue_fromFigma: #2E7985;
-
-  --heightNavbar: 120px;
 }
 
 @font-face {
@@ -152,59 +150,13 @@ body {
   margin: 0;
 }
 
-.navbar {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #000;
-  color: #fff;
-  width: 100%;
-  height: var(--heightNavbar);
-  padding: 0 50px 0 50px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.navbar .logo-img {
-  width: 180px;
-}
-
-.navbar ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar ul li {
-  display: inline-block; /* makes dots for every li disappear */
-}
-
-.navbar ul li a {
-  display: block;
-  text-align: center;
-  min-width: 120px;
-}
-
-.navbar ul li a:hover {
-  color: var(--gray);
-}
-
-.navbar .navbar-toggler {
-  display: none;
-}
-
 #profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding: 60px 0 60px 0;
+  padding: 20px 0px 0px 0px;
 }
 
 #showProfile {
@@ -333,22 +285,6 @@ body {
   min-width: 60%;
 }
 
-@media screen and (max-width: 600px) {
-  #editProfile_TitleButtons {
-    flex-direction: column; /* Stack elements vertically for mobile */
-    align-items: center; /* Center items horizontally for mobile */
-    min-width: 80%; /* Adjust the minimum width as needed */
-  }
-  #editProfile_Buttons {
-    margin-top: 10px; /* Add some top margin for spacing between the title and buttons */
-    display: flex;
-    justify-content: center; /* Center the buttons horizontally for mobile */
-  }
-  #editProfile_Cancel, #editProfile_Save {
-    margin: 5px; /* Add some margin to separate the buttons */
-  }
-}
-
 #editProfile_Buttons {
   display: flex;
   flex-direction: row;
@@ -366,6 +302,7 @@ body {
   justify-content: center;
   gap: 40px;
 }
+
 /* Komponenten Stile */
 /* ---------------------------------------------- */
 
@@ -466,15 +403,28 @@ body {
 /* Media Queries */
 /* ---------------------------------------------- */
 
-@media (max-width: 767px) {
-  .navbar {
-    padding: 0;
+@media screen and (max-width: 600px) {
+  #editProfile_TitleButtons {
+    flex-direction: column; /* Stack elements vertically for mobile */
+    align-items: center; /* Center items horizontally for mobile */
+    min-width: 80%; /* Adjust the minimum width as needed */
   }
+  #editProfile_Buttons {
+    margin-top: 10px; /* Add some top margin for spacing between the title and buttons */
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally for mobile */
+  }
+  #editProfile_Cancel, #editProfile_Save {
+    margin: 5px; /* Add some margin to separate the buttons */
+  }
+}
+
+/* @media (max-width: 767px) {
+  
   .navbar ul {
     width: 100%;
     padding: 0;
     background-color: rgba(0,0,0,0.9);
-    /* height: auto; */
     height: 100vh;
     max-height: 0;
     overflow: hidden;
@@ -485,7 +435,7 @@ body {
   }
   .navbar ul li {
     width: 100%;
-    /* border-bottom: 1px solid rgba(255,255,255,0.3); */
+    border-bottom: 1px solid rgba(255,255,255,0.3);
   }
   .navbar ul li a {
     padding: 0;
@@ -499,8 +449,6 @@ body {
     background-color: transparent;
     color: #fff;
     border: 3px solid #fff;
-    /* border: none; */
-    /* border-radius: 4px; */
     outline: none;
     padding: 0 5px;
     cursor: pointer;
@@ -524,16 +472,12 @@ body {
   }
 
   .navbar .navbar-toggler.open-navbar-toggler span {
-    /* transform: rotate(90deg); */
     background-color: transparent;
-    /* transform: scale(0.85) rotate(270deg); */
   }
   .navbar .navbar-toggler.open-navbar-toggler span::before {
     transform: translateY(0px) rotate(45deg);
-    /* transform: translateY(0px) scale(0.75) rotate(45deg); */
   }
   .navbar .navbar-toggler.open-navbar-toggler span::after {
     transform: translateY(-3px) rotate(-45deg);
-    /* transform: translateY(-3px) scale(0.75) rotate(-45deg); */
   }
-}
+} */

@@ -7,23 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swapster_UserProfile</title>
     <link rel="stylesheet" href="/css/css_articleUpload.css">
+    <link rel="stylesheet" href="/css/css_navbar.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <a href="./dashboard.html"><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.png" class="logo-img"></a>
-        <ul>
+    <nav class="navbar" id="navBar">
+        <a href="./dashboard.html" id="logo"><img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.png" class="logo-img"></a>
+        <ul id="linkSection">
           <li><a href="./userprofile.html" class="txt link">Profile</a></li>
           <li><a href="./dashboard.html" class="txt link">Dashboard</a></li>
           <li><a href="./articleUpload.html" class="txt link">Article-Upload</a></li>
           <li><a class="txt link" id="logout">Log-out</a></li>
         </ul>
-        <button class="navbar-toggler">
-          <span class="txt"></span>
-        </button>
     </nav>
 
     <div id="article-Upload">

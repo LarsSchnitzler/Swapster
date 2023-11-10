@@ -320,8 +320,7 @@ input {
   background-color: #000;
   color: #fff;
   width: 100%;
-  height: var(--heightNavbar);
-  padding: 0 50px 0 50px;
+  padding: 15px 50px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -354,10 +353,6 @@ input {
   color: var(--gray);
 }
 
-.navbar .navbar-toggler {
-  display: none;
-}
-
 /* THIS IS THE LINE */
 
 .horizontal_line {
@@ -384,7 +379,7 @@ input {
 /* Media Queries */
 /* ---------------------------------------------- */
 
-@media (max-width: 780px) {
+/* @media (max-width: 780px) {
   .one {
     display: none;
   }
@@ -402,9 +397,9 @@ input {
     min-width: 100px;
     padding: 0 20px;
   }
-}
+} */
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .navbar {
     padding: 0;
   }
@@ -412,7 +407,6 @@ input {
     width: 100%;
     padding: 0;
     background-color: rgba(0,0,0,0.9);
-    /* height: auto; */
     height: 100vh;
     max-height: 0;
     overflow: hidden;
@@ -423,7 +417,6 @@ input {
   }
   .navbar ul li {
     width: 100%;
-    /* border-bottom: 1px solid rgba(255,255,255,0.3); */
   }
   .navbar ul li a {
     padding: 0;
@@ -437,8 +430,6 @@ input {
     background-color: transparent;
     color: #fff;
     border: 3px solid #fff;
-    /* border: none; */
-    /* border-radius: 4px; */
     outline: none;
     padding: 0 5px;
     cursor: pointer;
@@ -462,16 +453,12 @@ input {
   }
   
   .navbar .navbar-toggler.open-navbar-toggler span {
-    /* transform: rotate(90deg); */
     background-color: transparent;
-    /* transform: scale(0.85) rotate(270deg); */
   }
   .navbar .navbar-toggler.open-navbar-toggler span::before {
     transform: translateY(0px) rotate(45deg);
-    /* transform: translateY(0px) scale(0.75) rotate(45deg); */
   }
   .navbar .navbar-toggler.open-navbar-toggler span::after {
     transform: translateY(-3px) rotate(-45deg);
-    /* transform: translateY(-3px) scale(0.75) rotate(-45deg); */
   }
-}
+} */
