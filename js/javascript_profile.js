@@ -48,6 +48,40 @@ function clearInputs() {
     document.getElementById('big-textarea').value = '';
 }
 
+async function getImage(parameter_bucketName, parameter_table) {
+
+    const path = parameter_table.profilePic_path;
+    console.log(path);
+    try{
+        const { data, error } = await supa.storage.from(parameter_bucketName).download(path);
+
+        if (error) {
+            throw error;
+        }
+        
+        const url = URL.createObjectURL(data);
+        return url;
+    }
+    catch (error){
+        console.error('Error querying Supabase for image-path of profilePic: ', error.message);
+        return null;
+    }
+}
+
+async function setProfPic(parameter_profile, parameter_divName) {
+    console.log(parameter_profile);
+    console.log(parameter_divName);
+    //get background image
+    const url = await getImage('avatars', parameter_profile);
+
+    if (url !== null){
+        //set background image
+        const pictureDiv = document.getElementById(parameter_divName);
+        console.log(url);
+        pictureDiv.src = url;
+    }
+}
+
 const url = new URL(window.location.href);
 const params = url.searchParams;
 let edit_toggleState = false;
@@ -60,8 +94,10 @@ if (params.toString()) { // There are parameters in the URL
     titleDiv.classList.add('title2');
     titleDiv.textContent = 'Contact this user to trade:';
     titleDiv.style.marginBottom = '1rem';
-    const parentDiv = document.getElementById('profileInfo');
-    console.log(parentDiv);
+    titleDiv.style.margin = '0px';
+    const parentDiv = document.getElementById('profile');
+    /* console.log(parentDiv); */
+    parentDiv.style.padding = '80px 0px 0px 0px';
     parentDiv.prepend(titleDiv);
 
     //get Url parameters
@@ -80,6 +116,9 @@ if (params.toString()) { // There are parameters in the URL
     } else {
         document.getElementById('aboutMe').textContent = 'No About-Me for this user';
     }
+
+    //profile picture
+    await setProfPic(profile, 'profilePic_img');
     
     //hide edit Profile section and editPen
     document.getElementById('editProfile').style.display = 'none';
@@ -110,6 +149,9 @@ if (params.toString()) { // There are parameters in the URL
         } else {
             document.getElementById('aboutMe').textContent = '*No About-Me for this user*';
         }
+
+        //profile picture
+        await setProfPic(profile, 'profilePic_img');
     
     //editPen click event
     document.getElementById('editPen').addEventListener('click', function() {
@@ -249,6 +291,14 @@ if (params.toString()) { // There are parameters in the URL
         authenticated_sendBack();
     }); */
 
+    //upload profile picture
+    document.getElementById('uplProfPic_button').addEventListener('click', () => {
+        //add corresponding user_id to current userId into URL-Parameter and redirect to articleUpload.html
+            const url = new URL('./articleUpload.html', window.location.href);
+            const params = url.searchParams; //even if you know there are no search parameters in the URL, you still need to use url.searchParams to get a URLSearchParams object
+            params.append('userId', user.id);
+            /* console.log(url.toString()); */
 
-
+            window.location.href = url.toString(); 
+    });
 }

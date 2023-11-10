@@ -115,13 +115,6 @@ async function setArticle(index, parameter_articlesArray, parameter_divName) {
 
     //set title and caption
     let textColor = "white";
-    /* const brigthness = getMedianBrightness(url); */
-    /* console.log(brigthness); */
-    /* if (getMedianBrightness(url) < 100) {
-        textColor = "white";
-    } else {
-        textColor = "black";
-    } */
 
     const title = parameter_articlesArray[index].title;
     const caption = parameter_articlesArray[index].caption;
@@ -136,9 +129,9 @@ async function setArticle(index, parameter_articlesArray, parameter_divName) {
 
     //set price
     if (parameter_divName === 'ownArticle_image') {
-        document.getElementById('price_ownArticles').textContent = "[CHF.-]: " + parameter_articlesArray[index].price;
+        document.getElementById('price_ownArticles').textContent = parameter_articlesArray[index].price + " [CHF.-]: ";
     } else if (parameter_divName === 'otherArticle_image') {
-        document.getElementById('price_otherArticles').textContent = "[CHF.-]: " + parameter_articlesArray[index].price;
+        document.getElementById('price_otherArticles').textContent = parameter_articlesArray[index].price + " [CHF.-]: ";
     }
 }
 
@@ -295,43 +288,6 @@ function noArticlesFound(string_ownOrOtherArticles) {
     }
 }
 
-/* function getMedianBrightness(imgUrl) { //to get the median brightness, the function stores all the brightness values in an array, sorts the array, and then find the middle value.
-    const imgEl = new Image();
-    imgEl.crossOrigin = 'anonymous';
-    imgEl.src = imgUrl;
-    imgEl.onload = function() {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
- 
-        const width = imgEl.naturalWidth;
-        const height = imgEl.naturalHeight;
-
-        canvas.width = width;
-        canvas.height = height;
-
-        context.drawImage(imgEl, 0, 0, width, height);
-
-        const imageData = context.getImageData(0, 0, width, height);
-        const data = imageData.data;
-        let brightnessValues = [];
-
-        for (let i = 0; i < data.length; i += 4) {
-            const r = data[i];
-            const g = data[i + 1];
-            const b = data[i + 2];
-            const brightness = (r + g + b) / 3;
-            brightnessValues.push(brightness);
-        }
-
-        brightnessValues.sort((a, b) => a - b);
-        const mid = Math.floor(brightnessValues.length / 2);
-        const median = Math.round(brightnessValues.length % 2 === 0 ? (brightnessValues[mid - 1] + brightnessValues[mid]) / 2 : brightnessValues[mid]);
-        
-        console.log(median);
-        callback(median);
-    };
-} */
-
 let wishlist = await getWishlist();
 
 //OwnArticles
@@ -353,25 +309,24 @@ let wishlist = await getWishlist();
         
         document.getElementById('arrowRight_OwnArticle').addEventListener('click', async () => {
             console.log("arrowRight_OwnArticle clicked");
+            if (ownArticles !== null){
+                //set next Article
+                    if (index_ownArticles < OwnArticles_MaxIndex) {
+                        index_ownArticles++;
+                    } else {
+                        index_ownArticles = 0;
+                    }
+                    await setArticle(index_ownArticles, ownArticles, 'ownArticle_image');
 
-            //set next Article
-            if (index_ownArticles < OwnArticles_MaxIndex) {
-                index_ownArticles++;
-            } else {
-                index_ownArticles = 0;
-            }
-            await setArticle(index_ownArticles, ownArticles, 'ownArticle_image');
+                //checkWether curOthArt wants curOwnArt
+                    console.log("checkWether_curOthArt_wants_curOwnArt");
 
-            //checkWether curOthArt wants curOwnArt
-            if (otherArticles !== null){
-                console.log("checkWether_curOthArt_wants_curOwnArt");
-
-                const check_a = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_ownArticles);
-                if (check_a === true) {
-                    configure_swapButton(true);
-                } else {
-                    configure_swapButton(false);
-                }
+                    const check_a = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_ownArticles);
+                    if (check_a === true) {
+                        configure_swapButton(true);
+                    } else {
+                        configure_swapButton(false);
+                    }
             }
             
         }); 
@@ -379,25 +334,24 @@ let wishlist = await getWishlist();
         
         document.getElementById('arrowLeft_OwnArticle').addEventListener('click', async () => {
             console.log("arrowLeft_OwnArticle clicked");
-
-            //set previous Article on left-arrow click
-            if (index_ownArticles > 0) {
-                index_ownArticles--;
-            } else {
-                index_ownArticles = 0;
-            }
-            await setArticle(index_ownArticles, ownArticles, 'ownArticle_image');
+            if (ownArticles !== null){
+                //set previous Article on left-arrow click
+                    if (index_ownArticles > 0) {
+                        index_ownArticles--;
+                    } else {
+                        index_ownArticles = 0;
+                    }
+                    await setArticle(index_ownArticles, ownArticles, 'ownArticle_image');
   
-            //checkWether curOthArt wants curOwnArt
-            if (otherArticles !== null){
-                console.log("checkWether_curOthArt_wants_curOwnArt");
+                //checkWether curOthArt wants curOwnArt
+                    console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                const check_b = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
-                if (check_b === true) {
-                    configure_swapButton(true);
-                } else {
-                    configure_swapButton(false);
-                }
+                    const check_b = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
+                    if (check_b === true) {
+                        configure_swapButton(true);
+                    } else {
+                        configure_swapButton(false);
+                    }
             }
 
         });
@@ -470,49 +424,49 @@ let wishlist = await getWishlist();
             //set next Article on right-arrow click
             document.getElementById('arrowRight_OtherArticle').addEventListener('click', async () => {
                 console.log("arrowRight_OtherArticle clicked");
-                //set next Article on right-arrow click
-                if (index_otherArticles < OtherArticles_MaxIndex) {
-                    index_otherArticles++;
-                } else {
-                    index_otherArticles = 0;
-                }
-                await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
-
-                //checkWether curOthArt wants curOwnArt
                 if (otherArticles !== null){
-                    console.log("checkWether_curOthArt_wants_curOwnArt");
+                    //set next Article on right-arrow click
+                        if (index_otherArticles < OtherArticles_MaxIndex) {
+                            index_otherArticles++;
+                        } else {
+                            index_otherArticles = 0;
+                        }
+                        await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
 
-                    const check_c = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
-                    if (check_c === true) {
-                        configure_swapButton(true);
-                    } else {
-                        configure_swapButton(false);
-                    }
+                    //checkWether curOthArt wants curOwnArt
+                        console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                        const check_c = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
+                        if (check_c === true) {
+                            configure_swapButton(true);
+                        } else {
+                            configure_swapButton(false);
+                        }
                 }
             }); 
             
             //set previous Article on left-arrow click
             document.getElementById('arrowLeft_OtherArticle').addEventListener('click', async () => {
-                console.log("arrowRight_OtherArticle clicked");
-
-                //set previous Article on left-arrow click
-                if (index_otherArticles > 0) {
-                    index_otherArticles--;
-                } else {
-                    index_otherArticles = 0;
-                }
-                await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
-
-                //checkWether curOthArt wants curOwnArt
+                console.log("arrowLeft_OtherArticle clicked");
                 if (otherArticles !== null){
-                    console.log("checkWether_curOthArt_wants_curOwnArt");
 
-                    const check_a = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
-                    if (check_a === true) {
-                        configure_swapButton(true);
-                    } else {
-                        configure_swapButton(false);
-                    }
+                    //set previous Article on left-arrow click
+                        if (index_otherArticles > 0) {
+                            index_otherArticles--;
+                        } else {
+                            index_otherArticles = 0;
+                        }
+                        await setArticle(index_otherArticles, otherArticles, 'otherArticle_image');
+
+                    //checkWether curOthArt wants curOwnArt
+                        console.log("checkWether_curOthArt_wants_curOwnArt");
+
+                        const check_a = checkWether_curOthArt_wants_curOwnArt(otherArticles, index_otherArticles);
+                        if (check_a === true) {
+                            configure_swapButton(true);
+                        } else {
+                            configure_swapButton(false);
+                        }
                 }
             });
 
@@ -540,6 +494,8 @@ let wishlist = await getWishlist();
             if (ownArticles.length <= 0) {
                 return;
             } else {
+
+                //delete entry from articles-table
                 const articleId = ownArticles[index_ownArticles].id;
                 try {
                     const { data, error } = await supa
@@ -550,13 +506,39 @@ let wishlist = await getWishlist();
                     if (error) {
                         throw error;
                     }
-                    /* console.log(data); */
                     } 
                 catch (error){
                     console.error('Error querying Supabase for deleting article: ', error.message);
+                }
+
+                //delete entry from storage
+                const { data, error } = await supa
+                    .storage
+                    .from('article_img')
+                    .remove(ownArticles[index_ownArticles].img_path);
+
+                if (error) {
+                    console.error('Error deleting file:', error);
+                } else {
+                    console.log('File deleted:', data);
                 }
                 
                 window.location.reload();    
             }
         });
+
+        // make active-class for animation of swap button
+        let sw_button = document.querySelector('.swap_button');
+
+            sw_button.addEventListener('mousedown', function() {
+            this.classList.add('active');
+            });
+
+            sw_button.addEventListener('animationend', function() {
+                setTimeout(() => {
+                    this.classList.remove('active');                
+                }, 1010);
+            });
+
+            
     }

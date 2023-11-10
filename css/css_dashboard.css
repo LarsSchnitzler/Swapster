@@ -1,6 +1,7 @@
 :root {
   --black: rgba(0, 0, 0, 1);
   --white: rgba(255, 255, 255, 1);
+  --darkGray: rgb(22, 22, 22);
   --gray: rgba(128, 128, 128, 1);
   --lightGray: #ccc;
   --lightGreen: rgba(0, 255, 0, 1); /* will be used to make auth.signal green */
@@ -73,6 +74,7 @@ a {
   letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
+  margin: 0px;
 }
 
 .sub-title_1 {
@@ -257,6 +259,12 @@ input {
 
 /* THIS IS THE CONTAINER CENTER */
 
+.swap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .swap_button {
   box-sizing: border-box;
   padding: 0;
@@ -270,6 +278,31 @@ input {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+@keyframes fadeOut {
+  0% {
+    background-color: var(--blue_fromFigma);
+  }
+  10% {
+    background-color: var(--blue_fromFigma);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.swap_button img{
+  width: 90px;
+  height: 90px;
+  padding: 8px;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: background-color 0.1s ease-;
+}
+
+.active img{
+  animation: fadeOut 1s ease-out forwards;
 }
   
 .amount {
@@ -288,19 +321,6 @@ input {
   justify-content: center;
   display:flex;
   background-color: var(--white);
-}
-
-.swap > img {
-  width: 90px;
-  height: 90px;
-  padding: 8px;
-  background-color: transparent;
-}
-
-.swap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Komponenten Stile */

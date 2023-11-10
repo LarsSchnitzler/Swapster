@@ -28,25 +28,25 @@
         
       <div class="article-Upload_top-wrapper">
         <div id="article-Upload_titleButtons">
-          <div class="txt title2" id="article-Upload_title">Article-Upload</div>
+          <div class="txt title2" id="article-Upload_title">Article - Upload</div>
         </div>
         <div id="hrztlGrayLine"></div>
         <div id="article-Upload_buttons">
           <button class="txt" id="articleUpload_Cancel">Cancel</button>
           <button class="txt" id="articleUpload_Upload" form="article-Upload_Inputs" type="submit">Upload</button>
         </div>
-        <div class="txt sub-title_1">You can only upload one Item at a time.</div>
+        <div class="txt sub-title_1" id="subtitle">You can only upload one Item at a time.</div>
       </div>
       
 
         <form id="article-Upload_Inputs">
         
           <div class="uploadgroup">
-            <label class="txt label" for="file-upload">Choose an image of your Article:</label>
+            <label class="txt label" id="fileInput_label" for="file-upload">Choose an image of your Article:</label>
             <input type="file" id="file-upload" name="file-upload" accept="image/*">
           </div>
 
-          <div class="Article_PropertyInputs">
+          <div class="Article_PropertyInputs" id="Art_PropInputs">
             <div class="inputgroup">
               <label class="txt label" for="fName">Article Name:</label>
               <input class="input" type="text" id="articleTitle" name="fName" maxlength="40">
