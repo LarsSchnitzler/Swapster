@@ -173,7 +173,9 @@ if (params.toString() && user.id === params.get('userId')) { //meaning its the p
     document.getElementById('article-Upload_title').textContent = 'Profile Picture - Upload';
     document.getElementById('subtitle').style.display = 'none';
     document.getElementById('Art_PropInputs').style.display = 'none';
-    document.getElementById('fileInput_label').textContent = 'Choose a Profile Picture to upload. (Old Profile Picture will be deleted)';
+    const Element_fileInput_Label = document.getElementById('fileInput_label');
+    Element_fileInput_Label.textContent = 'Choose a Profile Picture to upload. (Old Profile Picture will be deleted)';
+    Element_fileInput_Label.style.maxWidth = '100%';
 
     //cancel clears all inputs
     document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {
