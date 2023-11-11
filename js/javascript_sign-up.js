@@ -25,23 +25,11 @@ async function updateProfilesEntry(parameter_firstName, parameter_lastName, para
     }
 }
 
-async function signUpWithEmailAndPassword() {
-    const checkboxElement = document.getElementById('TermsCB').checked;
-    const InputElement_firstName = document.getElementById('firstName').value;
-    const InputElement_lastName = document.getElementById('lastName').value;
-    const InputElement_dob = document.getElementById('dateOfBirth').value;
-    
-    let inputComplete = true;
+async function signUpWithEmailAndPassword(InputElement_firstName, InputElement_lastName, InputElement_dob, InputElement_password, InputElement_email) {
     let signUpDone = false;
 
-    if ((InputElement_firstName === '') || (InputElement_lastName === '') || (InputElement_dob === '')) {
-        inputComplete = false;
-    }
-
-    if (checkboxElement && inputComplete) {
-        const emailElement = document.getElementById('email').value;
-        const passwordElement = document.getElementById('password').value;
-        const { user, error } = await supa.auth.signUp({email: emailElement, password: passwordElement});
+    console.log("sign up process started");
+    const { user, error } = await supa.auth.signUp({email: InputElement_email, password: InputElement_password});
 
         if (error) {
             console.log('Error signing up:', error.message);
@@ -66,7 +54,7 @@ async function signUpWithEmailAndPassword() {
                     element_signUpContent.appendChild(alert_invEmailFormat);
                     setTimeout(() => {
                         alert_invEmailFormat.remove();
-                    }, 3000);
+                    }, 2000);
                 }
             }
             if (error.message === 'User already registered') {
@@ -93,11 +81,35 @@ async function signUpWithEmailAndPassword() {
                     }, 3000);
                 }
             }
-            } else {
-                console.log('Signed up successfully:', user);
-                await updateProfilesEntry(InputElement_firstName, InputElement_lastName, InputElement_dob);
-                signUpDone = true;
-            }
+        } else {
+            console.log('Signed up successfully:', user);
+            await updateProfilesEntry(InputElement_firstName, InputElement_lastName, InputElement_dob);
+            signUpDone = true;
+        }
+
+        if (signUpDone) {
+            window.location.href='./dashboard.html';
+        }
+
+    }
+
+document.getElementById('sign-up-button').addEventListener('click', () => {
+    const checkboxElement = document.getElementById('TermsCB').checked;
+    const InputElement_firstName = document.getElementById('firstName').value.trim();
+    const InputElement_lastName = document.getElementById('lastName').value.trim();
+    const InputElement_dob = document.getElementById('dateOfBirth').value;
+
+    let inputComplete = true;
+    let signUpDone = false;
+
+    if ((InputElement_firstName === '') || (InputElement_lastName === '') || (InputElement_dob === '')) {
+        inputComplete = false;
+    }
+
+    if (checkboxElement && inputComplete) {
+        const emailElement = document.getElementById('email').value;
+        const passwordElement = document.getElementById('password').value;
+        signUpWithEmailAndPassword(InputElement_firstName, InputElement_lastName, InputElement_dob, passwordElement, emailElement);
     }
 
     else if ((inputComplete === false) && (checkboxElement === true)){
@@ -115,6 +127,4 @@ async function signUpWithEmailAndPassword() {
     if (signUpDone) {
         window.location.href='./dashboard.html';
     }
-}
-
-document.getElementById('sign-up-button').addEventListener('click', signUpWithEmailAndPassword);
+});

@@ -71,9 +71,13 @@ body {
 }
 
 .label {
-  max-width: 50%;
+  max-width: 100%;
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+.wrapper_dateOfBirth .label {
+  width: 100%;
 }
 
 /* Seiten Struktur */
@@ -267,6 +271,7 @@ input[type="checkbox"]:checked:after {
 }
 
 #rickroll {
+  width: 50%;
   display: inline; 
 }
 
