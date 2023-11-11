@@ -1,48 +1,20 @@
 <!DOCTYPE html>
-<html lang="de">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupaBase_SignIn</title>
-    <link rel="stylesheet" href="./css/log-in.css" />
-    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
-  </head>  
+    <title>Swapster_Landingpage</title>
+    <link rel="stylesheet" href="./css/styles_landingpage.css">
+</head> 
 
 <body>
-
-    <div class="wrapper_sign-in">
-        <div class="wrapper_halfVP leftSide" id="leftSideDiv">
-            <div class="wrapper_logo">
-                <a href= "./landingPage.html" class="txt link">
-                    <img class="img" src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.png" />
-                </a>
-            </div>
-        </div>
-        <div class="wrapper_halfVP rightSide" id="rightSideDiv">
-          <div class="text-wrapper">
-            <div class="text-wrapper_multipleHeadlines">
-              <div class="txt title">Log in</div>
-              <div class="txt sub-title_1">Log in to start Swapping!</div>
-            </div>
-            <form class="form-wrapper" id="loginForm">
-                <input type="email" id="emailInput" placeholder="Enter your email" />
-                <input type="password" id="passwordInput" placeholder="Enter your password" />
-            </form>
-            <div class="wrapper_nonInputs">
-              <div class="txt" id="userStatus"></div>
-              <a href= "./sign-up.html" class="txt link" id="sign-up">Sign up</a>
-              <button class="txt buttonText" id="loginButton" form="loginForm" type="submit">Login</button>
-            </div>
-          </div>
-        </div>
-    </div>
-
-    <script type="module" src="./SupaBaseClient/supabase.js"></script>
-    <script type="module" src="./js/javascript_log-in.js"></script>
-
+    <div class="container-horizontal"></div>
+      <div class="container-horizontal black-bg">
+        <a href="./log-in.html" class="logo-button">
+          <img src="./img/logo/swapsterLogo_renders_whiteFont/Swapster_whiteFont.png" alt="logo">
+        </a>
+        <div class="txt fontStyle_1">One man's trash, that's another man's come up</div>
+      </div>
+    <div class="container-horizontal"></div>
 </body>
-
 </html>

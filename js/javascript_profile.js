@@ -290,7 +290,7 @@ if (params.toString()) { // There are parameters in the URL, meaning it's anothe
             } else {
                 console.log(data);
             }
-            window.location.href = "/index.html";
+            window.location.href = "/log-in.html";
         } catch (error) {
             console.error(`Error querying Supabase trying to delete profile: ${error.message}`);
         }
