@@ -176,7 +176,10 @@ if (params.toString() && user.id === params.get('userId')) { //meaning its the p
     document.getElementById('fileInput_label').textContent = 'Choose a Profile Picture to upload. (Old Profile Picture will be deleted)';
 
     //cancel clears all inputs
-    document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {clearInputs();});
+    document.getElementById('articleUpload_Cancel').addEventListener('click', function(event) {
+        clearInputs();
+        window.location.href = `./userprofile.html`;
+    });
 
     //submit uploads profile pic
     document.getElementById('article-Upload_Inputs').addEventListener('submit', async function(event) {
