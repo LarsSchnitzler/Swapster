@@ -9,7 +9,7 @@ export async function authenticated_sendBack() {
         return user;
     } else {
         console.error('User is not authenticated.');
-        window.location.href = "/index.html";
+        window.location.href = "/log-in.html";
     }
 }
 
@@ -30,7 +30,7 @@ export async function authenticated() {
 export function logout() {
     supa.auth.signOut()
     .then(() => {
-      window.location.href = "/index.html"; 
+      window.location.href = "/log-in.html"; 
     })
     .catch(error => {
       console.error("Error logging out:", error);
