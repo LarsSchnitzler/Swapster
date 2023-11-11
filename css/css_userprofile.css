@@ -28,8 +28,8 @@ main {
 body {
   width: 100vw; 
   height: 100vh;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   display: flex;
   flex-direction:column;
 }
