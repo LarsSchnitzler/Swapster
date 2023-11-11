@@ -13,3 +13,9 @@ ZUSAMMENFASSUNG
 Insgesamt war diese Gruppenarbeit eine lehrreiche Erfahrung. Sie hat uns gezeigt, wie wichtig es ist, von Anfang an eine strukturierte Vorgehensweise zu definieren und einen «Projekt-Manager» zu ernennen, um die Übersicht zu halten und die To-Do’s zu verteilen. Wir haben gelernt, dass die frühzeitige Priorisierung des UX- und UserFlows uns Zeit und Aufwand ersparen kann. Diese Erkenntnisse werden uns in zukünftigen Projekten sicherlich von Nutzen sein.
 
 Team Swapster
+
+Videodokumentationen:
+
+Swapster Videodokumentation Technisch.mp4  --       https://youtu.be/u3HKbEs3Emw 
+
+Swapster Videodokumentation UX.mp4         --       https://youtu.be/l-NpxotZm_4
